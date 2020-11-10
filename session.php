@@ -1,11 +1,14 @@
 <?php
+session_start();
 
-$winkelwagen = [
+
+//tijdelijke test array!!!
+$winkelwagen = array(
     "220" => "2",
     "16" => "1",
     "20" => "2",
     "55" => "4",
     "11" => "3"
-];
+);
 
-$_SESSION['winkelwagen'] = $winkelwagen;
+$_SESSION["cart"] = $winkelwagen;
