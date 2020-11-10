@@ -122,10 +122,11 @@ if ($R) {
                         <h6> Inclusief BTW </h6>
                     </div>
                 </div>
+                <a href="session.php?productId=<?php echo $Result['StockItemID'] ?>"><div class="btn btn-primary bestelKnop">Bestellen</div></a>
             </div>
         </div>
-
         <div id="StockItemDescription">
+            <div class="btn btn-primary">Bestellen</div>
             <h3>Artikel beschrijving</h3>
             <p><?php print $Result['SearchDetails']; ?></p>
         </div>
