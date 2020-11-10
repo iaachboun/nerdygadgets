@@ -8,6 +8,10 @@ mysqli_set_charset($Connection, 'latin1');
 // $winkelwagen = array(42 => 1, 33 => 2)
 // De key is het productnummer en de value is het aantal.
 
+//TIJDELIJKE (TEST) ARRAY!!!:
+
+
+
 
 
 if(isset($_SESSION["cart"])) {
@@ -21,19 +25,26 @@ if(isset($_SESSION["cart"])) {
     foreach ($_SESSION["cart"] as $productnummer => $aantal) {
         print '<tr><th><input type="button" name="verwijderen" value="🗑️"></th>';
 
-        $queryArtikelnaam = "SELECT StockItemName
-                     FROM stockitems
-                     WHERE StockItemID = $productnummer";
+        $query = "SELECT StockItemName, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice
+                     FROM StockItems
+                     WHERE StockItemID = ?";
 
-        $Statement = mysqli_prepare($Connection, $queryArtikelnaam);
-        mysqli_stmt_bind_param($Statement, "s", $artikelnaam);
+        $Statement = mysqli_prepare($Connection, $query);
+        mysqli_stmt_bind_param($Statement, "i", $productnummer);
         mysqli_stmt_execute($Statement);
         $R = mysqli_stmt_get_result($Statement);
         $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
 
         print '<th>';
-        print "$R";
+        print ($R[0]["StockItemName"]);
+        print '</th>';
+        print '<th>';
+        print "$aantal";
+        print '</th>';
+        print '<th>';
+        print round(($R[0]["SellPrice"]),2) * $aantal;
         print '</th></tr>';
+
 
 
     }
