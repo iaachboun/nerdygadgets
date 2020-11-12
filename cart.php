@@ -9,7 +9,8 @@ mysqli_set_charset($Connection, 'latin1');
 // De key is het productnummer en de value is het aantal.
 
 
-
+//TIJDELIJKE VARIABELE VOOR ITEMS IN DE MAND!!!
+$_SESSION["cart"] = array(1 => 1, 2 => 2, 3 => 3);
 
 
 //Variabelen:
