@@ -10,8 +10,8 @@ mysqli_set_charset($Connection, 'latin1');
 
 
 //TIJDELIJKE VARIABELE VOOR ITEMS IN DE MAND!!!
-$_SESSION["cart"] = array(1 => 1, 2 => 2, 3 => 3);
-print_r ($_SESSION["cart"]);
+$_SESSION["cart"] = array(1 => 10, 2 => 20, 3 => 30);
+
 
 //test
 
@@ -43,9 +43,12 @@ if(isset($_SESSION["cart"])) {
     foreach ($_SESSION["cart"] as $productnummer => $aantal) {
         $teller ++;
 
-        print '<tr><th><form method="post"><input type="submit" name="verwijderen" value="🗑️"></form></th>';
-        if (isset($_POST["verwijderen"])){
-            unset($_SESSION["cart"][$productnummer]);
+        print "<tr><th><form method='post'><input type='submit' name='";
+        print "verwijder$productnummer";
+        print "' value='🗑️'></form></th>";
+
+        if (isset($_POST["verwijder$productnummer"])){
+            $_SESSION["cart"][$productnummer] = NULL;
             print_r ($_SESSION["cart"]);
         }
 
@@ -87,6 +90,6 @@ else{
     print 'Er zit niks in de winkelmand!';
 }
 
-<html>
-<input type=button name="bestellen" onClick="location.href='bestelpagina.php'" value="Bestellen">
-</html>
+//<html>
+//<input type=button name="bestellen" onClick="location.href='bestelpagina.php'" value="Bestellen">
+//</html>
