@@ -13,10 +13,17 @@ mysqli_set_charset($Connection, 'latin1');
 //$_SESSION["cart"] = array(1 => 1, 2 => 2, 3 => 3);
 
 
+
 //Variabelen:
 $totaalPrijs = 0;
 $teller = 0;
 
+
+
+
+
+$subtotaal = 0;
+$btwWaarde = 0;
 
 if(isset($_SESSION["cart"])) {
 
@@ -33,12 +40,16 @@ if(isset($_SESSION["cart"])) {
     foreach ($_SESSION["cart"] as $productnummer => $aantal) {
         $teller ++;
 
-        print '<tr><th><input type="submit" name="verwijderen" value="🗑️" formmethod="post"></th>';
-        if (isset($_POST["verwijderen"])){
-            print "test";
+        print "<tr><th><form method='post'><input type='submit' name='";
+        print "verwijder$productnummer";
+        print "' value='🗑️'></form></th>";
+
+        if (isset($_POST["verwijder$productnummer"])){
+            $_SESSION["cart"][$productnummer] = NULL;
+            print_r ($_SESSION["cart"]);
         }
 
-        $query = "SELECT StockItemName, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice
+        $query = "SELECT StockItemName, TaxRate, RecommendedRetailPrice, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice
                      FROM StockItems
                      WHERE StockItemID = ?";
 
@@ -59,11 +70,23 @@ if(isset($_SESSION["cart"])) {
         print '</th></tr>';
 
         $totaalPrijs = $totaalPrijs + round(($R[0]["SellPrice"]),2) * $aantal;
-
+        $btwWaarde = $btwWaarde + ($R[0]["TaxRate"]);
+        $subtotaal = $subtotaal + ($R[0]["RecommendedRetailPrice"]);
     }
-    print $totaalPrijs;
-
+    print '<th>';
+    print "Subtotaal: " . $subtotaal;
+    print '</th></tr>';
+    print '<th>';
+    print "BTW: " . $btwWaarde;
+    print '</th></tr>';
+    print '<th>';
+    print "Totaalprijs: " . $totaalPrijs;
+    print '</th></tr>';
 }
 else{
     print 'Er zit niks in de winkelmand!';
 }
+
+//<html>
+//<input type=button name="bestellen" onClick="location.href='bestelpagina.php'" value="Bestellen">
+//</html>
