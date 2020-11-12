@@ -2,6 +2,7 @@
 $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
 include __DIR__ . "/header.php";
+include "session.php";
 
 $Query = " 
            SELECT SI.StockItemID, 
@@ -123,6 +124,13 @@ if ($R) {
                     </div>
                 </div>
                 <a href="session.php?productId=<?php echo $Result['StockItemID'] ?>"><div class="btn btn-primary bestelKnop">Bestellen</div></a>
+                <?php
+                if(isset($Result['StockItemID'])){
+                    $stockItemID = $Result['StockItemID'];
+                    AddProductToCart($stockItemID);
+                    print("Product is toegevoegd aan het <a href='cart.php'>winkelmandje</a>");
+                }
+                ?>
             </div>
         </div>
         <div id="StockItemDescription">

@@ -1,14 +1,27 @@
 <?php
-session_start();
 
+function GetCart()
+{
+    if (isset($_SESSION["cart"])) {//controleren of winkelmandje al bestaat
+        $cart = $_SESSION["cart"];
+    } else {
+        $cart = array();
+    }
+    return $cart;
+}
 
-//tijdelijke test array!!!
-$winkelwagen = array(
-    "1" => "2",
-    "10" => "1",
-    "20" => "2",
-    "55" => "4",
-    "11" => "3"
-);
+function AddProductToCart($stockItemID)
+{
+    $cart = GetCart();
+    if (array_key_exists($stockItemID, $cart)) { //controleren of product al in winkelmandje voorkomt
+        $cart[$stockItemID] += 1;
+    } else {
+        $cart[$stockItemID] = 1;
+    }
+    SaveCart($cart);
+}
 
-$_SESSION["cart"] = $winkelwagen;
+function SaveCart($cart)
+{
+    $_SESSION["cart"] = $cart;
+}
