@@ -1,14 +1,12 @@
 <?php
 session_start();
+$newProducts = $_SESSION['cart'];
+var_dump($_SESSION["cart"]);
 
 
-//tijdelijke test array!!!
-$winkelwagen = array(
-    "220" => "2",
-    "16" => "1",
-    "20" => "2",
-    "55" => "4",
-    "11" => "3"
+
+$newProducts = array(
+    $_GET['productId'] => '5'
 );
 
-$_SESSION["cart"] = $winkelwagen;
+$_SESSION["cart"] = $newProducts;
