@@ -8,13 +8,17 @@ mysqli_set_charset($Connection, 'latin1');
 // $winkelwagen = array(42 => 1, 33 => 2)
 // De key is het productnummer en de value is het aantal.
 
-//TIJDELIJKE (TEST) ARRAY!!!:
 
 
 
+
+//Variabelen:
+$totaalprijs = 0;
 
 
 if(isset($_SESSION["cart"])) {
+
+
     print '<table><tr>
            <th>Verwijder product</th>
            <th>Productnaam</th>
@@ -23,7 +27,8 @@ if(isset($_SESSION["cart"])) {
            </tr>';
 
     foreach ($_SESSION["cart"] as $productnummer => $aantal) {
-        print '<tr><th><input type="button" name="verwijderen" value="🗑️"></th>';
+        print '<tr><th><input type="submit" name="verwijderen" value="🗑️" formmethod="post"></th>';
+
 
         $query = "SELECT StockItemName, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice
                      FROM StockItems
@@ -45,16 +50,12 @@ if(isset($_SESSION["cart"])) {
         print round(($R[0]["SellPrice"]),2) * $aantal;
         print '</th></tr>';
 
-
+        $totaalprijs = $totaalprijs + round(($R[0]["SellPrice"]),2) * $aantal;
 
     }
-    $totaalprijs = round(array_sum($R[0] ),2);
-    print '<th>';
-    print "Totaalprijs: " . $totaalprijs;
-    print '</th></tr>';
+    print $totaalprijs;
+
 }
 else{
     print 'Er zit niks in de winkelmand!';
 }
-
-
