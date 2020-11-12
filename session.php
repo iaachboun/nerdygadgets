@@ -17,7 +17,6 @@ function GetCart()
 
 function AddProductToCart($stockItemID)
 {
-    var_dump($stockItemID);
     $cart = GetCart();
     if (array_key_exists($stockItemID, $cart)) { //controleren of product al in winkelmandje voorkomt
         $cart[$stockItemID] += 1;

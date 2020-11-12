@@ -1,7 +1,7 @@
 <?php
 include __DIR__ . "/header.php";
-$Connection = mysqli_connect("localhost", "ilias", "12345", "nerdygadgets");
-mysqli_set_charset($Connection, 'latin1');
+include __DIR__ . "/connect.php";
+
 
 // Opzet winkelwage word als volgt:
 // Ilias maakt een array in de session met de volgende opzet:
@@ -17,10 +17,6 @@ mysqli_set_charset($Connection, 'latin1');
 //Variabelen:
 $totaalPrijs = 0;
 $teller = 0;
-
-
-
-
 
 $subtotaal = 0;
 $btwWaarde = 0;
@@ -86,7 +82,7 @@ if(isset($_SESSION["cart"])) {
 else{
     print 'Er zit niks in de winkelmand!';
 }
-
-//<html>
-//<input type=button name="bestellen" onClick="location.href='bestelpagina.php'" value="Bestellen">
-//</html>
+?>
+<html>
+<input type=button name="bestellen" onClick="location.href='bestelpagina.php'" value="Bestellen">
+</html>

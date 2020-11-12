@@ -236,6 +236,7 @@ if (isset($amount)) {
                         if (isset($_POST["submit"])) {
                             $stockItemID = $row['StockItemID'];
                             AddProductToCart($stockItemID);
+                            echo '<div class="alert alert-secondary" role="alert">Product is toegevoegd aan het <a href="cart.php"">winkelmandje</a></div>';
                             break;
                         } ?>
                         <div class="CenterPriceLeftChild">
