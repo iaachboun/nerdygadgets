@@ -1,0 +1,16 @@
+.bestelKnop {
+    position: relative;
+    top: 255px;
+}
+
+.cart {
+    margin: 0 auto;
+}
+
+.subtotalen {
+    float: left;
+}
+
+.actionBtn {
+    width: 50%;
+}

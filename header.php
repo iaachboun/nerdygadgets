@@ -20,6 +20,7 @@ include "connect.php";
     <meta charset="ISO-8859-1">
     <title>NerdyGadgets</title>
     <link rel="stylesheet" href="Public/CSS/Style.css" type="text/css">
+    <link rel="stylesheet" href="Public/CSS/styleNew.css" type="text/css">
     <link rel="stylesheet" href="Public/CSS/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="Public/CSS/nha3fuq.css">
     <link rel="apple-touch-icon" sizes="57x57" href="Public/img/LOGONG.png">
