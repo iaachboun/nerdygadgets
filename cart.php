@@ -48,6 +48,10 @@ if(isset($_SESSION["cart"])) {
 
 
     }
+    $totaalprijs = round(array_sum($R[0] ),2);
+    print '<th>';
+    print "Totaalprijs: " . $totaalprijs;
+    print '</th></tr>';
 }
 else{
     print 'Er zit niks in de winkelmand!';
