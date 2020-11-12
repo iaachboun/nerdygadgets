@@ -1,7 +1,6 @@
 <?php
 include __DIR__ . "/header.php";
-$Connection = mysqli_connect("localhost", "ilias", "12345", "nerdygadgets");
-mysqli_set_charset($Connection, 'latin1');
+require_once __DIR__ . "/connect.php";
 
 // Opzet winkelwage word als volgt:
 // Ilias maakt een array in de session met de volgende opzet:
