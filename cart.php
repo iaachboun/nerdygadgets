@@ -25,6 +25,9 @@ $teller = 0;
 
 
 
+$subtotaal = 0;
+$btwWaarde = 0;
+
 if(isset($_SESSION["cart"])) {
 
 
@@ -67,10 +70,18 @@ if(isset($_SESSION["cart"])) {
         print '</th></tr>';
 
         $totaalPrijs = $totaalPrijs + round(($R[0]["SellPrice"]),2) * $aantal;
-
+        $btwWaarde = $btwWaarde + ($R[0]["TaxRate"]);
+        $subtotaal = $subtotaal + ($R[0]["RecommendedRetailPrice"]);
     }
-    print $totaalPrijs;
-
+    print '<th>';
+    print "Subtotaal: " . $subtotaal;
+    print '</th></tr>';
+    print '<th>';
+    print "BTW: " . $btwWaarde;
+    print '</th></tr>';
+    print '<th>';
+    print "Totaalprijs: " . $totaalPrijs;
+    print '</th></tr>';
 }
 else{
     print 'Er zit niks in de winkelmand!';
