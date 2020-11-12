@@ -11,11 +11,18 @@ mysqli_set_charset($Connection, 'latin1');
 
 //TIJDELIJKE VARIABELE VOOR ITEMS IN DE MAND!!!
 $_SESSION["cart"] = array(1 => 1, 2 => 2, 3 => 3);
+print_r ($_SESSION["cart"]);
+
+//test
+
 
 
 //Variabelen:
 $totaalPrijs = 0;
 $teller = 0;
+
+
+
 
 
 if(isset($_SESSION["cart"])) {
@@ -33,9 +40,10 @@ if(isset($_SESSION["cart"])) {
     foreach ($_SESSION["cart"] as $productnummer => $aantal) {
         $teller ++;
 
-        print '<tr><th><input type="submit" name="verwijderen" value="🗑️" formmethod="post"></th>';
+        print '<tr><th><form method="post"><input type="submit" name="verwijderen" value="🗑️"></form></th>';
         if (isset($_POST["verwijderen"])){
-            print "test";
+            unset($_SESSION["cart"][$productnummer]);
+            print_r ($_SESSION["cart"]);
         }
 
         $query = "SELECT StockItemName, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice
