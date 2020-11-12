@@ -52,7 +52,7 @@ if(isset($_SESSION["cart"])) {
             print_r ($_SESSION["cart"]);
         }
 
-        $query = "SELECT StockItemName, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice
+        $query = "SELECT StockItemName, TaxRate, RecommendedRetailPrice, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice
                      FROM StockItems
                      WHERE StockItemID = ?";
 
