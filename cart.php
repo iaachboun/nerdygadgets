@@ -39,13 +39,12 @@ if(isset($_SESSION["cart"])) {
     foreach ($_SESSION["cart"] as $productnummer => $aantal) {
         $teller ++;
 
-        print "<tr><th><form method='post'><input type='submit' name='";
+        print "<tr><th><form method='post' action='cart.php'><input type='submit' name='";
         print "verwijder$productnummer";
         print "' value='🗑️'></form></th>";
 
         if (isset($_POST["verwijder$productnummer"])){
-            $_SESSION["cart"][$productnummer] = NULL;
-            print_r ($_SESSION["cart"]);
+            unset($_SESSION["cart"][$productnummer]);
         }
 
         $query = "SELECT StockItemName, TaxRate, RecommendedRetailPrice, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice
