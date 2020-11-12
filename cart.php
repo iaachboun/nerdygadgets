@@ -36,13 +36,12 @@ if(isset($_SESSION["cart"])) {
     foreach ($_SESSION["cart"] as $productnummer => $aantal) {
         $teller ++;
 
-        print "<tr><th><form method='post'><input type='submit' name='";
+        print "<tr><th><form method='post' action='cart.php'><input type='submit' name='";
         print "verwijder$productnummer";
         print "' value='🗑️'></form></th>";
 
         if (isset($_POST["verwijder$productnummer"])){
-            $_SESSION["cart"][$productnummer] = NULL;
-            print_r ($_SESSION["cart"]);
+            unset($_SESSION["cart"][$productnummer]);
         }
 
         $query = "SELECT StockItemName, TaxRate, RecommendedRetailPrice, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice
@@ -65,18 +64,18 @@ if(isset($_SESSION["cart"])) {
         print round(($R[0]["SellPrice"]),2) * $aantal;
         print '</th></tr>';
 
-        $totaalPrijs = $totaalPrijs + round(($R[0]["SellPrice"]),2) * $aantal;
-        $btwWaarde = $btwWaarde + ($R[0]["TaxRate"]);
+        $totaalPrijs = $totaalPrijs + (($R[0]["SellPrice"]) * $aantal);
         $subtotaal = $subtotaal + ($R[0]["RecommendedRetailPrice"]);
+        $btwWaarde = ($R[0]["TaxRate"])/100 * $totaalPrijs;
     }
     print '<th>';
-    print "Subtotaal: " . $subtotaal;
+    print "Subtotaal: $" . round(($subtotaal),2);
     print '</th></tr>';
     print '<th>';
-    print "BTW: " . $btwWaarde;
+    print "BTW: $" . round(($btwWaarde),2);
     print '</th></tr>';
     print '<th>';
-    print "Totaalprijs: " . $totaalPrijs;
+    print "Totaalprijs: $" . round(($totaalPrijs),2);
     print '</th></tr>';
 }
 else{
