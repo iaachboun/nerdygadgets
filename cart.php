@@ -75,3 +75,7 @@ if(isset($_SESSION["cart"])) {
 else{
     print 'Er zit niks in de winkelmand!';
 }
+
+<html>
+<input type=button name="bestellen" onClick="location.href='bestelpagina.php'" value="Bestellen">
+</html>
