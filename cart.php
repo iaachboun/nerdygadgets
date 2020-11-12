@@ -1,6 +1,6 @@
 <?php
 include __DIR__ . "/header.php";
-$Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
+$Connection = mysqli_connect("localhost", "ilias", "12345", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
 
 // Opzet winkelwage word als volgt:
@@ -10,7 +10,7 @@ mysqli_set_charset($Connection, 'latin1');
 
 
 //TIJDELIJKE VARIABELE VOOR ITEMS IN DE MAND!!!
-$_SESSION["cart"] = array(1 => 1, 2 => 2, 3 => 3);
+//$_SESSION["cart"] = array(1 => 1, 2 => 2, 3 => 3);
 
 
 //Variabelen:

@@ -1,4 +1,10 @@
 <?php
+include_once 'header.php';
+//if (isset($_POST['StockItemID'])){
+//    $stockItemID = $_POST['StockItemID'];
+//    AddProductToCart($stockItemID);
+//}
+
 function GetCart()
 {
     if (isset($_SESSION["cart"])) {//controleren of winkelmandje al bestaat
@@ -11,6 +17,7 @@ function GetCart()
 
 function AddProductToCart($stockItemID)
 {
+    var_dump($stockItemID);
     $cart = GetCart();
     if (array_key_exists($stockItemID, $cart)) { //controleren of product al in winkelmandje voorkomt
         $cart[$stockItemID] += 1;
@@ -23,4 +30,5 @@ function AddProductToCart($stockItemID)
 function SaveCart($cart)
 {
     $_SESSION["cart"] = $cart;
+
 }
