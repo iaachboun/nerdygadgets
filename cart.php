@@ -13,7 +13,8 @@ mysqli_set_charset($Connection, 'latin1');
 
 
 //Variabelen:
-$totaalprijs = 0;
+$totaalPrijs = 0;
+$teller = 0;
 
 
 if(isset($_SESSION["cart"])) {
@@ -26,9 +27,15 @@ if(isset($_SESSION["cart"])) {
            <th>Prijs</th>
            </tr>';
 
-    foreach ($_SESSION["cart"] as $productnummer => $aantal) {
-        print '<tr><th><input type="submit" name="verwijderen" value="🗑️" formmethod="post"></th>';
 
+
+    foreach ($_SESSION["cart"] as $productnummer => $aantal) {
+        $teller ++;
+
+        print '<tr><th><input type="submit" name="verwijderen" value="🗑️" formmethod="post"></th>';
+        if (isset($_POST["verwijderen"])){
+            print "test";
+        }
 
         $query = "SELECT StockItemName, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice
                      FROM StockItems
@@ -50,10 +57,10 @@ if(isset($_SESSION["cart"])) {
         print round(($R[0]["SellPrice"]),2) * $aantal;
         print '</th></tr>';
 
-        $totaalprijs = $totaalprijs + round(($R[0]["SellPrice"]),2) * $aantal;
+        $totaalPrijs = $totaalPrijs + round(($R[0]["SellPrice"]),2) * $aantal;
 
     }
-    print $totaalprijs;
+    print $totaalPrijs;
 
 }
 else{
