@@ -67,18 +67,18 @@ if(isset($_SESSION["cart"])) {
         print round(($R[0]["SellPrice"]),2) * $aantal;
         print '</th></tr>';
 
-        $totaalPrijs = $totaalPrijs + round(($R[0]["SellPrice"]),2) * $aantal;
+        $totaalPrijs = $totaalPrijs + (($R[0]["SellPrice"]) * $aantal);
         $subtotaal = $subtotaal + ($R[0]["RecommendedRetailPrice"]);
-        $btwWaarde = $totaalPrijs - $subtotaal;
+        $btwWaarde = ($R[0]["TaxRate"])/100 * $totaalPrijs;
     }
     print '<th>';
-    print "Subtotaal: $" . $subtotaal;
+    print "Subtotaal: $" . round(($subtotaal),2);
     print '</th></tr>';
     print '<th>';
-    print "BTW: $" . $btwWaarde;
+    print "BTW: $" . round(($btwWaarde),2);
     print '</th></tr>';
     print '<th>';
-    print "Totaalprijs: $" . $totaalPrijs;
+    print "Totaalprijs: $" . round(($totaalPrijs),2);
     print '</th></tr>';
 }
 else{
