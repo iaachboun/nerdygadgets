@@ -123,18 +123,26 @@ if ($R) {
                         <h6> Inclusief BTW </h6>
                     </div>
                 </div>
-                <a href="session.php?productId=<?php echo $Result['StockItemID'] ?>"><div class="btn btn-primary bestelKnop">Bestellen</div></a>
                 <?php
-                if(isset($Result['StockItemID'])){
+                if(isset($_GET["id"])) {
+                    $stockItemID = $_GET["id"];
+                }else{
+                    $stockItemID = 0;
+                }
+                ?>
+                <form method="post">
+                    <input type="submit" name="submit" class="btn btn-primary bestelKnop" value="Voeg toe aan winkelmandje">
+                </form>
+                <?php
+                if (isset($_POST["submit"])) {
                     $stockItemID = $Result['StockItemID'];
                     AddProductToCart($stockItemID);
-                    print("Product is toegevoegd aan het <a href='cart.php'>winkelmandje</a>");
+                    echo '<div class="alert alert-secondary" role="alert">Product is toegevoegd aan het <a href="cart.php"">winkelmandje</a></div>';
                 }
                 ?>
             </div>
         </div>
         <div id="StockItemDescription">
-            <div class="btn btn-primary">Bestellen</div>
             <h3>Artikel beschrijving</h3>
             <p><?php print $Result['SearchDetails']; ?></p>
         </div>
