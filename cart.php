@@ -30,7 +30,7 @@ $btwWaarde = 0;
            <th>Productnaam</th>
            <th>Aantal</th>
            <th>Prijs</th>
-           <th>Acties</th>
+           <th></th>
            </tr>';
 
 
@@ -56,8 +56,8 @@ $btwWaarde = 0;
                     print '<td>';
                     print round(($R[0]["SellPrice"]), 2) * $aantal;
                     print '</td>';
-                    echo "<td><form method='post' action='cart.php'>
-                            <input onclick='return confirm(`Weet je het zeker dat je dit product wilt verijwijderen?`)' type='submit' name='verwijder" . $productnummer . "' value='🗑️' class='btn btn-danger actionBtn'>
+                    echo "<td style='text-align: left'><form method='post' action='cart.php'>
+                            <button onclick='return confirm(`Weet je het zeker dat je dit product wilt verijwijderen?`)' type='submit' name='verwijder" . $productnummer . "' class='btn btn-danger actionBtn'><i class='far fa-trash-alt'></i></button>
                       </form></td></tr>";
                     if (isset($_POST["verwijder$productnummer"])) {
                         unset($_SESSION["cart"][$productnummer]);

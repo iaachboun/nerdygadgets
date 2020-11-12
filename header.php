@@ -19,6 +19,7 @@ include "connect.php";
     </style>
     <meta charset="ISO-8859-1">
     <title>NerdyGadgets</title>
+    <script src="https://kit.fontawesome.com/77789b20d3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="Public/CSS/Style.css" type="text/css">
     <link rel="stylesheet" href="Public/CSS/styleNew.css" type="text/css">
     <link rel="stylesheet" href="Public/CSS/bootstrap.min.css" type="text/css">
