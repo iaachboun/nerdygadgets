@@ -69,9 +69,9 @@ $btwWaarde = 0;
                 }
                 $subtotalen = '';
 
-                $subtotalen .= "<tr><td></td><td></td><td></td><td><p class='subtotalen'>Subtotaal: $" . round(($subtotaal), 2) . "</p>";
-                $subtotalen .= "<p class='subtotalen'>BTW: $" . round(($btwWaarde), 2) . "</p>";
-                $subtotalen .= "<p class='subtotalen'>Totaalprijs: $" . round(($totaalPrijs), 2) . "</p></td></tr>";
+                $subtotalen .= "<tr><td></td><td></td><td></td><td><p class='subtotalen'>Subtotaal: €" . round(($subtotaal), 2) . "</p><br>";
+                $subtotalen .= "<p class='subtotalen'>BTW: €" . round(($btwWaarde), 2) . "</p>";
+                $subtotalen .= "<p class='subtotalen'>Totaalprijs: €" . round(($totaalPrijs), 2) . "</p></td></tr>";
 
                 print $subtotalen;
                 echo "<tr><td></td><td></td><td></td><td><a href='bestelpagina.php'><input type=button name='bestellen' value='Bestellen' class='btn btn-primary'></a></tr>";
