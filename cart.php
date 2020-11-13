@@ -3,7 +3,7 @@ include __DIR__ . "/header.php";
 include __DIR__ . "/connect.php";
 
 
-// Opzet winkelwage word als volgt:
+// Opzet winkelwagen word als volgt:
 // Ilias maakt een array in de session met de volgende opzet:
 // $winkelwagen = array(42 => 1, 33 => 2)
 // De key is het productnummer en de value is het aantal.
@@ -74,7 +74,12 @@ $btwWaarde = 0;
                 $subtotalen .= "<p class='subtotalen'>Totaalprijs: €" . round(($totaalPrijs), 2) . "</p></td></tr>";
 
                 print $subtotalen;
+                print'<td>';
+                print 'De verzendkosten zijn al in de prijs opgenomen!';
+                print '</td>';
+
                 echo "<tr><td></td><td></td><td></td><td><a href='bestelpagina.php'><input type=button name='bestellen' value='Bestellen' class='btn btn-primary'></a></tr>";
+
 
             } else {
                 print 'Er zit niks in de winkelmand!';
