@@ -8,45 +8,45 @@ include __DIR__ . "/header.php";
             <div class="form-group">
                 <label for="Voornaam">Voornaam:</label>
                 <input type="email" class="form-control" id="Voornaam" aria-describedby="emailHelp"
-                       placeholder="Enter email">
+                       placeholder="Enter voornaam">
             </div>
             <div class="form-group">
                 <label for="Tussenvoegsel">Tussenvoegsel:</label>
                 <input type="email" class="form-control" id="Tussenvoegsel" aria-describedby="emailHelp"
-                       placeholder="Enter email">
+                       placeholder="Enter tussenvoegsel">
             </div>
             <div class="form-group">
                 <label for="Achternaam">Achternaam:</label>
                 <input type="email" class="form-control" id="Achternaam" aria-describedby="emailHelp"
-                       placeholder="Enter email">
+                       placeholder="Enter achternaam">
             </div>
             <div class="form-group">
                 <label for="Straatnaam">Straatnaam:</label>
                 <input type="email" class="form-control" id="Straatnaam" aria-describedby="emailHelp"
-                       placeholder="Enter email">
+                       placeholder="Enter straatnaam">
             </div>
             <div class="form-group">
                 <label for="Huisnummer">Huisnummer:</label>
                 <input type="email" class="form-control" id="Huisnummer" aria-describedby="emailHelp"
-                       placeholder="Enter email">
+                       placeholder="Enter huisnummer">
             </div>
             <div class="form-group">
                 <label for="Toevoeging">Toevoeging:</label>
                 <input type="email" class="form-control" id="Toevoeging" aria-describedby="emailHelp"
-                       placeholder="Enter email">
+                       placeholder="Enter toevoeging">
             </div>
             <div class="form-group">
                 <label for="Woonplaats">Woonplaats:</label>
                 <input type="email" class="form-control" id="Woonplaats" aria-describedby="emailHelp"
-                       placeholder="Enter email">
+                       placeholder="Enter woonplaats">
             </div>
             <div class="form-group">
                 <label for="Telefoonnummer">Telefoonnummer:</label>
                 <input type="email" class="form-control" id="Telefoonnummer" aria-describedby="emailHelp"
-                       placeholder="Enter email">
+                       placeholder="Enter telefoonnummer">
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Opslaan en naar de volgende stap</button>
         </form>
     </div>
 </div>
