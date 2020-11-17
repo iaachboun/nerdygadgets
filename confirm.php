@@ -8,8 +8,8 @@ $totaalPrijs = 0;
 $teller = 0;
 $subtotaal = 0;
 $btwWaarde = 0;
-
 ?>
+
 <div class="container" >
     <div class="row">
         <div class="col-4">
@@ -117,8 +117,8 @@ $btwWaarde = 0;
                 print'<td>';
                 print 'De verzendkosten zijn al in de prijs opgenomen!';
                 print '</td>';
-
-                echo "<tr><td></td><td></td><td></td><td><a href='bestelpagina.php'><input type=button name='bestellen' value='Bestelling afronden en afrekenen' class='btn btn-primary'></a></tr>";
+                echo "<tr><td></td><td></td><td></td><td><a href='cart.php'><input type=button name='bestellen' value='Terug naar het winkelmandje' class='btn btn-primary'></a></tr>";
+                echo "<tr><td></td><td></td><td></td><td><a href='order_placed.php'><input type=button name='bestellen' value='Bestelling afronden en afrekenen' class='btn btn-primary'></a></tr>";
 
 
             } else {
