@@ -58,14 +58,7 @@ include __DIR__ . "/header.php";
 
 <?php
 include __DIR__ . "/footer.php";
-?>
-<?php
-if (isset($_))
 
-
-?>
-
-<?php
 // Bestelling afbreken functie (Pascal gaat dit maken)
 if(isset($_POST["cancel"])){
     unset($_SESSION["cart"]);
