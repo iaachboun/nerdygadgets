@@ -2,11 +2,12 @@
 <link rel="stylesheet" href="style.css">
 <?php
 include __DIR__ . "/header.php";
+
 ?>
 
 <div class="container">
     <div class="row">
-        <form>
+        <form method="post">
             <div class="form-group">
                 <label for="Voornaam">Voornaam:</label>
                 <input type="text" class="form-control" id="Voornaam" aria-describedby="emailHelp"
@@ -49,7 +50,10 @@ include __DIR__ . "/header.php";
             </div>
 
             <button type="submit" class="btn btn-primary">Opslaan en naar de volgende stap</button>
+
         </form>
+        <form method="post" action="index.php"> <button type="submit" name="cancel" class="btn btn-secondary">Afbreken!</button></form>
+
     </div>
 </div>
 
@@ -58,6 +62,15 @@ include __DIR__ . "/footer.php";
 ?>
 <?php
 if (isset($_))
+
+
+?>
+
+<?php
+// Bestelling afbreken functie (Pascal gaat dit maken)
+if(isset($_POST["cancel"])){
+    unset($_SESSION["cart"]);
+}
 
 
 ?>
