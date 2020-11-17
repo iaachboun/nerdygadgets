@@ -473,10 +473,12 @@ ul#ul-class-price li {
     border: 1px rgb(98, 158, 255) solid;
     color: #fff;
 }
-ConfirmCart {
-    text-align: left;
+.ConfirmCart {
+    float: left;
+    border: 1px solid white;
 }
-ConfirmData {
-    text-align: right;
+.ConfirmData {
+    float: right;
+    border: 1px solid white;
 }
 

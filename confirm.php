@@ -12,8 +12,59 @@ $btwWaarde = 0;
 ?>
 <div class="container" >
     <div class="row">
-        <div class="col-6 cart">
+        <div class="col-4">
+            <form>
+                <br>
+                <h2> Persoonlijke gegevens: </h2>
+                <br>
+                <div class="form-group">
+                    <label for="Voornaam">Voornaam:</label>
+                    <input type="text" class="form-control" value= <?php print($_GET["voornaam"]); ?> id="Voornaam" aria-describedby="emailHelp"
 
+                </div>
+                <div class="form-group">
+                    <label for="Tussenvoegsel">Tussenvoegsel:</label>
+                    <input type="text" class="form-control" value= <?php print($_GET["tussenvoegsel"]); ?> id="Tussenvoegsel" aria-describedby="emailHelp"
+                           placeholder="Enter tussenvoegsel">
+                </div>
+                <div class="form-group">
+                    <label for="Achternaam">Achternaam:</label>
+                    <input type="text" class="form-control" value= <?php print($_GET["achternaam"]); ?> id="Achternaam" aria-describedby="emailHelp"
+                           placeholder="Enter achternaam">
+                </div>
+                <div class="form-group">
+                    <label for="Straatnaam">Straatnaam:</label>
+                    <input type="text" class="form-control" value= <?php print($_GET["straatnaam"]); ?> id="Straatnaam" aria-describedby="emailHelp"
+                           placeholder="Enter straatnaam">
+                </div>
+                <div class="form-group">
+                    <label for="Huisnummer">Huisnummer:</label>
+                    <input type="number" class="form-control" value= <?php print($_GET["huisnummer"]); ?> id="Huisnummer" aria-describedby="emailHelp"
+                           placeholder="Enter huisnummer">
+                </div>
+                <div class="form-group">
+                    <label for="Toevoeging">Toevoeging:</label>
+                    <input type="text" class="form-control" value= <?php print($_GET["toevoeging"]); ?> id="Toevoeging" aria-describedby="emailHelp"
+                           placeholder="Enter toevoeging">
+                </div>
+                <div class="form-group">
+                    <label for="Woonplaats">Woonplaats:</label>
+                    <input type="text" class="form-control" value= <?php print($_GET["woonplaats"]); ?> id="Woonplaats" aria-describedby="emailHelp"
+                           placeholder="Enter woonplaats">
+                </div>
+                <div class="form-group">
+                    <label for="Telefoonnummer">Telefoonnummer:</label>
+                    <input type="text" class="form-control" value= <?php print($_GET["telefoonnummer"]); ?> id="Telefoonnummer" aria-describedby="emailHelp"
+                           placeholder="Enter telefoonnummer">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Opslaan</button>
+            </form>
+        </div>
+        <div class="col-6 cart">
+            <br>
+            <h2> Bestelling: </h2>
+            <br>
             <?php
             if (isset($_SESSION["cart"])) {
                 print '<table style="text-align: center"><tr>
@@ -22,7 +73,6 @@ $btwWaarde = 0;
            <th>Prijs</th>
            <th></th>
            </tr>';
-
 
                 foreach ($_SESSION["cart"] as $productnummer => $aantal) {
                     $teller++;
@@ -68,7 +118,7 @@ $btwWaarde = 0;
                 print 'De verzendkosten zijn al in de prijs opgenomen!';
                 print '</td>';
 
-                echo "<tr><td></td><td></td><td></td><td><a href='bestelpagina.php'><input type=button name='bestellen' value='Bestelling afronden' class='btn btn-primary'></a></tr>";
+                echo "<tr><td></td><td></td><td></td><td><a href='bestelpagina.php'><input type=button name='bestellen' value='Bestelling afronden en afrekenen' class='btn btn-primary'></a></tr>";
 
 
             } else {
@@ -77,54 +127,7 @@ $btwWaarde = 0;
             ?>
         </div>
 
-<div class="container">
-    <div class="row">
-        <form>
-            <div class="form-group">
-                <label for="Voornaam">Voornaam:</label>
-                <input type="text" class="form-control" id="Voornaam" aria-describedby="emailHelp"
-                       placeholder="Enter voornaam">
-            </div>
-            <div class="form-group">
-                <label for="Tussenvoegsel">Tussenvoegsel:</label>
-                <input type="text" class="form-control" id="Tussenvoegsel" aria-describedby="emailHelp"
-                       placeholder="Enter tussenvoegsel">
-            </div>
-            <div class="form-group">
-                <label for="Achternaam">Achternaam:</label>
-                <input type="text" class="form-control" id="Achternaam" aria-describedby="emailHelp"
-                       placeholder="Enter achternaam">
-            </div>
-            <div class="form-group">
-                <label for="Straatnaam">Straatnaam:</label>
-                <input type="text" class="form-control" id="Straatnaam" aria-describedby="emailHelp"
-                       placeholder="Enter straatnaam">
-            </div>
-            <div class="form-group">
-                <label for="Huisnummer">Huisnummer:</label>
-                <input type="number" class="form-control" id="Huisnummer" aria-describedby="emailHelp"
-                       placeholder="Enter huisnummer">
-            </div>
-            <div class="form-group">
-                <label for="Toevoeging">Toevoeging:</label>
-                <input type="text" class="form-control" id="Toevoeging" aria-describedby="emailHelp"
-                       placeholder="Enter toevoeging">
-            </div>
-            <div class="form-group">
-                <label for="Woonplaats">Woonplaats:</label>
-                <input type="text" class="form-control" id="Woonplaats" aria-describedby="emailHelp"
-                       placeholder="Enter woonplaats">
-            </div>
-            <div class="form-group">
-                <label for="Telefoonnummer">Telefoonnummer:</label>
-                <input type="text" class="form-control" id="Telefoonnummer" aria-describedby="emailHelp"
-                       placeholder="Enter telefoonnummer">
-            </div>
 
-            <button type="submit" class="btn btn-primary">Opslaan</button>
-        </form>
-    </div>
-</div>
 
 <?php
 include __DIR__ . "/footer.php";
