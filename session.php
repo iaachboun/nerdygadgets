@@ -1,4 +1,5 @@
 <?php
+
 include_once 'header.php';
 //if (isset($_POST['StockItemID'])){
 //    $stockItemID = $_POST['StockItemID'];
