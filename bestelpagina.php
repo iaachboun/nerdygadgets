@@ -6,7 +6,7 @@ include __DIR__ . "/header.php";
 
 <div class="container">
     <div class="row">
-        <form method="post">
+        <form method="post" action="confirm.php">
             <div class="form-group">
                 <label for="Voornaam">Voornaam:</label>
                 <input type="text" class="form-control" id="Voornaam" aria-describedby="emailHelp"
@@ -53,11 +53,12 @@ include __DIR__ . "/header.php";
                        placeholder="Enter telefoonnummer">
             </div>
 
-            <button <a href="confirm.php"> <input type="submit" class="btn btn-primary">Opslaan en naar de volgende stap</a></button>
-            <form method="post" action="cancel.php"> <button type="submit" name="cancel" class="btn btn-secondary">Afbreken!</button></form>
+            <button> <input type="submit" class="btn btn-primary"> Opslaan en naar de volgende stap</button>
+
+
         </form>
 
-
+        <form method="post" action="cancel.php"> <button type="submit" name="cancel" class="btn btn-secondary">Afbreken!</button></form>
 
     </div>
 </div>
