@@ -6,7 +6,7 @@ include __DIR__ . "/header.php";
 
 <div class="container">
     <div class="row">
-        <form>
+        <form >
             <div class="form-group">
                 <label for="Voornaam">Voornaam:</label>
                 <input type="text" class="form-control" id="Voornaam" aria-describedby="emailHelp"

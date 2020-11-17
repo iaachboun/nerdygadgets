@@ -12,4 +12,4 @@ if (!$DatabaseAvailable) {
     die();
 }
 
-//testtttt
+//testtttt.ttt
