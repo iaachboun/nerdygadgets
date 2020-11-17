@@ -1,22 +1,34 @@
 <?php
-session_start();
-$newProducts = $_SESSION['cart'];
-var_dump($_SESSION["cart"]);
 
+include_once 'header.php';
+//if (isset($_POST['StockItemID'])){
+//    $stockItemID = $_POST['StockItemID'];
+//    AddProductToCart($stockItemID);
+//}
 
-<<<<<<< HEAD
+function GetCart()
+{
+    if (isset($_SESSION["cart"])) {//controleren of winkelmandje al bestaat
+        $cart = $_SESSION["cart"];
+    } else {
+        $cart = array();
+    }
+    return $cart;
+}
 
-$newProducts = array(
-    $_GET['productId'] => '5'
-=======
-//tijdelijke test array!!!
-$winkelwagen = array(
-    "1" => "2",
-    "10" => "1",
-    "20" => "2",
-    "55" => "4",
-    "11" => "3"
->>>>>>> 947e6538cef3f6b02f5c4dfa9363b5e4fc0a78b5
-);
+function AddProductToCart($stockItemID)
+{
+    $cart = GetCart();
+    if (array_key_exists($stockItemID, $cart)) { //controleren of product al in winkelmandje voorkomt
+        $cart[$stockItemID] += 1;
+    } else {
+        $cart[$stockItemID] = 1;
+    }
+    SaveCart($cart);
+}
 
-$_SESSION["cart"] = $newProducts;
+function SaveCart($cart)
+{
+    $_SESSION["cart"] = $cart;
+
+}

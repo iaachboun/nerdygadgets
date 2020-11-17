@@ -19,7 +19,9 @@ include "connect.php";
     </style>
     <meta charset="ISO-8859-1">
     <title>NerdyGadgets</title>
+    <script src="https://kit.fontawesome.com/77789b20d3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="Public/CSS/Style.css" type="text/css">
+    <link rel="stylesheet" href="Public/CSS/styleNew.css" type="text/css">
     <link rel="stylesheet" href="Public/CSS/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="Public/CSS/nha3fuq.css">
     <link rel="apple-touch-icon" sizes="57x57" href="Public/img/LOGONG.png">
@@ -43,7 +45,7 @@ include "connect.php";
 <body>
 <div class="Background">
     <div class="row" id="Header">
-        <div class="col-2"> <img src="Public/img/LOGONG.png">
+        <div class="col-2"><a href="index.php"><img src="Public/img/LOGONG.png" ></a>
 
         </div>
         <div class="col-8" id="CategoriesBar">

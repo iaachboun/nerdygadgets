@@ -1,5 +1,6 @@
 <?php
 include __DIR__ . "/header.php";
+include_once "session.php";
 $SearchString = "";
 $ReturnableResult = null;
 if (isset($_GET['search_string'])) {
@@ -224,6 +225,20 @@ if (isset($amount)) {
                     ?>
 
                     <div id="StockItemFrameRight">
+
+                        <form method="POST">
+                            <input type="hidden" name="productID" value="<?php echo $row['StockItemID'] ?>">
+                            <input type="submit" name="submit" class="btn btn-primary"
+                                   value="Voeg toe aan winkelmandje">
+
+                        </form>
+                        <?php
+                        if (isset($_POST["submit"])) {
+                            $stockItemID = $row['StockItemID'];
+                            AddProductToCart($stockItemID);
+                            echo '<div class="alert alert-secondary" role="alert">Product is toegevoegd aan het <a href="cart.php"">winkelmandje</a></div>';
+                            break;
+                        } ?>
                         <div class="CenterPriceLeftChild">
                             <h1 class="StockItemPriceText"><?php print sprintf("€ %0.2f", $row["SellPrice"]); ?></h1>
                             <h6>Inclusief BTW </h6>
@@ -232,6 +247,7 @@ if (isset($amount)) {
                     <h1 class="StockItemID">Artikelnummer: <?php print $row["StockItemID"]; ?></h1>
                     <p class="StockItemName"><?php print $row["StockItemName"]; ?></p>
                     <p class="StockItemComments"><?php print $row["MarketingComments"]; ?></p>
+
                     <h4 class="ItemQuantity"><?php print $row["QuantityOnHand"]; ?></h4>
                 </div>
             </a>
