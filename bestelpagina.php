@@ -53,18 +53,16 @@ include __DIR__ . "/header.php";
                        placeholder="Enter telefoonnummer">
             </div>
 
-            <button type="submit" class="btn btn-primary">Opslaan en naar de volgende stap</button>
-
+            <button <a href="confirm.php"> <input type="submit" class="btn btn-primary">Opslaan en naar de volgende stap</a></button>
+            <form method="post" action="cancel.php"> <button type="submit" name="cancel" class="btn btn-secondary">Afbreken!</button></form>
         </form>
-        <form method="post" action="cancel.php"> <button type="submit" name="cancel" class="btn btn-secondary">Afbreken!</button></form>
+
+
 
     </div>
 </div>
 
 <?php
 include __DIR__ . "/footer.php";
-
-
-
 
 ?>

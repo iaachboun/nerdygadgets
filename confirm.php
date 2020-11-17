@@ -13,52 +13,51 @@ $btwWaarde = 0;
 <div class="container" >
     <div class="row">
         <div class="col-4">
-            <form>
+            <form method="get">
                 <br>
                 <h2> Persoonlijke gegevens: </h2>
                 <br>
                 <div class="form-group">
                     <label for="Voornaam">Voornaam:</label>
-                    <input type="text" class="form-control" value= <?php print($_GET["voornaam"]); ?> id="Voornaam" aria-describedby="emailHelp"
+                    <input type="text" class="form-control" value= <?php print($_GET["voornaam"]); ?> id="Huisnummer" aria-describedby="emailHelp"
 
                 </div>
                 <div class="form-group">
                     <label for="Tussenvoegsel">Tussenvoegsel:</label>
                     <input type="text" class="form-control" value= <?php print($_GET["tussenvoegsel"]); ?> id="Tussenvoegsel" aria-describedby="emailHelp"
-                           placeholder="Enter tussenvoegsel">
+
                 </div>
                 <div class="form-group">
                     <label for="Achternaam">Achternaam:</label>
                     <input type="text" class="form-control" value= <?php print($_GET["achternaam"]); ?> id="Achternaam" aria-describedby="emailHelp"
-                           placeholder="Enter achternaam">
+
                 </div>
                 <div class="form-group">
                     <label for="Straatnaam">Straatnaam:</label>
                     <input type="text" class="form-control" value= <?php print($_GET["straatnaam"]); ?> id="Straatnaam" aria-describedby="emailHelp"
-                           placeholder="Enter straatnaam">
+
                 </div>
                 <div class="form-group">
                     <label for="Huisnummer">Huisnummer:</label>
                     <input type="number" class="form-control" value= <?php print($_GET["huisnummer"]); ?> id="Huisnummer" aria-describedby="emailHelp"
-                           placeholder="Enter huisnummer">
+
                 </div>
                 <div class="form-group">
                     <label for="Toevoeging">Toevoeging:</label>
                     <input type="text" class="form-control" value= <?php print($_GET["toevoeging"]); ?> id="Toevoeging" aria-describedby="emailHelp"
-                           placeholder="Enter toevoeging">
+
                 </div>
                 <div class="form-group">
                     <label for="Woonplaats">Woonplaats:</label>
                     <input type="text" class="form-control" value= <?php print($_GET["woonplaats"]); ?> id="Woonplaats" aria-describedby="emailHelp"
-                           placeholder="Enter woonplaats">
+
                 </div>
                 <div class="form-group">
                     <label for="Telefoonnummer">Telefoonnummer:</label>
                     <input type="text" class="form-control" value= <?php print($_GET["telefoonnummer"]); ?> id="Telefoonnummer" aria-describedby="emailHelp"
-                           placeholder="Enter telefoonnummer">
-                </div>
 
-                <button type="submit" class="btn btn-primary">Opslaan</button>
+                </div>
+                echo "<a href='bestelpagina.php'><input type=button name='bestelpagina' value='Terug naar bestelpagina' class='btn btn-primary'></a></tr>";
             </form>
         </div>
         <div class="col-6 cart">
@@ -133,7 +132,13 @@ $btwWaarde = 0;
 include __DIR__ . "/footer.php";
 ?>
 <?php
-if (isset($_))
-
+//if (isset($_))
+//    $query = "INSERT INTO";
+//
+//$Statement = mysqli_prepare($Connection, $query);
+//mysqli_stmt_bind_param($Statement, "i", $productnummer);
+//mysqli_stmt_execute($Statement);
+//$R = mysqli_stmt_get_result($Statement);
+//$R = mysqli_fetch_all($R, MYSQLI_ASSOC);
 
 ?>
