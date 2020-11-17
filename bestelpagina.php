@@ -28,6 +28,11 @@ include __DIR__ . "/header.php";
                        placeholder="Enter straatnaam">
             </div>
             <div class="form-group">
+                <label for="Postcode">Postcode:</label>
+                <input type="text" class="form-control" id="Postcode" aria-describedby="emailHelp"
+                       placeholder="Enter postcode">
+            </div>
+            <div class="form-group">
                 <label for="Huisnummer">Huisnummer:</label>
                 <input type="number" class="form-control" id="Huisnummer" aria-describedby="emailHelp"
                        placeholder="Enter huisnummer">
@@ -51,7 +56,7 @@ include __DIR__ . "/header.php";
             <button type="submit" class="btn btn-primary">Opslaan en naar de volgende stap</button>
 
         </form>
-        <form method="post" action="index.php"> <button type="submit" name="cancel" class="btn btn-secondary">Afbreken!</button></form>
+        <form method="post" action="cancel.php"> <button type="submit" name="cancel" class="btn btn-secondary">Afbreken!</button></form>
 
     </div>
 </div>
@@ -59,10 +64,7 @@ include __DIR__ . "/header.php";
 <?php
 include __DIR__ . "/footer.php";
 
-// Bestelling afbreken functie (Pascal gaat dit maken)
-if(isset($_POST["cancel"])){
-    unset($_SESSION["cart"]);
-}
+
 
 
 ?>
