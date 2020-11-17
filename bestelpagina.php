@@ -1,7 +1,9 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="style.css">
 <?php
 include __DIR__ . "/header.php";
 ?>
+
 <div class="container">
     <div class="row">
         <form>
