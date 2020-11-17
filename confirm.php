@@ -1,26 +1,16 @@
+<!DOCTYPE html>
 <?php
 include __DIR__ . "/header.php";
 include __DIR__ . "/connect.php";
 
-
-// Opzet winkelwagen word als volgt:
-// Ilias maakt een array in de session met de volgende opzet:
-// $winkelwagen = array(42 => 1, 33 => 2)
-// De key is het productnummer en de value is het aantal.
-
-
-//TIJDELIJKE VARIABELE VOOR ITEMS IN DE MAND!!!
-//$_SESSION["cart"] = array(1 => 1, 2 => 2, 3 => 3);
-
-
 //Variabelen:
 $totaalPrijs = 0;
 $teller = 0;
-
 $subtotaal = 0;
 $btwWaarde = 0;
+
 ?>
-<div class="container">
+<div class="container" >
     <div class="row">
         <div class="col-6 cart">
 
@@ -78,7 +68,7 @@ $btwWaarde = 0;
                 print 'De verzendkosten zijn al in de prijs opgenomen!';
                 print '</td>';
 
-                echo "<tr><td></td><td></td><td></td><td><a href='bestelpagina.php'><input type=button name='bestellen' value='Bestellen' class='btn btn-primary'></a></tr>";
+                echo "<tr><td></td><td></td><td></td><td><a href='bestelpagina.php'><input type=button name='bestellen' value='Bestelling afronden' class='btn btn-primary'></a></tr>";
 
 
             } else {
@@ -86,6 +76,61 @@ $btwWaarde = 0;
             }
             ?>
         </div>
+
+<div class="container">
+    <div class="row">
+        <form>
+            <div class="form-group">
+                <label for="Voornaam">Voornaam:</label>
+                <input type="text" class="form-control" id="Voornaam" aria-describedby="emailHelp"
+                       placeholder="Enter voornaam">
+            </div>
+            <div class="form-group">
+                <label for="Tussenvoegsel">Tussenvoegsel:</label>
+                <input type="text" class="form-control" id="Tussenvoegsel" aria-describedby="emailHelp"
+                       placeholder="Enter tussenvoegsel">
+            </div>
+            <div class="form-group">
+                <label for="Achternaam">Achternaam:</label>
+                <input type="text" class="form-control" id="Achternaam" aria-describedby="emailHelp"
+                       placeholder="Enter achternaam">
+            </div>
+            <div class="form-group">
+                <label for="Straatnaam">Straatnaam:</label>
+                <input type="text" class="form-control" id="Straatnaam" aria-describedby="emailHelp"
+                       placeholder="Enter straatnaam">
+            </div>
+            <div class="form-group">
+                <label for="Huisnummer">Huisnummer:</label>
+                <input type="number" class="form-control" id="Huisnummer" aria-describedby="emailHelp"
+                       placeholder="Enter huisnummer">
+            </div>
+            <div class="form-group">
+                <label for="Toevoeging">Toevoeging:</label>
+                <input type="text" class="form-control" id="Toevoeging" aria-describedby="emailHelp"
+                       placeholder="Enter toevoeging">
+            </div>
+            <div class="form-group">
+                <label for="Woonplaats">Woonplaats:</label>
+                <input type="text" class="form-control" id="Woonplaats" aria-describedby="emailHelp"
+                       placeholder="Enter woonplaats">
+            </div>
+            <div class="form-group">
+                <label for="Telefoonnummer">Telefoonnummer:</label>
+                <input type="text" class="form-control" id="Telefoonnummer" aria-describedby="emailHelp"
+                       placeholder="Enter telefoonnummer">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Opslaan</button>
+        </form>
     </div>
 </div>
 
+<?php
+include __DIR__ . "/footer.php";
+?>
+<?php
+if (isset($_))
+
+
+?>

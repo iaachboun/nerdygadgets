@@ -18,10 +18,19 @@ $Query = "
             JOIN stockgroups USING(StockGroupID)
             WHERE SI.stockitemid = ?
             GROUP BY StockItemID";
+if(isset($_GET["id"])) {​
+
+    $stockItemID = $_GET["id"];​
+
+}else{​
+
+    $stockItemID = 0;​
+
+}
 
 $ShowStockLevel = 1000;
 $Statement = mysqli_prepare($Connection, $Query);
-mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
+mysqli_stmt_bind_param($Statement, "i", $stockItemID);
 mysqli_stmt_execute($Statement);
 $ReturnableResult = mysqli_stmt_get_result($Statement);
 if ($ReturnableResult && mysqli_num_rows($ReturnableResult) == 1) {
