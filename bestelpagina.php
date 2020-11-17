@@ -4,56 +4,24 @@
 include __DIR__ . "/header.php";
 ?>
 
-<div class="container">
-    <div class="row">
-        <form method="post" action="confirm.php">
-            <div class="form-group">
-                <label for="Voornaam">Voornaam:</label>
-                <input type="text" class="form-control" id="Voornaam" aria-describedby="emailHelp"
-                       placeholder="Enter voornaam">
-            </div>
-            <div class="form-group">
-                <label for="Tussenvoegsel">Tussenvoegsel:</label>
-                <input type="text" class="form-control" id="Tussenvoegsel" aria-describedby="emailHelp"
-                       placeholder="Enter tussenvoegsel">
-            </div>
-            <div class="form-group">
-                <label for="Achternaam">Achternaam:</label>
-                <input type="text" class="form-control" id="Achternaam" aria-describedby="emailHelp"
-                       placeholder="Enter achternaam">
-            </div>
-            <div class="form-group">
-                <label for="Straatnaam">Straatnaam:</label>
-                <input type="text" class="form-control" id="Straatnaam" aria-describedby="emailHelp"
-                       placeholder="Enter straatnaam">
-            </div>
-            <div class="form-group">
-                <label for="Postcode">Postcode:</label>
-                <input type="text" class="form-control" id="Postcode" aria-describedby="emailHelp"
-                       placeholder="Enter postcode">
-            </div>
-            <div class="form-group">
-                <label for="Huisnummer">Huisnummer:</label>
-                <input type="number" class="form-control" id="Huisnummer" aria-describedby="emailHelp"
-                       placeholder="Enter huisnummer">
-            </div>
-            <div class="form-group">
-                <label for="Toevoeging">Toevoeging:</label>
-                <input type="text" class="form-control" id="Toevoeging" aria-describedby="emailHelp"
-                       placeholder="Enter toevoeging">
-            </div>
-            <div class="form-group">
-                <label for="Woonplaats">Woonplaats:</label>
-                <input type="text" class="form-control" id="Woonplaats" aria-describedby="emailHelp"
-                       placeholder="Enter woonplaats">
-            </div>
-            <div class="form-group">
-                <label for="Telefoonnummer">Telefoonnummer:</label>
-                <input type="text" class="form-control" id="Telefoonnummer" aria-describedby="emailHelp"
-                       placeholder="Enter telefoonnummer">
-            </div>
+<form method="post" action="confirm.php">
+    <label for="voornaam">Voornaam:</label><br>
+    <input type="text" class="form-group id="voornaam" name="voornaam" required ><br>
+    <label for="tussenvoegsel">Tussenvoegsel:</label><br>
+    <input type="text" id="tussenvoegsel" name="tussenvoegsel"><br>
+    <label for="voornaam">Achternaam:</label><br>
+    <input type="text" id="achternaam" name="achternaam" required><br>
+    <label for="straatnaam">Straatnaam:</label><br>
+    <input type="text" id="straatnaam" name="straatnaam" required><br>
+    <label for="postcode">Postcode:</label><br>
+    <input type="text" id="postcode" name="postcode" required><br>
+    <label for="huisnummer">Huisnummer:</label><br>
+    <input type="text" id="huisnummer" name="huisnummer" required><br>
+    <label for="huisnummer">Huisnummer:</label><br>
+    <input type="text" id="huisnummer" name="huisnummer" required><br>
 
-            <button> <input type="submit" class="btn btn-primary"> Opslaan en naar de volgende stap</button>
+<button> <input type="submit" name="opslaan" class="btn btn-primary"> Opslaan en naar de volgende stap</button>
+</form>
 
 
         </form>
@@ -62,6 +30,7 @@ include __DIR__ . "/header.php";
 
     </div>
 </div>
+
 
 <?php
 include __DIR__ . "/footer.php";

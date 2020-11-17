@@ -16,6 +16,10 @@ $btwWaarde = 0;
             <form method="get">
                 <br>
                 <h2> Persoonlijke gegevens: </h2>
+                tijdelijk test
+                <?php
+                print ($_POST["voornaam"]);
+                ?>
                 <br>
                 <div class="form-group">
                     <label for="Voornaam">Voornaam:</label>
