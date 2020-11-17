@@ -1,4 +1,4 @@
-
+connect.php
 # Created by https://www.gitignore.io/api/macos,windows,phpstorm
 # Edit at https://www.gitignore.io/?templates=macos,windows,phpstorm
 
@@ -148,4 +148,3 @@ $RECYCLE.BIN/
 .idea/dataSources.xml
 .idea/sqldialects.xml
 
-connect.php
