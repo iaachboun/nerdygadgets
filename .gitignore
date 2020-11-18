@@ -147,4 +147,6 @@ $RECYCLE.BIN/
 .idea/dataSources.xml
 .idea/sqldialects.xml
 
+./connect.php
+
 connect.php
