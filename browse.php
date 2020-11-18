@@ -225,12 +225,10 @@ if (isset($amount)) {
                     ?>
 
                     <div id="StockItemFrameRight">
-
                         <form method="POST">
                             <input type="hidden" name="productID" value="<?php echo $row['StockItemID'] ?>">
                             <input type="submit" name="submit" class="btn btn-primary"
                                    value="Voeg toe aan winkelmandje">
-
                         </form>
                         <?php
                         if (isset($_POST["submit"])) {

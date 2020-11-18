@@ -45,7 +45,7 @@ include "connect.php";
 <body>
 <div class="Background">
     <div class="row" id="Header">
-        <div class="col-2"> <img src="Public/img/LOGONG.png">
+        <div class="col-2"><img src="Public/img/LOGONG.png">
 
         </div>
         <div class="col-8" id="CategoriesBar">
@@ -75,13 +75,36 @@ include "connect.php";
                 ?>
                 <li>
                     <a href="categories.php" class="HrefDecoration" style="font-size:20px"> Alle categorieën</a>
-
                 </li>
             </ul>
         </div>
         <ul id="ul-class-navigation">
             <li>
-                <a href="browse.php" class="HrefDecoration"></a><i class="fas fa-search" style="color:#676EFF;"> </i>
+                <a href="login.php" class="HrefDecoration"><i class="fas fa-user" style="color:#676EFF;"></i>
+                    <?php
+                    $_SESSION["login"] = false;
+                    if (isset($_SESSION['login'])){
+                        echo "Uitloggen";
+                        //Session variabelen uit de post van bestelpagina
+                        unset($_SESSION["voornaam"]);
+                        unset($_SESSION["tussenvoegsel"]);
+                        unset($_SESSION["achternaam"]);
+                        unset($_SESSION["telefoonnummer"]);
+                        unset($_SESSION["postcode"]);
+                        unset($_SESSION["huisnummer"]);
+                        unset($_SESSION["toevoeging"]);
+                        unset($_SESSION["woonplaats"]);
+                        unset($_SESSION["straatnaam"]);
+                        unset($_SESSION["email"]);
+
+                        $_SESSION["login"] = TRUE;
+                    } else {
+                        echo "Inloggen";
+                    }
+                    ?></a>
+            </li>
+            <li>
+                <a href="browse.php" class="HrefDecoration"><i class="fas fa-search" style="color:#676EFF;"> </i>
                 Zoeken</a>
             </li>
             &nbsp; &nbsp;
