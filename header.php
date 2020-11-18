@@ -45,8 +45,8 @@ include "connect.php";
 <body>
 <div class="Background">
     <div class="row" id="Header">
-        <div class="col-2">
-            <a href="index.php"><img src="Public/img/LOGONG.png"></a>
+        <div class="col-2"> <img src="Public/img/LOGONG.png">
+
         </div>
         <div class="col-8" id="CategoriesBar">
             <ul id="ul-class">
