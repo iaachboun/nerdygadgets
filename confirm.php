@@ -35,45 +35,45 @@ $_SESSION["email"] = $_POST["email"];
             <h2> Uw gegevens: </h2>
             <table>
                 <tr>
-                    <th>Uw voornaam</th>
+                    <th>voornaam</th>
                     <td><?php print ($_SESSION["voornaam"]) ?></td>
                 </tr>
                 <?php
                 if (isset($_POST["tussenvoegsel"])) {
-                    print "<tr><th>Uw tussenvoegsel </th>
+                    print "<tr><th>tussenvoegsel </th>
                     <td>";
                     print ($_SESSION["tussenvoegsel"]);
                     print "</td></tr>";
                 } ?>
                 <tr>
-                    <th>Uw achternaam</th>
+                    <th>achternaam</th>
                     <td><?php print ($_SESSION["achternaam"]) ?></td>
                 </tr>
                 <tr>
-                    <th>Uw postcode</th>
+                    <th>postcode</th>
                     <td><?php print ($_SESSION["postcode"]) ?></td>
                 </tr>
                 <tr>
-                    <th>Uw huisnummer</th>
+                    <th>huisnummer</th>
                     <td><?php print ($_SESSION["huisnummer"]) ?></td>
                 </tr>
                 <?php
                 if (isset($_POST["toevoeging"])) {
-                    print "<tr><th>Uw toevoeging </th>
+                    print "<tr><th>toevoeging </th>
                     <td>";
                     print ($_SESSION["toevoeging"]);
                     print "</td></tr>";
                 } ?>
                 <tr>
-                    <th>Uw woonplaats</th>
+                    <th>woonplaats</th>
                     <td><?php print ($_SESSION["woonplaats"]) ?></td>
                 </tr>
                 <tr>
-                    <th>Uw straatnaam</th>
+                    <th>straatnaam</th>
                     <td><?php print ($_SESSION["straatnaam"]) ?></td>
                 </tr>
                 <tr>
-                    <th>Uw e-mailadres</th>
+                    <th>e-mailadres</th>
                     <td><?php print ($_SESSION["email"]) ?></td>
                 </tr>
 

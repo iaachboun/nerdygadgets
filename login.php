@@ -2,7 +2,34 @@
 include __DIR__ . "/header.php";
 include __DIR__ . "/connect.php";
 
-if (isset($_POST['submit'])){
+if (isset($_GET['logout'])) {
+    if ($_GET['logout'] == TRUE) {
+        //Session variabelen uit de post van bestelpagina
+        unset($_SESSION["voornaam"]);
+        unset($_SESSION["tussenvoegsel"]);
+        unset($_SESSION["achternaam"]);
+        unset($_SESSION["telefoonnummer"]);
+        unset($_SESSION["postcode"]);
+        unset($_SESSION["huisnummer"]);
+        unset($_SESSION["toevoeging"]);
+        unset($_SESSION["woonplaats"]);
+        unset($_SESSION["straatnaam"]);
+        unset($_SESSION["email"]);
+
+        $_SESSION['login'] = FALSE;
+
+        $html = '<div class="container">
+                <div class="row">
+                    <div class="col-6" style="margin: 0 auto">
+                        <p class="inlogStatus">Je bent uitgelogd <a href="index.php"><button class="btn btn-primary">Ga Terug</button></a></p>
+                    </div>
+                </div>
+            </div>';
+        echo $html;
+    }
+}
+
+if (isset($_POST['submit'])) {
     $email = $_POST['email'];
 
     $query = "SELECT * FROM webshop_customers WHERE email = ? AND password = ?";
@@ -29,7 +56,16 @@ if (isset($_POST['submit'])){
     $_SESSION["straatnaam"] = $R[0]["streetname"];
     $_SESSION["email"] = $R[0]["email"];
 
-    $_SESSION["login"] = TRUE;
+    $_SESSION['login'] = TRUE;
+    $html = '<div class="container">
+                <div class="row">
+                    <div class="col-6" style="margin: 0 auto">
+                        <p class="inlogStatus">Je bent ingelogd <a href="index.php"><button class="btn btn-primary">Ga Terug</button></a></p>
+                    </div>
+                </div>
+            </div>';
+    echo $html;
+
 } else {
     echo showLoginForm();
 }
@@ -37,23 +73,32 @@ if (isset($_POST['submit'])){
 function showLoginForm()
 {
     $html = '';
-    $html .= '<div class="container">
-                <div class="row">
-                    <div class="col-3" style="margin: 0 auto; top: 150px">
-                        <form method="post" action="login.php">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                            </div>
-                            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-                        </form>
+    /*$html .= */?>
+    <div class="container">
+        <div class="row">
+            <div class="col-3" style="margin: 0 auto; top: 150px">
+                <form method="post" action="login.php">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input name="email" type="email" class="form-control" id="exampleInputEmail1"
+                               aria-describedby="emailHelp" placeholder="Enter email">
                     </div>
-                </div>
-            </div>';
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input name="password" type="password" class="form-control" id="exampleInputPassword1"
+                               placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                    <p>Heb je nog geen account?</p>
+                    <a href="registerAccount.php?newAcc=TRUE"><button class="btn btn-success">Maak een account aan</button></a>
+            </div>
+        </div>
+    </div><?php
     return $html;
 }
 

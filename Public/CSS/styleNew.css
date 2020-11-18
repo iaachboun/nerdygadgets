@@ -15,3 +15,10 @@
     height: 40px;
     width: 40px;
 }
+
+.inlogStatus {
+    text-align: center;
+    position: relative;
+    margin: 0 auto;
+    top: 50px;
+}
