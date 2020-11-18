@@ -5,7 +5,7 @@ include __DIR__ . "/connect.php";
 
 //bestelling is geplaatst
 
-if(isset($_GET["order_placed"])) {
+if (isset($_GET["order_placed"])) {
 
     $query = "INSERT INTO webshop_customers(firstname, insertion, lastname, streetname, housenumber, addition, city, phone, postal_code, email)
                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
@@ -31,21 +31,23 @@ if(isset($_GET["order_placed"])) {
         $Statement = mysqli_prepare($Connection, $query3);
         mysqli_stmt_bind_param($Statement, "iii", $orderID, $productnummer, $aantal);
         mysqli_stmt_execute($Statement);
+
+            $query4 = "UPDATE stockitemholdings SET quantityonhand = quantityonhand - ? WHERE stockitemID = (?);";
+
+        $Statement = mysqli_prepare($Connection, $query4);
+        mysqli_stmt_bind_param($Statement, "ii", $aantal, $productnummer);
+        var_dump($Statement);
+        mysqli_stmt_execute($Statement);
     }
+
+
+
 
     print "Bedankt voor uw bestelling! Uw bestelnummer is: $orderID";
     unset($_SESSION["cart"]);
 
     print '<h1><a href="index.php">Klik hier om terug te gaan naar home!</a></h1>';
-}
-else {
+} else {
     print 'Mislukt, probeer opnieuw.';
 }
 
-$query4 = "UPDATE stockitemholdings SET quantityonhand = quantityonhand + 1 WHERE stockitemID = (?);"
-
-$Statement = mysqli_prepare($Connection, $query4);
-mysqli_stmt_bind_param($Statement, "i", $stockitemID);
-mysqli_stmt_execute($Statement);
-$orderID = mysqli_insert_id($Connection);
-?>

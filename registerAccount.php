@@ -39,7 +39,7 @@ if (isset($_GET['newAcc'])){
                                             <td>    <label for="email">E-mailadres:</label><br>
                                                 <input type="email" id="email" name="email" required ><br></td>
                                                 <td>    <label for="email">Password:</label><br>
-                                                <input type="email" id="email" name="email" required ><br></td>
+                                                <input type="password" id="email" name="password" required ><br></td>
                                         </tr>
                                         <tr>
                                             <td>
