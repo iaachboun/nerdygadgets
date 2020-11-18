@@ -137,7 +137,7 @@ $_SESSION["email"] = $_POST["email"];
                 print'<td>';
                 print 'De verzendkosten zijn al in de prijs opgenomen!';
                 print '</td>';
-                echo "<tr><td></td><td></td><td></td><td><a href='cart.php'><input type=button name='bestellen' value='Terug naar het winkelmandje' class='btn btn-primary' onclick='return confirm(`Weet je het zeker?`)'></a></tr>";
+                echo "<tr><td></td><td></td><td></td><td><a href='cart.php'><input type=button name='bestellen' value='Annuleren!' class='btn btn-primary' onclick='return confirm(`Weet je het zeker?`)'></a></tr>";
                 echo "<tr><td></td><td></td><td></td><td><a href='order_placed.php?order_placed=TRUE'><input type=button name='order_placed' value='Bestelling afronden en afrekenen' class='btn btn-primary'></a></tr>";
 
 
