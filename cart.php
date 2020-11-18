@@ -54,6 +54,7 @@ $btwWaarde = 0;
                     print "$aantal";
                     print '</td>';
                     print '<td>';
+                    print '€';
                     print round(($R[0]["SellPrice"]), 2) * $aantal;
                     print '</td>';
                     echo "<td style='text-align: left'><form method='post' action='cart.php'>
