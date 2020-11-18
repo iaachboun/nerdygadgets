@@ -33,7 +33,10 @@ if(isset($_GET["order_placed"])) {
         mysqli_stmt_execute($Statement);
     }
 
+    unset($_SESSION["cart"]);
+
     print "Bedankt voor uw bestelling! Uw bestelnummer is: $orderID";
+    print '<h1><a href="index.php">Klik hier om terug te gaan naar home!</a></h1>';
 }
 else {
     print 'Mislukt, probeer opnieuw.';
