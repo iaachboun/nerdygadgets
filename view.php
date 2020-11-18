@@ -18,14 +18,10 @@ $Query = "
             JOIN stockgroups USING(StockGroupID)
             WHERE SI.stockitemid = ?
             GROUP BY StockItemID";
-if(isset($_GET["id"])) {​
-
-    $stockItemID = $_GET["id"];​
-
-}else{​
-
-    $stockItemID = 0;​
-
+if(isset($_GET["id"])) {
+    $stockItemID = $_GET["id"];
+}else{
+    $stockItemID = 0;
 }
 
 $ShowStockLevel = 1000;
