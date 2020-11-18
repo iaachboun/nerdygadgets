@@ -4,6 +4,7 @@ mysqli_set_charset($Connection, 'latin1');
 include __DIR__ . "/header.php";
 include "session.php";
 
+
 $Query = " 
            SELECT SI.StockItemID, 
             (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, 
@@ -18,19 +19,10 @@ $Query = "
             JOIN stockgroups USING(StockGroupID)
             WHERE SI.stockitemid = ?
             GROUP BY StockItemID";
-if(isset($_GET["id"])) {​
-
-    $stockItemID = $_GET["id"];​
-
-}else{​
-
-    $stockItemID = 0;​
-
-}
 
 $ShowStockLevel = 1000;
 $Statement = mysqli_prepare($Connection, $Query);
-mysqli_stmt_bind_param($Statement, "i", $stockItemID);
+mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
 mysqli_stmt_execute($Statement);
 $ReturnableResult = mysqli_stmt_get_result($Statement);
 if ($ReturnableResult && mysqli_num_rows($ReturnableResult) == 1) {
@@ -151,6 +143,7 @@ if ($R) {
                 ?>
             </div>
         </div>
+
         <div id="StockItemDescription">
             <h3>Artikel beschrijving</h3>
             <p><?php print $Result['SearchDetails']; ?></p>
