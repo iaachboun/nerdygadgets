@@ -81,6 +81,7 @@ include "connect.php";
         <ul id="ul-class-navigation">
             <li>
                 <?php
+
                 if ($_SESSION['login'] == FALSE) {
                     echo "<a href='login.php' style='color: white;'><i class='fas fa-user' style='color:#676EFF;'></i> Inloggen</a>";
                 } else {
@@ -90,11 +91,12 @@ include "connect.php";
 
                 ?>
             </li>
+            &nbsp;
             <li>
                 <a href="browse.php" class="HrefDecoration"><i class="fas fa-search" style="color:#676EFF;"> </i>
                     Zoeken</a>
             </li>
-            &nbsp; &nbsp;
+            &nbsp;
             <li>
                 <a href="cart.php" class="HrefDecoration"><i class="fas fa-shopping-cart" style="color:#676EFF;"></i>
                     Winkelmandje</a>
