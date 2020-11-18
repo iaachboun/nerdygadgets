@@ -29,7 +29,7 @@ include __DIR__ . "/header.php";
         <tr>
             <td style="width: 50%;"><button> <input type="submit" name="opslaan" class="btn btn-primary"> Opslaan en naar de volgende stap</button>
             </td>
-            <td style="width: 50%;">        <form method="post" action="cancel.php"> <button type="submit" name="cancel" class="btn btn-secondary">Afbreken!</button></form>
+            <td style="width: 50%;"><form method="post" action="cancel.php"> <button type="submit" name="cancel" class="btn btn-secondary" onclick="return confirm('Weet je het zeker?')">Afbreken!</button></form>
             </td>
         </tr>
         </tbody>
