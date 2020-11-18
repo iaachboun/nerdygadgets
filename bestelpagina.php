@@ -22,7 +22,7 @@ include __DIR__ . "/header.php";
             <td style="width: 50%;"><label for="woonplaats">Woonplaats:</label><br /> <input id="woonplaats" name="woonplaats" required="" type="text" /></td>
         </tr>
         <tr>
-            <td style="width: 50%;"></td>
+            <td style="width: 50%;"><label for="straatnaam">Straatnaam:</label><br /> <input id="straatnaam" name="straatnaam" required="" type="text" /></td>
             <td style="width: 50%;">    <label for="email">E-mailadres:</label><br>
                 <input type="email" id="email" name="email" required><br></td>
         </tr>
