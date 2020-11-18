@@ -41,4 +41,11 @@ if(isset($_GET["order_placed"])) {
 else {
     print 'Mislukt, probeer opnieuw.';
 }
+
+$query4 = "UPDATE stockitemholdings SET quantityonhand = quantityonhand + 1 WHERE stockitemID = (?);"
+
+$Statement = mysqli_prepare($Connection, $query4);
+mysqli_stmt_bind_param($Statement, "i", $stockitemID);
+mysqli_stmt_execute($Statement);
+$orderID = mysqli_insert_id($Connection);
 ?>
