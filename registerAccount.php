@@ -2,12 +2,10 @@
 require_once __DIR__ . "/connect.php";
 
 if (isset($_POST["voornaam"])) {
-    $query = "INSERT INTO webshop_customers(firstname, insertion, lastname, streetname, housenumber, addition, city, phone, postal_code, email, password)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    $query = "INSERT INTO `webshop_customers` (`firstname`, `insertion`, `lastname`, `streetname`, `housenumber`, `addition`, `city`, `phone`, `postal_code`, `email`, `password`) VALUES (?, ?, ?, ?,?,?,?,?, ?,?,?);";
     $Statement = mysqli_prepare($Connection, $query);
     mysqli_stmt_bind_param($Statement, "ssssississs", $_POST["voornaam"], $_POST["tussenvoegsel"], $_POST["achternaam"], $_POST["straatnaam"], $_POST["huisnummer"], $_POST["toevoeging"], $_POST["woonplaats"], $_POST["telefoonnummer"], $_POST["postcode"], $_POST["email"], $_POST["password"]);
     mysqli_stmt_execute($Statement);
-
     $html = '<p class="inlogStatus">Je account is aangemaakt! <a href="index.php"><button class="btn btn-primary">Ga Terug</button></a></p>';
     echo $html;
 }
@@ -38,8 +36,8 @@ if (isset($_GET['newAcc'])){
                                             <td><label for="straatnaam">Straatnaam:</label><br /> <input id="straatnaam" name="straatnaam" required="" type="text"/></td>
                                             <td>    <label for="email">E-mailadres:</label><br>
                                                 <input type="email" id="email" name="email" required ><br></td>
-                                                <td>    <label for="email">Password:</label><br>
-                                                <input type="password" id="email" name="password" required ><br></td>
+                                                <td>    <label for="password">Password:</label><br>
+                                                <input type="password" id="password" name="password" required ><br></td>
                                         </tr>
                                         <tr>
                                             <td>
