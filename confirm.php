@@ -10,63 +10,49 @@ $subtotaal = 0;
 $btwWaarde = 0;
 ?>
 
+
+
 <div class="container" >
     <div class="row">
         <div class="col-4">
-            <form method="get">
-                <br>
-                <h2> Persoonlijke gegevens: </h2>
-                tijdelijk test
+            <br>
+            <h2> Uw gegevens: </h2>
+            <table>
+                <tr><th>Uw voornaam</th>
+                    <td>Test</td>
+                </tr>
                 <?php
-                print ($_POST["voornaam"]);
-                ?>
-                <br>
-                <div class="form-group">
-                    <label for="Voornaam">Voornaam:</label>
-                    <input type="text" class="form-control" value= <?php print($_GET["voornaam"]); ?> id="Huisnummer" aria-describedby="emailHelp"
+                if(isset($_POST["tussenvoegsel"])){
+                    print "<tr><th>Uw tussenvoegsel </th>
+                    <td>Test</td></tr>";
+                }?>
+                <tr><th>Uw achternaam</th>
+                    <td>Test</td>
+                </tr>
+                <tr><th>Uw postcode</th>
+                    <td>Test</td>
+                </tr>
+                <tr><th>Uw huisnummer</th>
+                    <td>Test</td>
+                </tr>
+                <?php
+                if(isset($_POST["toevoeging"])){
+                    print "<tr><th>Uw toevoeging </th>
+                    <td>Test</td></tr>";
+                }?>
+                <tr><th>Uw woonplaats</th>
+                    <td>Test</td>
+                </tr>
+                <tr><th>Uw e-mailadres</th>
+                    <td>Test</td>
+                </tr>
 
-                </div>
-                <div class="form-group">
-                    <label for="Tussenvoegsel">Tussenvoegsel:</label>
-                    <input type="text" class="form-control" value= <?php print($_GET["tussenvoegsel"]); ?> id="Tussenvoegsel" aria-describedby="emailHelp"
 
-                </div>
-                <div class="form-group">
-                    <label for="Achternaam">Achternaam:</label>
-                    <input type="text" class="form-control" value= <?php print($_GET["achternaam"]); ?> id="Achternaam" aria-describedby="emailHelp"
-
-                </div>
-                <div class="form-group">
-                    <label for="Straatnaam">Straatnaam:</label>
-                    <input type="text" class="form-control" value= <?php print($_GET["straatnaam"]); ?> id="Straatnaam" aria-describedby="emailHelp"
-
-                </div>
-                <div class="form-group">
-                    <label for="Huisnummer">Huisnummer:</label>
-                    <input type="number" class="form-control" value= <?php print($_GET["huisnummer"]); ?> id="Huisnummer" aria-describedby="emailHelp"
-
-                </div>
-                <div class="form-group">
-                    <label for="Toevoeging">Toevoeging:</label>
-                    <input type="text" class="form-control" value= <?php print($_GET["toevoeging"]); ?> id="Toevoeging" aria-describedby="emailHelp"
-
-                </div>
-                <div class="form-group">
-                    <label for="Woonplaats">Woonplaats:</label>
-                    <input type="text" class="form-control" value= <?php print($_GET["woonplaats"]); ?> id="Woonplaats" aria-describedby="emailHelp"
-
-                </div>
-                <div class="form-group">
-                    <label for="Telefoonnummer">Telefoonnummer:</label>
-                    <input type="text" class="form-control" value= <?php print($_GET["telefoonnummer"]); ?> id="Telefoonnummer" aria-describedby="emailHelp"
-
-                </div>
-                echo "<a href='bestelpagina.php'><input type=button name='bestelpagina' value='Terug naar bestelpagina' class='btn btn-primary'></a></tr>";
-            </form>
+            </table>
         </div>
         <div class="col-6 cart">
             <br>
-            <h2> Bestelling: </h2>
+            <h2> Uw bestelling: </h2>
             <br>
             <?php
             if (isset($_SESSION["cart"])) {
@@ -74,7 +60,6 @@ $btwWaarde = 0;
            <th>Productnaam</th>
            <th>Aantal</th>
            <th>Prijs</th>
-           <th></th>
            </tr>';
 
                 foreach ($_SESSION["cart"] as $productnummer => $aantal) {
@@ -99,9 +84,9 @@ $btwWaarde = 0;
                     print '<td>';
                     print round(($R[0]["SellPrice"]), 2) * $aantal;
                     print '</td>';
-                    echo "<td style='text-align: left'><form method='post' action='cart.php'>
-                            <button onclick='return confirm(`Weet je het zeker dat je dit product wilt verijwijderen?`)' type='submit' name='verwijder" . $productnummer . "' class='btn btn-danger actionBtn'><i class='far fa-trash-alt'></i></button>
-                      </form></td></tr>";
+                    echo "<td style='text-align: left'>
+                           
+                      </td></tr>";
                     if (isset($_POST["verwijder$productnummer"])) {
                         unset($_SESSION["cart"][$productnummer]);
                     }
@@ -116,12 +101,14 @@ $btwWaarde = 0;
                 $subtotalen .= "<p class='subtotalen'>BTW: €" . round(($btwWaarde), 2) . "</p>";
                 $subtotalen .= "<p class='subtotalen'>Totaalprijs: €" . round(($totaalPrijs), 2) . "</p></td></tr>";
 
+
+
                 print $subtotalen;
                 print'<td>';
                 print 'De verzendkosten zijn al in de prijs opgenomen!';
                 print '</td>';
                 echo "<tr><td></td><td></td><td></td><td><a href='cart.php'><input type=button name='bestellen' value='Terug naar het winkelmandje' class='btn btn-primary'></a></tr>";
-                echo "<tr><td></td><td></td><td></td><td><a href='order_placed.php'><input type=button name='bestellen' value='Bestelling afronden en afrekenen' class='btn btn-primary'></a></tr>";
+                echo "<tr><td></td><td></td><td></td><td><a href='order_placed.php'><input type=button name='order_placed' value='Bestelling afronden en afrekenen' class='btn btn-primary'></a></tr>";
 
 
             } else {

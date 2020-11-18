@@ -18,7 +18,7 @@ include __DIR__ . "/header.php";
             <td style="width: 50%;"><label for="huisnummer">Huisnummer:</label><br /> <input id="huisnummer" name="huisnummer" required="" type="number" /><br /> <label for="toevoeging">Toevoeging:</label><br /> <input id="toevoeging" name="toevoeging" type="text" /></td>
         </tr>
         <tr>
-            <td style="width: 50%;"><label for="telefoonnummer">Telefoonnummer:</label><br /> <input id="telefoonnummer" max="11" min="10" name="telefoonnummer" required="" type="number" /></td>
+            <td style="width: 50%;"><label for="telefoonnummer">Telefoonnummer:</label><br /> <input id="telefoonnummer" name="telefoonnummer" required="" type="tel" /></td>
             <td style="width: 50%;"><label for="woonplaats">Woonplaats:</label><br /> <input id="woonplaats" name="woonplaats" required="" type="text" /></td>
         </tr>
         <tr>
