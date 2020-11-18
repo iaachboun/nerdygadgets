@@ -34,6 +34,7 @@ if(isset($_GET["order_placed"])) {
     }
 
     print "Bedankt voor uw bestelling! Uw bestelnummer is: $orderID";
+    require_once 'cancel.php';
 }
 else {
     print 'Mislukt, probeer opnieuw.';
