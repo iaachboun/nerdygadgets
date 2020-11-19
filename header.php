@@ -101,7 +101,7 @@ include "connect.php";
                 <a href="cart.php" class="HrefDecoration"><i class="fas fa-shopping-cart" style="color:#676EFF;"></i>
                     Winkelmandje</a>
             </li>
-        </ul>
+        </ul>v
     </div>
     <div class="row" id="Content">
         <div class="col-12">

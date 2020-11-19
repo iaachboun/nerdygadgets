@@ -36,7 +36,6 @@ if (isset($_GET["order_placed"])) {
 
         $Statement = mysqli_prepare($Connection, $query4);
         mysqli_stmt_bind_param($Statement, "ii", $aantal, $productnummer);
-        var_dump($Statement);
         mysqli_stmt_execute($Statement);
     }
 
