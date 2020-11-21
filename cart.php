@@ -9,9 +9,6 @@ include __DIR__ . "/connect.php";
 // De key is het productnummer en de value is het aantal.
 
 
-//TIJDELIJKE VARIABELE VOOR ITEMS IN DE MAND!!!
-//$_SESSION["cart"] = array(1 => 1, 2 => 2, 3 => 3);
-
 
 //Variabelen:
 $totaalPrijs = 0;
@@ -29,6 +26,8 @@ $btwWaarde = 0;
                 print '<table style="text-align: center"><tr>
            <th>Productnaam</th>
            <th>Aantal</th>
+           <th>-1</th>
+           <th>+1</th>
            <th>Prijs</th>
            <th></th>
            </tr>';
@@ -54,6 +53,28 @@ $btwWaarde = 0;
                     print "$aantal";
                     print '</td>';
                     print '<td>';
+                    echo "<form method='post' action='cart.php'>
+                            <button type='submit' class='btn btn-info' name='min" . $productnummer . "' '></button>
+                      </form>";
+                    if (isset($_POST["min$productnummer"]) AND $_SESSION["cart"][$productnummer] > 0){
+                        $_SESSION["cart"][$productnummer] -= 1;
+                        if ($_SESSION["cart"][$productnummer] == 0){
+                            unset($_SESSION["cart"][$productnummer]);
+                        }
+                    }
+                    print '</td>';
+                    print '<td>';
+                    echo "<form method='post' action='cart.php'>
+                            <button type='submit' value='test' class='btn btn-info' name='plus" . $productnummer . "' '></button>
+                      </form>";
+                    if (isset($_POST["plus$productnummer"]) AND $_SESSION["cart"][$productnummer] > 0){
+                        $_SESSION["cart"][$productnummer] += 1;
+                        if ($_SESSION["cart"][$productnummer] == 0){
+                            unset($_SESSION["cart"][$productnummer]);
+                        }
+                    }
+                    print '</td>';
+                    print '<td>';
                     print '€';
                     print round(($R[0]["SellPrice"]), 2) * $aantal;
                     print '</td>';
@@ -65,7 +86,7 @@ $btwWaarde = 0;
                     }
 
                     $totaalPrijs = $totaalPrijs + (($R[0]["SellPrice"]) * $aantal);
-                    $subtotaal = $subtotaal + ($R[0]["RecommendedRetailPrice"]);
+                    $subtotaal = $subtotaal + ($R[0]["RecommendedRetailPrice"] * $aantal);
                     $btwWaarde = ($R[0]["TaxRate"]) / 100 * $totaalPrijs;
                 }
                 $subtotalen = '';
