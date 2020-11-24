@@ -121,7 +121,7 @@ if (isset($_POST["productverwijderen"])) {
         print 'De verzendkosten zijn al in de prijs opgenomen!';
         print '</td>';
 
-        echo "<tr><td></td><td></td><td></td><td><a href='bestelpagina.php'><input type=button name='bestellen' value='Bestellen' class='btn btn-primary'></a></tr>";
+        echo "<tr><td></td><td></td><td></td><td><a href='bestelpagina.php'><input type=button name='bestellen' value='Bestellen' class='btn btn-warning btn-lg'></a></tr>";
 
 
         } else {

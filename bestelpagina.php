@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="Style.css">
 <?php
 include __DIR__ . "/header.php"; ?>
 
