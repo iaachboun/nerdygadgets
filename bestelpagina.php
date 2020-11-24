@@ -59,7 +59,7 @@ include __DIR__ . "/header.php"; ?>
         <tr>
             <td style="width: 50%;"><a href="cart.php" class="btn btn-info btn-sm" role="button">Annuleren</a>
             </td>
-            <td style="width: 50%;"><button type="button" name="opslaan" class="btn btn-warning btn-lg"><a href="confirm.php">Opslaan en naar de volgende stap</a></button>
+            <td style="width: 50%;"><input type="submit" name="opslaan" value="Opslaan en naar de volgende stap" class="btn btn-warning btn-lg"></button>
             </td>
         </tr>';
             echo $html;
