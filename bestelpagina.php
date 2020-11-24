@@ -57,9 +57,9 @@ include __DIR__ . "/header.php"; ?>
                 <input type="email" id="email" name="email" required ><br></td>
         </tr>
         <tr>
-            <td style="width: 50%;"><button> <input type="submit" name="opslaan" class="btn btn-primary"> Opslaan en naar de volgende stap</button>
+            <td style="width: 50%;"><a href="cart.php" class="btn btn-info btn-sm" role="button">Annuleren</a>
             </td>
-            <td style="width: 50%;"><a href="cart.php"><input name="cancel" value=Annuleren! class="btn btn-secondary" onclick="return confirm(`Weet je het zeker?`)"></a>
+            <td style="width: 50%;"><button type="button" name="opslaan" class="btn btn-warning btn-lg"><a href="confirm.php">Opslaan en naar de volgende stap</a></button>
             </td>
         </tr>';
             echo $html;
