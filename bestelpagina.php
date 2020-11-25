@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="Style.css">
 <?php
 include __DIR__ . "/header.php"; ?>
 
@@ -57,9 +57,9 @@ include __DIR__ . "/header.php"; ?>
                 <input type="email" id="email" name="email" required ><br></td>
         </tr>
         <tr>
-            <td style="width: 50%;"><button> <input type="submit" name="opslaan" class="btn btn-primary"> Opslaan en naar de volgende stap</button>
+            <td style="width: 50%;"><a href="cart.php" class="btn btn-info btn-sm" role="button">Annuleren</a>
             </td>
-            <td style="width: 50%;"><form method="post" action="cancel.php"> <button type="submit" name="cancel" class="btn btn-secondary" onclick="return confirm(`Weet je het zeker ? `)">Afbreken!</button></form>
+            <td style="width: 50%;"><input type="submit" name="opslaan" value="Opslaan en naar de volgende stap" class="btn btn-warning btn-lg"></button>
             </td>
         </tr>';
             echo $html;

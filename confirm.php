@@ -123,8 +123,8 @@ $_SESSION["email"] = $_POST["email"];
                     }
 
                     $totaalPrijs = $totaalPrijs + (($R[0]["SellPrice"]) * $aantal);
-                    $subtotaal = $subtotaal + ($R[0]["RecommendedRetailPrice"]);
-                    $btwWaarde = ($R[0]["TaxRate"]) / 100 * $totaalPrijs;
+                    $subtotaal = $subtotaal + ($R[0]["RecommendedRetailPrice"] * $aantal);
+                    $btwWaarde = ($R[0]["TaxRate"]) / 100 * $subtotaal;
                 }
                 $subtotalen = '';
 
