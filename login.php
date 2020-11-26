@@ -41,6 +41,7 @@ if (isset($_POST['submit'])) {
     $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
 
     //Session variabelen uit de post van bestelpagina
+    $_SESSION["customerID"] = $R[0]["customerID"];
     $_SESSION["voornaam"] = $R[0]["firstname"];
     if (isset($R[0]["insertion"])) {
         $_SESSION["tussenvoegsel"] = $R[0]["insertion"];

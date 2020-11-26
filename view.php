@@ -18,9 +18,9 @@ $Query = "
             JOIN stockgroups USING(StockGroupID)
             WHERE SI.stockitemid = ?
             GROUP BY StockItemID";
-if(isset($_GET["id"])) {
+if (isset($_GET["id"])) {
     $stockItemID = $_GET["id"];
-}else{
+} else {
     $stockItemID = 0;
 }
 
@@ -129,14 +129,15 @@ if ($R) {
                     </div>
                 </div>
                 <?php
-                if(isset($_GET["id"])) {
+                if (isset($_GET["id"])) {
                     $stockItemID = $_GET["id"];
-                }else{
+                } else {
                     $stockItemID = 0;
                 }
                 ?>
                 <form method="post">
-                    <input type="submit" name="submit" class="btn btn-primary bestelKnop" value="Voeg toe aan winkelmandje">
+                    <input type="submit" name="submit" class="btn btn-primary bestelKnop"
+                           value="Voeg toe aan winkelmandje">
                 </form>
                 <?php
                 if (isset($_POST["submit"])) {
@@ -193,3 +194,56 @@ if ($R) {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
 </div>
+<?php
+//Get Reviews
+$Query = "SELECT * 
+FROM webshop_review a
+JOIN webshop_orders b on a.ReviewID = b.ReviewID
+JOIN webshop_orderlines c on b.orderID = c.orderID
+WHERE c.StockItemID = ?";
+$Statement = mysqli_prepare($Connection, $Query);
+mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
+mysqli_stmt_execute($Statement);
+$R = mysqli_stmt_get_result($Statement);
+$R = mysqli_fetch_all($R, MYSQLI_ASSOC);
+
+
+
+if (isset($R[0])) {
+    $html = '';
+    $html .= '<div class="review-section">
+                <div class="container">
+                    <div class="row">
+                    <div class="col-12 reviews">
+                            <h2>Reviews</h2>';
+    foreach ($R as $result) {
+        //Get account data
+        $Query = "SELECT *
+                    FROM webshop_customers
+                    WHERE customerID = ?";
+
+        $Statement = mysqli_prepare($Connection, $Query);
+        mysqli_stmt_bind_param($Statement, "i", $result['customerID']);
+        mysqli_stmt_execute($Statement);
+        $customerData = mysqli_stmt_get_result($Statement);
+        $customerData = mysqli_fetch_all($customerData, MYSQLI_ASSOC);
+
+        $html .= '<div class="customer-review">';
+        $html .= "<p class='review-naam'>" . $customerData[0]['firstname'] . ' ' . $customerData[0]['lastname'] . "</p>";
+
+        for ($i = 1; $i <= 5; $i++) {
+            if ($i <= $result['Stars']) {
+                $html .= '<i class="fas fa-star" style="color: Yellow"></i>';
+            } else {
+                $html .= '<i class="fas fa-star"></i>';
+            }
+        }
+        $html .= "<p class='review-tekst'>" . $result['Reviewtext'] . "</p>";
+        $html .= "<p class='review-datum'>" . $result['Datum'] . "</p>";
+        $html .= "</div>";
+    }
+
+    $html .= "</div></div></div></div>";
+    echo $html;
+
+}?>
