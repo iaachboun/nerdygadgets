@@ -27,66 +27,65 @@ $_SESSION["straatnaam"] = $_POST["straatnaam"];
 $_SESSION["email"] = $_POST["email"];
 ?>
 
-
+<div class="row">
 <div class="container">
-    <div class="row">
-        <div class="col-4">
+        <div class="col-6">
             <br>
             <h2> Uw gegevens: </h2>
             <table>
                 <tr>
-                    <th>voornaam</th>
+                    <th>Voornaam:</th>
                     <td><?php print ($_SESSION["voornaam"]) ?></td>
                 </tr>
                 <?php
                 if (isset($_POST["tussenvoegsel"])) {
-                    print "<tr><th>tussenvoegsel </th>
+                    print "<tr><th>Tussenvoegsel: </th>
                     <td>";
                     print ($_SESSION["tussenvoegsel"]);
                     print "</td></tr>";
                 } ?>
                 <tr>
-                    <th>achternaam</th>
+                    <th>Achternaam:</th>
                     <td><?php print ($_SESSION["achternaam"]) ?></td>
                 </tr>
                 <tr>
-                    <th>postcode</th>
+                    <th>Postcode:</th>
                     <td><?php print ($_SESSION["postcode"]) ?></td>
                 </tr>
                 <tr>
-                    <th>huisnummer</th>
+                    <th>Huisnummer:</th>
                     <td><?php print ($_SESSION["huisnummer"]) ?></td>
                 </tr>
                 <?php
                 if (isset($_POST["toevoeging"])) {
-                    print "<tr><th>toevoeging </th>
+                    print "<tr><th>Toevoeging: </th>
                     <td>";
                     print ($_SESSION["toevoeging"]);
                     print "</td></tr>";
                 } ?>
                 <tr>
-                    <th>woonplaats</th>
+                    <th>Woonplaats:</th>
                     <td><?php print ($_SESSION["woonplaats"]) ?></td>
                 </tr>
                 <tr>
-                    <th>straatnaam</th>
+                    <th>Straatnaam:</th>
                     <td><?php print ($_SESSION["straatnaam"]) ?></td>
                 </tr>
                 <tr>
-                    <th>e-mailadres</th>
+                    <th>E-mailadres:</th>
                     <td><?php print ($_SESSION["email"]) ?></td>
                 </tr>
-
-
             </table>
         </div>
-        <div class="col-6 cart">
+</div>
+    <div class="col-6">
             <br>
-            <h2> Uw bestelling: </h2>
+            <h2> Uw bestelling:</h2>
             <br>
             <?php
             if (isset($_SESSION["cart"])) {
                 print '<table style="text-align: center"><tr>
+           <th>Product</th>
            <th>Productnaam</th>
            <th>Aantal</th>
            <th>Prijs</th>
@@ -105,6 +104,28 @@ $_SESSION["email"] = $_POST["email"];
                     $R = mysqli_stmt_get_result($Statement);
                     $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
 
+                    $query2 = "
+                        SELECT ImagePath
+                        FROM stockitemimages 
+                        WHERE StockItemID = ?";
+
+                    $Statement = mysqli_prepare($Connection, $query2);
+                    mysqli_stmt_bind_param($Statement, "i", $productnummer);
+                    mysqli_stmt_execute($Statement);
+                    $R2 = mysqli_stmt_get_result($Statement);
+                    $R2 = mysqli_fetch_all($R2, MYSQLI_ASSOC);
+
+            if ($R2) {
+                $Images = $R2;
+            }
+
+            print'<td>';
+            ?>
+            <div id="ProductFrame"
+                <div class="ListItem plaatjes" style="background-image: url('Public/StockItemIMG/<?php print $Images[0]['ImagePath']; ?>')">;
+                                 </div>
+                                    </div>
+        <?php
                     print '<td style="text-align: left">';
                     print ($R[0]["StockItemName"]);
                     print '</td>';
@@ -137,15 +158,16 @@ $_SESSION["email"] = $_POST["email"];
                 print'<td>';
                 print 'De verzendkosten zijn al in de prijs opgenomen!';
                 print '</td>';
-                echo "<tr><td></td><td></td><td></td><td><a href='cart.php'><input type=button name='bestellen' value='Annuleren!' class='btn btn-primary' onclick='return confirm(`Weet je het zeker?`)'></a></tr>";
-                echo "<tr><td></td><td></td><td></td><td><a href='order_placed.php?order_placed=TRUE'><input type=button name='order_placed' value='Bestelling afronden en afrekenen' class='btn btn-primary'></a></tr>";
-
+                echo "<tr><td></td><td></td><td></td><td><a href='order_placed.php?order_placed=TRUE'><input type=button name='order_placed' value='Bestelling afronden en afrekenen' class='btn-primary btn-lg'></a></tr>";
+                echo "<tr><td></td><td></td><td></td><td><a href='cart.php'><input type=button name='bestellen' value='Annuleren!' class='btn-secondary btn-danger' onclick='return confirm(`Weet je het zeker?`)'></a></tr>";
 
             } else {
                 print 'Er zit niks in de winkelmand!';
             }
             ?>
         </div>
+    </div>
+
 
 
         <?php
