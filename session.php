@@ -32,3 +32,7 @@ function SaveCart($cart)
     $_SESSION["cart"] = $cart;
 
 }
+
+function SeeHistory($history) {
+    $_SESSION[""]
+}
