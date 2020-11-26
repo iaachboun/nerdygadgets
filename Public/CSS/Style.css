@@ -482,3 +482,7 @@ ul#ul-class-price li {
     border: 1px solid white;
 }
 
+.plaatjes {
+    background-repeat: no-repeat;
+    background-size: 200px auto;
+}
