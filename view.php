@@ -136,7 +136,7 @@ if ($R) {
                 }
                 ?>
                 <form method="post">
-                    <input type="submit" name="submit" class="btn btn-primary bestelKnop" value="Voeg toe aan winkelmandje">
+                    <input type="submit" name="submit" class="btn btn-warning bestelKnop btn btn-lg" value="Voeg toe aan winkelmandje">
                 </form>
                 <?php
                 if (isset($_POST["submit"])) {
@@ -192,4 +192,19 @@ if ($R) {
     } else {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
+</div>
+<div id="StockItemDescription">
+    <form>
+    <h2>Schrijf een review</h2>
+        <p>Hoeveel sterren geef je het product?</p>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+    <p>Beveel je dit product aan?</p>
+        <input type="checkbox" id="1" name="1" value="Ik b">
+    <p>Wat vind je van het product?</p>
+    <input type="text" id="reviewtext">
+    <input type="submit" id="verzenden"</form>
 </div>
