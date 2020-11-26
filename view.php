@@ -136,7 +136,7 @@ if ($R) {
                 }
                 ?>
                 <form method="post">
-                    <input type="submit" name="submit" class="btn btn-primary bestelKnop" value="Voeg toe aan winkelmandje">
+                    <input type="submit" name="submit" class="btn btn-warning bestelKnop btn btn-lg" value="Voeg toe aan winkelmandje">
                 </form>
                 <?php
                 if (isset($_POST["submit"])) {

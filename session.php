@@ -33,6 +33,6 @@ function SaveCart($cart)
 
 }
 
-function SeeHistory($history) {
-    $_SESSION[""]
-}
+//function SeeHistory($history) {
+//    $_SESSION[""]
+//}
