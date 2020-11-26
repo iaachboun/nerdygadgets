@@ -26,10 +26,12 @@ $_SESSION["woonplaats"] = $_POST["woonplaats"];
 $_SESSION["straatnaam"] = $_POST["straatnaam"];
 $_SESSION["email"] = $_POST["email"];
 ?>
+
+
 <div class="w3-row-padding">
     <div class="w3-half w3-container ">
-            <br>
-            <h2> Uw gegevens: </h2>
+        <div id="StockItemDescription">
+            <h1> Uw gegevens: </h1>
             <table>
                 <tr>
                     <th>Voornaam:</th>
@@ -74,15 +76,22 @@ $_SESSION["email"] = $_POST["email"];
                     <td><?php print ($_SESSION["email"]) ?></td>
                 </tr>
             </div>
+    </div>
+    </table>
+    <br>
+    <table>
+        <h1>Betaling:</h1>
     </table>
 </div>
+
+
 
 <div class="w3-row">
     <div class="w3-half w3-container">
         <div class=shopping-cart">
-            <br>
-            <h2> Uw bestelling:</h2>
-            <br>
+            <div id="StockItemDescription">
+            <h1> Uw bestelling:</h1>
+                <br>
             <?php
             if (isset($_SESSION["cart"])) {
                 print '<table style="text-align: center"><tr>
@@ -167,6 +176,7 @@ $_SESSION["email"] = $_POST["email"];
                 print 'Er zit niks in de winkelmand!';
             }
             ?>
+        </div>
         </div>
     </div>
 </div>
