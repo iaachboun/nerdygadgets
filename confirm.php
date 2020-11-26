@@ -26,10 +26,8 @@ $_SESSION["woonplaats"] = $_POST["woonplaats"];
 $_SESSION["straatnaam"] = $_POST["straatnaam"];
 $_SESSION["email"] = $_POST["email"];
 ?>
-
-<div class="row">
-<div class="container">
-        <div class="col-6">
+<div class="w3-row-padding">
+    <div class="w3-half w3-container ">
             <br>
             <h2> Uw gegevens: </h2>
             <table>
@@ -75,10 +73,13 @@ $_SESSION["email"] = $_POST["email"];
                     <th>E-mailadres:</th>
                     <td><?php print ($_SESSION["email"]) ?></td>
                 </tr>
-            </table>
-        </div>
+            </div>
+    </table>
 </div>
-    <div class="col-6">
+
+<div class="w3-row">
+    <div class="w3-half w3-container">
+        <div class=shopping-cart">
             <br>
             <h2> Uw bestelling:</h2>
             <br>
@@ -104,16 +105,16 @@ $_SESSION["email"] = $_POST["email"];
                     $R = mysqli_stmt_get_result($Statement);
                     $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
 
-                    $query2 = "
+            $query2 = "
                         SELECT ImagePath
                         FROM stockitemimages 
                         WHERE StockItemID = ?";
 
-                    $Statement = mysqli_prepare($Connection, $query2);
-                    mysqli_stmt_bind_param($Statement, "i", $productnummer);
-                    mysqli_stmt_execute($Statement);
-                    $R2 = mysqli_stmt_get_result($Statement);
-                    $R2 = mysqli_fetch_all($R2, MYSQLI_ASSOC);
+            $Statement = mysqli_prepare($Connection, $query2);
+            mysqli_stmt_bind_param($Statement, "i", $productnummer);
+            mysqli_stmt_execute($Statement);
+            $R2 = mysqli_stmt_get_result($Statement);
+            $R2 = mysqli_fetch_all($R2, MYSQLI_ASSOC);
 
             if ($R2) {
                 $Images = $R2;
@@ -121,10 +122,11 @@ $_SESSION["email"] = $_POST["email"];
 
             print'<td>';
             ?>
+
             <div id="ProductFrame"
-                <div class="ListItem plaatjes" style="background-image: url('Public/StockItemIMG/<?php print $Images[0]['ImagePath']; ?>')">;
-                                 </div>
-                                    </div>
+            <div class="ListItem"
+                 style="background-image: url('Public/StockItemIMG/<?php print $Images[0]['ImagePath']; ?>'); background-size: 230px; background-repeat: no-repeat; background-position: center;"></div>
+
         <?php
                     print '<td style="text-align: left">';
                     print ($R[0]["StockItemName"]);
@@ -167,6 +169,8 @@ $_SESSION["email"] = $_POST["email"];
             ?>
         </div>
     </div>
+</div>
+
 
 
 
