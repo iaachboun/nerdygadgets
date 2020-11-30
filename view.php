@@ -120,6 +120,7 @@ if ($R) {
             <h2 class="StockItemNameViewSize StockItemName">
                 <?php print $Result['StockItemName']; ?>
             </h2>
+
             <div class="QuantityText"><?php print $Result['QuantityOnHand']; ?></div>
             <div id="StockItemHeaderLeft">
                 <div class="CenterPriceLeft">
@@ -136,8 +137,17 @@ if ($R) {
                 }
                 ?>
                 <form method="post">
-                    <input type="submit" name="submit" class="btn btn-primary bestelKnop" value="Voeg toe aan winkelmandje">
+                    <input type="submit" name="submit" class="btn btn-primary bestelKnop"
+                           value="Voeg toe aan winkelmandje">
                 </form>
+                <?php
+                if (isset($_SESSION["voornaam"])) {
+                    echo '<a href="newReview.php?stockitemID=' . $Result['StockItemID'] . '"><button class="btn btn-secondary">Plaats een review</button></a>';
+                } else {
+                    echo "<a href='login.php'><button class='btn btn-secondary'>Login in om een review te plaatsen</button></a>";
+                }
+                ?>
+
                 <?php
                 if (isset($_POST["submit"])) {
                     $stockItemID = $Result['StockItemID'];
@@ -195,17 +205,15 @@ if ($R) {
 </div>
 <?php
 //Get Reviews
-$Query = "SELECT * 
+$Query = "SELECT *
 FROM webshop_review a
-JOIN webshop_orders b on a.ReviewID = b.ReviewID
-JOIN webshop_orderlines c on b.orderID = c.orderID
-WHERE c.StockItemID = ?";
+WHERE StockItemID = ?";
+
 $Statement = mysqli_prepare($Connection, $Query);
 mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
 mysqli_stmt_execute($Statement);
 $R = mysqli_stmt_get_result($Statement);
 $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
-
 
 
 if (isset($R[0])) {
@@ -227,14 +235,23 @@ if (isset($R[0])) {
         $customerData = mysqli_stmt_get_result($Statement);
         $customerData = mysqli_fetch_all($customerData, MYSQLI_ASSOC);
 
-        $html .= '<div class="customer-review">';
-        $html .= "<p class='review-naam'>" . $customerData[0]['firstname'] . ' ' . $customerData[0]['lastname'] . "</p>";
+
+
+        if ($result['Aanbeveling'] == TRUE) {
+            $html .= '<div class="customer-review" style="border: 2px solid rgba(9,255,0,0.62)">';
+            $html .= "<p class='review-naam'> " . $customerData[0]['firstname'] . ' ' . $customerData[0]['lastname'];
+            $html .= ' <i class="fas fa-thumbs-up thumbIcon" style="color: rgba(9,255,0,0.62)"></i></p>';
+        } else{
+            $html .= '<div class="customer-review" style="border: 2px solid red">';
+            $html .= "<p class='review-naam'> " . $customerData[0]['firstname'] . ' ' . $customerData[0]['lastname'];
+            $html .= ' <i class="fas fa-thumbs-down thumbIcon" style="color: red"></i></p>';
+        }
 
         for ($i = 1; $i <= 5; $i++) {
             if ($i <= $result['Stars']) {
-                $html .= '<i class="fas fa-star" style="color: Yellow"></i>';
+                $html .= '<i class="fas fa-star starIcon" style="color: Yellow;"></i>';
             } else {
-                $html .= '<i class="fas fa-star"></i>';
+                $html .= '<i class="fas fa-star starIcon"></i>';
             }
         }
         $html .= "<p class='review-tekst'>" . $result['Reviewtext'] . "</p>";
@@ -245,20 +262,4 @@ if (isset($R[0])) {
     $html .= "</div></div></div></div>";
     echo $html;
 
-}?>
-
-<div id="StockItemDescription">
-    <form>
-    <h2>Schrijf een review</h2>
-        <p>Hoeveel sterren geef je het product?</p>
-        <i class="far fa-star"></i>
-        <i class="far fa-star"></i>
-        <i class="far fa-star"></i>
-        <i class="far fa-star"></i>
-        <i class="far fa-star"></i>
-    <p>Beveel je dit product aan?</p>
-        <input type="checkbox" id="1" name="1" value="Ik b">
-    <p>Wat vind je van het product?</p>
-    <input type="text" id="reviewtext">
-    <input type="submit" id="verzenden"</form>
-</div>
+} ?>

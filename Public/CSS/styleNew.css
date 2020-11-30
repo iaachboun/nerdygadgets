@@ -34,7 +34,6 @@
     margin: 20px;
     padding: 10px;
     background-color: #23232F;
-    border: 1px solid white;
 }
 
 .review-datum {
@@ -43,4 +42,28 @@
 
 .review-naam {
     font-weight: bold;
+}
+
+.place-review {
+    bottom: 300px;
+    margin: 50px 0;
+    padding: 20px;
+    background-color: rgba(35, 40, 47, 0.8);
+    border: 1px solid white;
+}
+
+.starIcon {
+    padding-bottom: 10px;
+    font-size: 1.4em;
+}
+
+.thumbIcon {
+    float: right;
+    font-size: 2em;
+    padding-bottom: 10px;
+}
+
+.inputType {
+    width: 15px !important;
+    height: 15px !important;
 }
