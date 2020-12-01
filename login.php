@@ -40,6 +40,9 @@ if (isset($_POST['submit'])) {
     $R = mysqli_stmt_get_result($Statement);
     $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
 
+    //Test om ingelogde mail op te slaan in session
+    $_SESSION["email_login"] = $_POST['email'];
+
     //Session variabelen uit de post van bestelpagina
     $_SESSION["customerID"] = $R[0]["customerID"];
     $_SESSION["voornaam"] = $R[0]["firstname"];
