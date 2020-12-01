@@ -499,3 +499,6 @@ ul#ul-class-price li {
      text-align: center;
  }
 
+.onclick_verwijder {
+    display:none;
+}
