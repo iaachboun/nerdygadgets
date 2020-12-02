@@ -69,6 +69,15 @@
 }
 
 .header-nav {
-    background: #0b2e13;
-    color: white;
+    position: fixed;
+    top: 0;
+    background-color: rgb(35, 35, 47);
+    width: 100%;
+    min-height: 200px;
+    z-index: 1;
+    border-bottom: 1px solid rgb(36, 41, 143);
+}
+
+.header-nav a {
+    font-size: 1.2em;
 }

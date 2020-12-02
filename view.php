@@ -1,5 +1,5 @@
 <?php
-$Connection = mysqli_connect("localhost", "ilias", "12345", "nerdygadgets");
+$Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
 include __DIR__ . "/header.php";
 include "session.php";

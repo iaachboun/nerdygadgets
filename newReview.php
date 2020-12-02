@@ -38,18 +38,19 @@ if ($revPlaced == FALSE) {
                     <form class="form" action="newReview.php" method="post">
                         <h2>Schrijf een review</h2>
                         <p>Hoeveel sterren geef je het product?</p>
-                        <i class="fas fa-star" data-index="0"></i>
-                        <i class="fas fa-star" data-index="1"></i>
-                        <i class="fas fa-star" data-index="2"></i>
-                        <i class="fas fa-star" data-index="3"></i>
-                        <i class="fas fa-star" data-index="4"></i>
-                        <br>
+                        <div class="star-box" style="cursor: pointer">
+                            <i class="fas fa-star" data-index="0"></i>
+                            <i class="fas fa-star" data-index="1"></i>
+                            <i class="fas fa-star" data-index="2"></i>
+                            <i class="fas fa-star" data-index="3"></i>
+                            <i class="fas fa-star" data-index="4"></i>
+                        </div>
 
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input inputType" id="exampleCheck1" name="aanbeveling" >
                             <label class="form-check-label" for="exampleCheck1">Beveel je dit product aan?</label>
                         </div>
-                        <input type="hidden" name="stockItem" value=' .  $_GET['stockitemID'] . '>
+                        <input type="hidden" name="stockItem" value=' . $_GET['stockitemID'] . '>
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Wat vind je van het product?</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="ReviewText"
@@ -69,7 +70,8 @@ if ($revPlaced == FALSE) {
         <div class="row">
             <div class="form-group" style="margin: 100px auto;">
                 <label for="exampleFormControlInput1">Je review is geplaatst! </label>
-                <a href="index.php"><input type="button" class="btn btn-primary" id="exampleFormControlInput1" value=" Ga terug"></a>
+                <a href="index.php"><input type="button" class="btn btn-primary" id="exampleFormControlInput1"
+                                           value=" Ga terug"></a>
             </div>
 
         </div>

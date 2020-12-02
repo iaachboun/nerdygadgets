@@ -8,10 +8,8 @@ include __DIR__ . "/connect.php";
 if (isset($_GET["order_placed"])) {
 
     if (isset($_SESSION["customerID"])) {
-        var_dump('test');
         $customerID = $_SESSION["customerID"];
     } else {
-        var_dump('test');
         $emailCheckQuery = "SELECT email FROM webshop_customers WHERE email = ?";
 
         $Statement = mysqli_prepare($Connection, $emailCheckQuery);

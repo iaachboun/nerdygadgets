@@ -84,8 +84,9 @@ ul#ul-class-navigation li {
     border-bottom: 1px solid rgb(36, 41, 143);
 }
 #Content {
-    margin-top: 200px;
+    margin-top: 225px;
 }
+
 #FilterFrame {
     position: fixed;
     width: 19%;
@@ -442,7 +443,7 @@ ul#ul-class-price li {
 }
 .IndexStyle {
     margin: 0 auto;
-    width: 1400px;
+    width: 100%;
 }
 .FilterTopMargin {
     margin-top: 20px;

@@ -21,8 +21,8 @@ include "connect.php";
     <title>NerdyGadgets</title>
     <script src="https://kit.fontawesome.com/77789b20d3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="Public/CSS/Style.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="Public/CSS/styleNew.css" type="text/css">
-    <link rel="stylesheet" href="Public/CSS/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="Public/CSS/nha3fuq.css">
     <link rel="apple-touch-icon" sizes="57x57" href="Public/img/LOGONG.png">
     <link rel="apple-touch-icon" sizes="60x60" href="Public/img/LOGONG.png">
@@ -44,66 +44,76 @@ include "connect.php";
 </head>
 <body>
 <div class="Background">
-    <div class="row" id="Header">
-        <div class="col-2"><a href="index.php"> <img src="Public/Img/LOGONG.png"></a>
 
-        </div>
-        <div class="col-8" id="CategoriesBar">
-            <ul id="ul-class">
+    <nav class="navbar navbar-expand-lg navbar-dark  header-nav">
+        <a class="navbar-brand" href="index.php"> <img src="Public/Img/LOGONG.png"></a>
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
                 <?php
                 $Query = "
-                SELECT StockGroupID, StockGroupName, ImagePath
-                FROM stockgroups
-                WHERE StockGroupID IN (
-                                        SELECT StockGroupID
-                                        FROM stockitemstockgroups
-                                        ) AND ImagePath IS NOT NULL
-                ORDER BY StockGroupID ASC";
+                                    SELECT StockGroupID, StockGroupName, ImagePath
+                                    FROM stockgroups
+                                    WHERE StockGroupID IN (
+                                                            SELECT StockGroupID
+                                                            FROM stockitemstockgroups
+                                                            ) AND ImagePath IS NOT NULL
+                                    ORDER BY StockGroupID ASC";
                 $Statement = mysqli_prepare($Connection, $Query);
                 mysqli_stmt_execute($Statement);
                 $HeaderStockGroups = mysqli_stmt_get_result($Statement);
 
                 foreach ($HeaderStockGroups as $HeaderStockGroup) {
                     ?>
-                    <li>
+                    <li class="nav-item active">
                         <a href="browse.php?category_id=<?php print $HeaderStockGroup['StockGroupID']; ?>"
-                           class="HrefDecoration"
-                           style="font-size:20px"><?php print $HeaderStockGroup['StockGroupName']; ?></a>
+                           class="nav-link"><?php print $HeaderStockGroup['StockGroupName']; ?></a>
                     </li>
                     <?php
                 }
                 ?>
-                <li>
-                    <a href="categories.php" class="HrefDecoration" style="font-size:20px"> Alle categorieën</a>
+                <li class="nav-item active">
+                    <a href="categories.php" class="nav-link"> Alle categorieën</a>
                 </li>
             </ul>
-        </div>
-        <ul id="ul-class-navigation">
-            <li>
-                <?php
-                if (isset($_SESSION['login'])){
-                    if ($_SESSION['login'] == FALSE) {
-                        echo "<a href='login.php' style='color: white;'><i class='fas fa-user' style='color:#676EFF;'></i> Inloggen</a>";
-                    } else {
-                        echo "<a href='login.php?logout=TRUE' style='color: white;'><i class='fas fa-sign-out-alt' style='color:#676EFF;'></i> Uitloggen</a>";
-                    }
-                } else {
-                    echo "<a href='login.php' style='color: white;'><i class='fas fa-user' style='color:#676EFF;'></i> Inloggen</a>";
-                }?>
-            </li>
-            &nbsp;
-            <li>
-                <a href="browse.php" class="HrefDecoration"><i class="fas fa-search" style="color:#676EFF;"> </i>
-                    Zoeken</a>
-            </li>
-            &nbsp;
-            <li>
-                <a href="cart.php" class="HrefDecoration"><i class="fas fa-shopping-cart" style="color:#676EFF;"></i>
-                    Winkelmandje</a>
-            </li>
-        </ul>
-    </div>
+            <form class="form-inline my-2 my-lg-0">
+                <ul class="navbar-nav mr-auto">
 
+                    <li class="nav-item active">
+                        <?php
+                        if (isset($_SESSION['login'])) {
+                            if ($_SESSION['login'] == FALSE) {
+                                echo "<a href='login.php' style='color: white;'><i class='fas fa-user' style='color:#676EFF;'></i> Inloggen</a>";
+                            } else {
+                                echo "<a href='login.php?logout=TRUE' style='color: white;'><i class='fas fa-sign-out-alt' style='color:#676EFF;'></i> Uitloggen</a>";
+                            }
+                        } else {
+                            echo "<a href='login.php' style='color: white;'><i class='fas fa-user' style='color:#676EFF;'></i> Inloggen</a>";
+                        } ?>
+                    </li>
+                    &nbsp;
+                    <li>
+                        <a href="browse.php" class="HrefDecoration"><i class="fas fa-search"
+                                                                       style="color:#676EFF;"> </i>
+                            Zoeken</a>
+                    </li>
+                    &nbsp;
+                    <li>
+                        <a href="cart.php" class="HrefDecoration"><i class="fas fa-shopping-cart"
+                                                                     style="color:#676EFF;"></i>
+                            Winkelmandje</a>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </nav>
     <div class="row" id="Content">
         <div class="col-12">
             <div id="SubContent">
