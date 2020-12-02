@@ -53,9 +53,9 @@ include "connect.php";
                 <?php
                 $Query = "
                 SELECT StockGroupID, StockGroupName, ImagePath
-                FROM stockgroups 
+                FROM stockgroups
                 WHERE StockGroupID IN (
-                                        SELECT StockGroupID 
+                                        SELECT StockGroupID
                                         FROM stockitemstockgroups
                                         ) AND ImagePath IS NOT NULL
                 ORDER BY StockGroupID ASC";
@@ -103,6 +103,7 @@ include "connect.php";
             </li>
         </ul>
     </div>
+
     <div class="row" id="Content">
         <div class="col-12">
             <div id="SubContent">

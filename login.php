@@ -5,6 +5,7 @@ include __DIR__ . "/connect.php";
 if (isset($_GET['logout'])) {
     if ($_GET['logout'] == TRUE) {
         //Session variabelen uit de post van bestelpagina
+        unset($_SESSION["customerID"]);
         unset($_SESSION["voornaam"]);
         unset($_SESSION["tussenvoegsel"]);
         unset($_SESSION["achternaam"]);
@@ -73,8 +74,7 @@ if (isset($_POST['submit'])) {
 
 function showLoginForm()
 {
-    $html = '';
-    /*$html .= */?>
+    $html = '';?>
     <div class="container">
         <div class="row">
             <div class="col-3" style="margin: 0 auto; top: 150px">
@@ -102,6 +102,5 @@ function showLoginForm()
     </div><?php
     return $html;
 }
-
 
 include __DIR__ . "/footer.php"; ?>
