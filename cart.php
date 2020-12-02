@@ -143,6 +143,8 @@ foreach ($_SESSION["cart"] as $productnummer => $aantal) {
 
 } else {
     print 'Er zit niks in de winkelmand!';
+    print("<br>");
+    print'<a href="categories.php">Klik hier om terug te gaan naar de webshop</a>';
 }
 
 
