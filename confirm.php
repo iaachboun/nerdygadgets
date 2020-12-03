@@ -171,10 +171,14 @@ $_SESSION["email"] = $_POST["email"];
                     $R = mysqli_stmt_get_result($Statement);
                     $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
 
+            //Hier beginnen de plaatjes query's
+            //Nodige variabelen:
+            $map = '';
+
             $query2 = "
                         SELECT ImagePath
-                        FROM stockitemimages
-                        WHERE StockItemID = ?";
+                        FROM stockitemimages 
+                        WHERE StockItemID = ?;";
 
             $Statement = mysqli_prepare($Connection, $query2);
             mysqli_stmt_bind_param($Statement, "i", $productnummer);
@@ -182,13 +186,33 @@ $_SESSION["email"] = $_POST["email"];
             $R2 = mysqli_stmt_get_result($Statement);
             $R2 = mysqli_fetch_all($R2, MYSQLI_ASSOC);
 
+
+
             if ($R2) {
                 $Images = $R2;
+                $map = 'StockItemIMG';
+
+            }
+            else{
+                $query = "        SELECT SG.ImagePath, SG.StockGroupName
+                        FROM stockgroups SG
+                        JOIN stockitemstockgroups SISG ON SG.StockGroupID = SISG.StockGroupID
+                        WHERE SISG.StockItemID = ?;";
+
+                $Statement = mysqli_prepare($Connection, $query);
+                mysqli_stmt_bind_param($Statement, "i", $productnummer);
+                mysqli_stmt_execute($Statement);
+                $R3 = mysqli_stmt_get_result($Statement);
+                $R3 = mysqli_fetch_all($R3, MYSQLI_ASSOC);
+                $Images = $R3;
+                $map = 'StockGroupIMG';
+
+
             }
             print'<td>';
             ?>
                 <div id="ImageFrame"
-                     style="background-image: url('Public/StockItemIMG/<?php print $Images[0]['ImagePath']; ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;"></div>
+                     style="background-image: url('Public/<?php print $map ?>/<?php print $Images[0]['ImagePath']; ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;"></div>
                         </div>
                             <?php
                                         print '<td style="text-align: left">';
