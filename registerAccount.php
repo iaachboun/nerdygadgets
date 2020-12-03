@@ -1,5 +1,7 @@
 <?php require_once __DIR__ . "/header.php";
 require_once __DIR__ . "/connect.php";
+require_once __DIR__ . "/browse.php";
+
 
 if (isset($_POST["voornaam"])) {
     $emailCheckQuery = "SELECT email FROM webshop_customers WHERE email = ?";

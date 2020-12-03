@@ -75,10 +75,15 @@ foreach ($_SESSION["cart"] as $productnummer => $aantal) {
     $R = mysqli_stmt_get_result($Statement);
     $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
 
+
+    //Hier beginnen de plaatjes query's
+    //Nodige variabelen:
+    $map = '';
+
     $query2 = "
                         SELECT ImagePath
                         FROM stockitemimages 
-                        WHERE StockItemID = ?";
+                        WHERE StockItemID = ?;";
 
     $Statement = mysqli_prepare($Connection, $query2);
     mysqli_stmt_bind_param($Statement, "i", $productnummer);
@@ -86,15 +91,40 @@ foreach ($_SESSION["cart"] as $productnummer => $aantal) {
     $R2 = mysqli_stmt_get_result($Statement);
     $R2 = mysqli_fetch_all($R2, MYSQLI_ASSOC);
 
+
+
     if ($R2) {
         $Images = $R2;
+        $map = 'StockItemIMG';
+
     }
+    else{
+        $query = "        SELECT SG.ImagePath, SG.StockGroupName
+                        FROM stockgroups SG
+                        JOIN stockitemstockgroups SISG ON SG.StockGroupID = SISG.StockGroupID
+                        WHERE SISG.StockItemID = ?;";
+
+        $Statement = mysqli_prepare($Connection, $query);
+        mysqli_stmt_bind_param($Statement, "i", $productnummer);
+        mysqli_stmt_execute($Statement);
+        $R3 = mysqli_stmt_get_result($Statement);
+        $R3 = mysqli_fetch_all($R3, MYSQLI_ASSOC);
+        $Images = $R3;
+        $map = 'StockGroupIMG';
+
+
+    }
+
+  /*  if(!isset($Images)){
+
+    }*/
 
     print'<tr><td width = 20%>';
     ?>
     <div id="ProductFrame"
     <div class="ListItem"
-         style="background-image: url('Public/StockItemIMG/<?php print $Images[0]['ImagePath']; $plaatje = $Images[0]['ImagePath']; ?>'); background-size: 100%; background-repeat: no-repeat; background-position: left;"></div>
+
+         style="background-image: url('Public/<?php print $map ?>/<?php print $Images[0]['ImagePath']; ?>'); background-size: 100%; background-repeat: no-repeat; background-position: left;"></div>
     </div>
     <?php
     print'</td>';

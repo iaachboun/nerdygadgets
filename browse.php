@@ -210,8 +210,7 @@ if (isset($amount)) {
 <div id="ResultsArea" class="Browse">
     <?php
     if (isset($ReturnableResult) && count($ReturnableResult) > 0) {
-        foreach ($ReturnableResult as $row) {
-            ?>
+        foreach ($ReturnableResult as $row) {?>
             <a class="ListItem" href='view.php?id=<?php print $row['StockItemID']; ?>'>
                 <div id="ProductFrame">
                     <?php
