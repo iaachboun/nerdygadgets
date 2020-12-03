@@ -85,6 +85,8 @@ function showLoginForm()
 {
     $html = '';?>
     <div class="container">
+        <script src="https://www.google.com/recaptcha/api.js?render=6Lc1ffcZAAAAACvSDVgmKbgKBUapYoWdlHvhwScK"></script>
+
         <div class="row">
             <div class="col-3" style="margin: 0 auto; top: 150px">
                 <form method="post" action="login.php">
@@ -98,7 +100,10 @@ function showLoginForm()
                         <input name="password" type="password" class="form-control" id="exampleInputPassword1"
                                placeholder="Password" required>
                     </div>
-                    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+
+                    <button type="submit" class="btn btn-primary" name="submit" data-sitekey="reCAPTCHA_site_key"
+                            data-callback='onSubmit'
+                            data-action='submit'>Submit</button>
                 </form>
             </div>
         </div>
@@ -113,3 +118,22 @@ function showLoginForm()
 }
 
 include __DIR__ . "/footer.php"; ?>
+
+
+<script src="https://www.google.com/recaptcha/api.js"></script>
+
+
+<script>
+    function onSubmit(token) {
+        document.getElementById("demo-form").submit();
+    }
+
+    function onClick(e) {
+        e.preventDefault();
+        grecaptcha.ready(function() {
+            grecaptcha.execute('reCAPTCHA_site_key', {action: 'submit'}).then(function(token) {
+                // Add your logic to submit to your backend server here.
+            });
+        });
+    }
+</script>

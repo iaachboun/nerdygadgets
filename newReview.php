@@ -32,13 +32,14 @@ if ($revPlaced == FALSE) {
     $html .= '
 
     <div class="container">
+            <script src="https://www.google.com/recaptcha/api.js?render=6Lc1ffcZAAAAACvSDVgmKbgKBUapYoWdlHvhwScK"></script>
         <div class="row">
             <div class="col-12">
                 <div class="place-review">
                     <form class="form" action="newReview.php" method="post">
                         <h2>Schrijf een review</h2>
                         <p>Hoeveel sterren geef je het product?</p>
-                        <div class="star-box" style="cursor: pointer">
+                        <div class="star-box" style="cursor: pointer; font-size: 1.4em" >
                             <i class="fas fa-star" data-index="0"></i>
                             <i class="fas fa-star" data-index="1"></i>
                             <i class="fas fa-star" data-index="2"></i>
@@ -56,8 +57,9 @@ if ($revPlaced == FALSE) {
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="ReviewText"
                                       required></textarea>
                         </div>
-
-                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                        <button type="submit" class="btn btn-primary" name="submit" data-sitekey="reCAPTCHA_site_key"
+                            data-callback="onSubmit"
+                            data-action="submit">Submit</button>
                 </div>
             </div>
         </div>
@@ -78,7 +80,23 @@ if ($revPlaced == FALSE) {
     </div>
 <?php }
 ?>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+
+
     <script>
+        function onSubmit(token) {
+            document.getElementById("demo-form").submit();
+        }
+
+        function onClick(e) {
+            e.preventDefault();
+            grecaptcha.ready(function() {
+                grecaptcha.execute('reCAPTCHA_site_key', {action: 'submit'}).then(function(token) {
+                    // Add your logic to submit to your backend server here.
+                });
+            });
+        }
+
         var ratedIndex = -1, uID = 0;
 
         $(document).ready(function () {
