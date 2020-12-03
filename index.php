@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="Style.css">
 <?php
 include __DIR__ . "/header.php";
 ?>
@@ -13,12 +15,14 @@ include __DIR__ . "/header.php";
 
                     <li class="HomePagePrice">€30.95</li>
                 </ul>
-
-        </div>
         </a>
         <div class="HomePageStockItemPicture"></div>
     </div>
 </div>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
 <?php
 include __DIR__ . "/footer.php";
 ?>

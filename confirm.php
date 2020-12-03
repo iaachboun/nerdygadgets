@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <?php
 include __DIR__ . "/header.php";
 include __DIR__ . "/connect.php";
@@ -8,7 +8,6 @@ $totaalPrijs = 0;
 $teller = 0;
 $subtotaal = 0;
 $btwWaarde = 0;
-
 
 //Session variabelen uit de post van bestelpagina
 $_SESSION["voornaam"] = $_POST["voornaam"];
@@ -257,17 +256,7 @@ $_SESSION["email"] = $_POST["email"];
             ?>
         </div>
         </div>
-    </div>
 </div>
-        <?php
-        include __DIR__ . "/footer.php";
-        //if (isset($_))
-        //    $query = "INSERT INTO";
-        //
-        //$Statement = mysqli_prepare($Connection, $query);
-        //mysqli_stmt_bind_param($Statement, "i", $productnummer);
-        //mysqli_stmt_execute($Statement);
-        //$R = mysqli_stmt_get_result($Statement);
-        //$R = mysqli_fetch_all($R, MYSQLI_ASSOC);
 
-   ?>
+
+

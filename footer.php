@@ -1,55 +1,118 @@
+
+<!-- Footer -->
 </div>
 </div>
 </div>
-</div>
+
+
 </body>
+<footer class="page-footer footer font-small unique-color-dark">
+
+    <div class="container">
+
+
+        <!-- Grid row-->
+        <div class="row py-4 d-flex align-items-center">
+
+            <!-- Grid column -->
+<!--            <div class="col-md-6 col-lg-5  text-md-left mb-4 mb-md-0">-->
+<!--                <h4 class="mb-0">Bij vragen of opmerkingen, neem contact met ons op!</h4>-->
+<!--            </div>-->
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row-->
+
+    </div>
+    <hr style="height:2px;border-width:0;color:gray;background-color:darkblue">
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left mt-5">
+
+        <!-- Grid row -->
+        <div class="row mt-3">
+
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+                <!-- Content -->
+                <h6 class="text-uppercase font-weight-bold">NERDYGADGETS</h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>NerdyGadgets is dé webshop voor alle leuke gadgets!</p>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                <!-- Links -->
+                <h6 class="text-uppercase font-weight-bold">Bruikbare links</h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>
+                    <a href="#!">Algemene voorwaarden</a>
+                </p>
+                <p>
+                    <a href="#!">Contactformulier</a>
+                </p>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                <!-- Links -->
+                <h6 class="text-uppercase font-weight-bold">Social media:</h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>
+                    <i class="fab fa-instagram"></i> &nbsp;<a href="#!">Instagram</a>
+                </p>
+                <p>
+                    <i class="fab fa-facebook"></i> &nbsp;<a href="#!">Facebook</a>
+                </p>
+                <p>
+                    <i class="fab fa-twitter"></i> &nbsp;<a href="#!">Twitter</a>
+                </p>
+                <p>
+                    <i class="fab fa-linkedin"> &nbsp; </i><a href="#!">LinkedIn</a>
+                </p>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                <!-- Links -->
+                <h6 class="text-uppercase font-weight-bold">Contact</h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>
+                    <i class="fas fa-home mr-3"></i> Windesheim Zwolle, Campus 2, 8017 CA Zwolle</p>
+                <p>
+                    <i class="fas fa-envelope mr-3"></i> nerdygadgets@gmail.com</p>
+                <p>
+                    <i class="fas fa-phone mr-3"></i> Nog geen nummer beschikbaar</p>
+                <p>
+                    <i class="fas fa-print mr-3"></i> Nog geen nummer beschikbaar</p>
+
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="browse.php"> NerdyGadgets</a>
+    </div>
+    <!-- Copyright -->
+    </hr>
+</footer>
+
+<!-- Footer -->
+
+
 </html>
-<!--<!DOCTYPE html>-->
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" style="background-color: rgb(35, 35, 47);">-->
-<!--<head>-->
-<!--    <script src="Public/JS/fontawesome.js" crossorigin="anonymous"></script>-->
-<!--    <script src="Public/JS/jquery.min.js"></script>-->
-<!--    <script src="Public/JS/bootstrap.min.js"></script>-->
-<!--    <script src="Public/JS/popper.min.js"></script>-->
-<!--    <script src="Public/JS/Resizer.js"></script>-->
-<!--    <script src="Public/JS/jquery-3.4.1.js"></script>-->
-<!--    <style>-->
-<!--        @font-face {-->
-<!--            font-family: MmrText;-->
-<!--            src: url(/Public/fonts/mmrtext.ttf);-->
-<!--        }-->
-<!--    </style>-->
-<!--    <meta charset="ISO-8859-1">-->
-<!--    <title>NerdyGadgets</title>-->
-<!--    <script src="https://kit.fontawesome.com/77789b20d3.js" crossorigin="anonymous"></script>-->
-<!--    <link rel="stylesheet" href="Public/CSS/Style.css" type="text/css">-->
-<!--    <link rel="stylesheet" href="Public/CSS/styleNew.css" type="text/css">-->
-<!--    <link rel="stylesheet" href="Public/CSS/bootstrap.min.css" type="text/css">-->
-<!--    <link rel="stylesheet" href="Public/CSS/nha3fuq.css">-->
-<!--    <link rel="apple-touch-icon" sizes="57x57" href="Public/img/LOGONG.png">-->
-<!--    <link rel="apple-touch-icon" sizes="60x60" href="Public/img/LOGONG.png">-->
-<!--    <link rel="apple-touch-icon" sizes="72x72" href="Public/img/LOGONG.png">-->
-<!--    <link rel="apple-touch-icon" sizes="76x76" href="Public/img/LOGONG.png">-->
-<!--    <link rel="apple-touch-icon" sizes="114x114" href="Public/img/LOGONG.png">-->
-<!--    <link rel="apple-touch-icon" sizes="120x120" href="Public/img/LOGONG.png">-->
-<!--    <link rel="apple-touch-icon" sizes="144x144" href="Public/img/LOGONG.png">-->
-<!--    <link rel="apple-touch-icon" sizes="152x152" href="Public/img/LOGONG.png">-->
-<!--    <link rel="apple-touch-icon" sizes="180x180" href="Public/img/LOGONG.png">-->
-<!--    <link rel="icon" type="image/png" sizes="192x192" href="Public/img/LOGONG.png">-->
-<!--    <link rel="icon" type="image/png" sizes="32x32" href="Public/img/LOGONG.png">-->
-<!--    <link rel="icon" type="image/png" sizes="96x96" href="Public/img/LOGONG.png">-->
-<!--    <link rel="icon" type="image/png" sizes="16x16" href="Public/img/LOGONG.png">-->
-<!--    <link rel="manifest" href="Public/Favicon/manifest.json">-->
-<!--    <meta name="msapplication-TileColor" content="#ffffff">-->
-<!--    <meta name="msapplication-TileImage" content="Public/Favicon/ms-icon-144x144.png">-->
-<!--    <meta name="theme-color" content="#ffffff">-->
-<!--</head>-->
-<!---->
-<?php
-//include __DIR__ . "/connect.php";
-//?>
-<!--<div class="footer">-->
-<!--    <p>NERDYGADGETS<br>-->
-<!--        <a <p> Voor vragen of opmerkingen: nerdygadgets@gmail.com </a></p>-->
-<!--</div>-->
+

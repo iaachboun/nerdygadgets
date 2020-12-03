@@ -129,11 +129,11 @@ function showLoginForm()
                     <a href="registerAccount.php?newAcc=TRUE"><button class="btn btn-success">Maak een account aan</button></a>
             </div>
         </div>
-    </div><?php
+    </div>
+    <?php
     return $html;
 }
-
-include __DIR__ . "/footer.php"; ?>
+?>
 
 
 <script src="https://www.google.com/recaptcha/api.js"></script>
@@ -153,3 +153,9 @@ include __DIR__ . "/footer.php"; ?>
         });
     }
 </script>
+<br><br><br><br><br>
+<?php
+include __DIR__ . "/footer.php";
+
+?>
+

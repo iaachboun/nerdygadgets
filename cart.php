@@ -1,12 +1,16 @@
+
 <?php
 include __DIR__ . "/header.php";
 include __DIR__ . "/connect.php";
 
-print '
-<html>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
-<body>';
+
+
+
+//print '
+////<html>
+////<meta name="viewport" content="width=device-width, initial-scale=1">
+////<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
+////<body>';
 
 // Opzet winkelwagen word als volgt:
 // Ilias maakt een array in de session met de volgende opzet:
@@ -39,18 +43,15 @@ if (isset($_POST["productverwijderen"])) {
 
 <?php
 //Nieuwe variabelen
-
 $plaatje = '';
 $productnaam = '';
 ?>
 
 
+<!--    <div style="overflow-x:auto;" class="cart w3-mobile">-->
 
-
+<div class="row">
     <div class="container cart-section-desktop">
-    <div class="row">
-    <div style="overflow-x:auto;" class="cart w3-mobile">
-
 <?php
 if (isset($_SESSION["cart"])) {
     print '<table style="text-align: left" class="w3-table w3-blue "><tr class="w3-red">
@@ -125,7 +126,7 @@ foreach ($_SESSION["cart"] as $productnummer => $aantal) {
     <div class="ListItem"
 
          style="background-image: url('Public/<?php print $map ?>/<?php print $Images[0]['ImagePath']; ?>'); background-size: 100%; background-repeat: no-repeat; background-position: left;"></div>
-    </div>
+</div>
     <?php
     print'</td>';
     print'<td width = 20%>';
@@ -169,22 +170,21 @@ foreach ($_SESSION["cart"] as $productnummer => $aantal) {
     print '</td>';
 
     echo "<tr><td></td><td></td><td></td><td></td><td><a href='bestelpagina.php'><input type=button name='bestellen' value='Bestellen' class='btn btn-warning btn-lg'></a></tr>";
-
-
+?>
+</div>
+<?php
 } else {
     print 'Er zit niks in de winkelmand!';
     print("<br>");
     print'<a href="categories.php">Klik hier om terug te gaan naar de webshop</a>';
 }
-
-
-print '</body>
-</html></div></div></div>';
 ?>
 
 
+
+
 <!--Mobiele weergave, work in progress door Pascal
--->
+        -->
 <!--        <?php
 /*        foreach ($_SESSION["cart"] as $productnummer => $aantal) {
             print '<div class="w3-row">';
@@ -213,3 +213,14 @@ print '</body>
         */?>
         </div>
 -->
+
+<!--FOOTER-->
+<!--<br><br><br><br><br><br>-->
+<?php
+//include __DIR__ . "/footer.php";
+//?>
+
+
+
+
+

@@ -1,5 +1,6 @@
 <?php
 include __DIR__ . "/header.php";
+
 include_once "session.php";
 $SearchString = "";
 $ReturnableResult = null;
@@ -160,6 +161,7 @@ if (isset($amount)) {
     $AmountOfPages = ceil($amount["count(*)"] / $ProductsOnPage);
 }
 ?>
+
 <div id="FilterFrame"><h2 class="FilterText"><i class="fas fa-filter"></i> Filteren </h2>
     <form>
         <div id="FilterOptions">
@@ -280,6 +282,7 @@ if (isset($amount)) {
         </form>
         <?php
     } else {
+
         ?>
         <h2 id="NoSearchResults">
             Yarr, er zijn geen resultaten gevonden.
@@ -289,6 +292,10 @@ if (isset($amount)) {
     ?>
 </div>
 
+<!--Als je op een product klikt, gaat de footer raar doen en kun je niet meer klikken op winkelwagen.-->
 <?php
-include __DIR__ . "/footer.php";
-?>
+//include __DIR__ . "/footer.php";
+//
+//?>
+
+

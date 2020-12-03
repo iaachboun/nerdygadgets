@@ -1,5 +1,4 @@
 <?php
-
 include __DIR__ . "/header.php";
 
 $Query = "
@@ -37,3 +36,8 @@ $StockGroups = mysqli_fetch_all($Result, MYSQLI_ASSOC);
         }
     } ?>
 </div>
+
+<?php
+include __DIR__ . "/footer.php";
+
+?>
