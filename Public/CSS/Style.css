@@ -495,7 +495,8 @@ ul#ul-class-price li {
 }
 
  .footer {
-     position: relative;
+     bottom: 0;
+     position: absolute;
      width: 100%;
  }
 

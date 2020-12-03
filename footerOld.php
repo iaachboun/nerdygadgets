@@ -1,7 +1,10 @@
+
 <!-- Footer -->
 </div>
 </div>
 </div>
+
+
 </body>
 <footer class="page-footer footer font-small unique-color-dark">
 
@@ -12,9 +15,9 @@
         <div class="row py-4 d-flex align-items-center">
 
             <!-- Grid column -->
-<!--            <div class="col-md-6 col-lg-5  text-md-left mb-4 mb-md-0">-->
-<!--                <h4 class="mb-0">Bij vragen of opmerkingen, neem contact met ons op!</h4>-->
-<!--            </div>-->
+            <!--            <div class="col-md-6 col-lg-5  text-md-left mb-4 mb-md-0">-->
+            <!--                <h4 class="mb-0">Bij vragen of opmerkingen, neem contact met ons op!</h4>-->
+            <!--            </div>-->
             <!-- Grid column -->
 
         </div>
@@ -107,5 +110,9 @@
     <!-- Copyright -->
     </hr>
 </footer>
+
+Footer
+
+
 </html>
 

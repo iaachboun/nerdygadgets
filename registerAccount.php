@@ -1,6 +1,5 @@
 <?php require_once __DIR__ . "/header.php";
 require_once __DIR__ . "/connect.php";
-require_once __DIR__ . "/browse.php";
 
 
 if (isset($_POST["voornaam"])) {
@@ -45,6 +44,7 @@ if (isset($_GET['newAcc'])) {
     if ($_GET['newAcc'] == TRUE) {
         $html = '<div class="container">
                     <div class="row">
+                            <script src="https://www.google.com/recaptcha/api.js?render=6Lc1ffcZAAAAACvSDVgmKbgKBUapYoWdlHvhwScK"></script>
                         <form class="form-group" method="post" action="registerAccount.php">
                             <table style="height: 100%; width: 100%;">
                                 <tbody>
@@ -86,7 +86,6 @@ if (isset($_GET['newAcc'])) {
 
     }
 }
-
 ?>
 
 

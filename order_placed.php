@@ -6,7 +6,6 @@ include __DIR__ . "/connect.php";
 //bestelling is geplaatst
 
 if (isset($_GET["order_placed"])) {
-
     if (isset($_SESSION["customerID"])) {
         $customerID = $_SESSION["customerID"];
     } else {
