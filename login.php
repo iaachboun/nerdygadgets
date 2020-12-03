@@ -33,13 +33,29 @@ if (isset($_GET['logout'])) {
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
 
-    $query = "SELECT * FROM webshop_customers WHERE email = ? AND password = ?";
+    $query0 = "SELECT password FROM webshop_customers WHERE email = ?";
 
-    $Statement = mysqli_prepare($Connection, $query);
-    mysqli_stmt_bind_param($Statement, "ss", $_POST['email'], $_POST['password']);
-    mysqli_stmt_execute($Statement);
-    $R = mysqli_stmt_get_result($Statement);
-    $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
+    $Statement0 = mysqli_prepare($Connection, $query0);
+    mysqli_stmt_bind_param($Statement0, "s", $_POST['email']);
+    mysqli_stmt_execute($Statement0);
+    $R0 = mysqli_stmt_get_result($Statement0);
+    $R0 = mysqli_fetch_all($R0, MYSQLI_ASSOC);
+
+    if(password_verify($_POST['password'], $R0[0]['password'])) {
+        $query = "SELECT * FROM webshop_customers WHERE email = ?";
+
+        $Statement = mysqli_prepare($Connection, $query);
+        mysqli_stmt_bind_param($Statement, "s", $_POST['email']);
+        mysqli_stmt_execute($Statement);
+        $R = mysqli_stmt_get_result($Statement);
+        $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
+    }
+
+    else {
+        $html = '<div class="container"> <p>Verkeerde inlog gegevens</p>';
+        $html .= ' <a href="login.php"><button class="btn btn-primary">Ga terug</button></a></div>';
+
+    }
 
     if (isset($R[0]["customerID"])) {
         //Test om ingelogde mail op te slaan in session

@@ -155,8 +155,7 @@ print '</body>
 
 <!--Mobiele weergave, work in progress door Pascal
 -->
-<!--        <div class="w3-container w3-padding-16 cart-section-mobile">
-        <?php
+<!--        <?php
 /*        foreach ($_SESSION["cart"] as $productnummer => $aantal) {
             print '<div class="w3-row">';
             print '<div class="w3-col s1">';

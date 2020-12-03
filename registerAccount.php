@@ -21,9 +21,14 @@ if (isset($_POST["voornaam"])) {
                 </div>';
         echo $html;
     } else {
+        $hash = '';
+        if(isset($_POST["password"])) {
+            $password = $_POST["password"];
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+        }
         $query = "INSERT INTO `webshop_customers` (`firstname`, `insertion`, `lastname`, `streetname`, `housenumber`, `addition`, `city`, `phone`, `postal_code`, `email`, `password`) VALUES (?, ?, ?, ?,?,?,?,?, ?,?,?);";
         $Statement = mysqli_prepare($Connection, $query);
-        mysqli_stmt_bind_param($Statement, "ssssississs", $_POST["voornaam"], $_POST["tussenvoegsel"], $_POST["achternaam"], $_POST["straatnaam"], $_POST["huisnummer"], $_POST["toevoeging"], $_POST["woonplaats"], $_POST["telefoonnummer"], $_POST["postcode"], $_POST["email"], $_POST["password"]);
+        mysqli_stmt_bind_param($Statement, "ssssississs", $_POST["voornaam"], $_POST["tussenvoegsel"], $_POST["achternaam"], $_POST["straatnaam"], $_POST["huisnummer"], $_POST["toevoeging"], $_POST["woonplaats"], $_POST["telefoonnummer"], $_POST["postcode"], $_POST["email"], $hash);
         mysqli_stmt_execute($Statement);
         $html = '<p class="inlogStatus">Je account is aangemaakt! <a href="index.php"><button class="btn btn-primary">Ga Terug</button></a></p>';
         echo $html;
@@ -31,6 +36,8 @@ if (isset($_POST["voornaam"])) {
 
 
 }
+
+//Test variabelen
 
 if (isset($_GET['newAcc'])) {
     if ($_GET['newAcc'] == TRUE) {
@@ -74,6 +81,7 @@ if (isset($_GET['newAcc'])) {
                     </div>
                 </div>';
         echo $html;
+
     }
 }
 
