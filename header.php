@@ -95,7 +95,7 @@ include "connect.php";
                                 echo "<a href='login.php?logout=TRUE' style='color: white;'><i class='fas fa-sign-out-alt' style='color:#676EFF;'></i> Uitloggen</a>";
                             }
                         } else {
-                            echo "<a href='login.php' style='color: white;'><i class='fas fa-user' style='color:#676EFF;'></i> Inloggen</a>";
+                            echo "<a href='login.php' style='color: white;'><i class='fas fa-user' style='color:#676eff;'></i> Inloggen</a>";
                         } ?>
                     </li>
                     &nbsp;
