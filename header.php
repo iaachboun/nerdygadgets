@@ -98,7 +98,7 @@ include "connect.php";
                             echo "<a href='login.php' style='color: white;'><i class='fas fa-user' style='color:#676eff;'></i> Inloggen</a>";
                         } ?>
                     </li>
-                    &nbsp;
+
                     <li>
                         <a href="browse.php" class="HrefDecoration"><i class="fas fa-search"
                                                                        style="color:#676EFF;"> </i>
