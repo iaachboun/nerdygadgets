@@ -55,7 +55,7 @@ $R3 = mysqli_fetch_all($R3, MYSQLI_ASSOC);
 
 //query voor prijs
 $query4 = "
-                        SELECT SI.RecommendedRetailPrice * WOL.quantity
+                        SELECT (RecommendedRetailPrice*(1+(TaxRate/100))) * WOL.quantity
                         FROM stockitems SI
                         JOIN webshop_orderlines WOL ON SI.StockItemID = WOL.StockItemID
                         JOIN webshop_orders WO ON WOL.orderID = WO.orderID
@@ -173,7 +173,7 @@ $R4 = mysqli_fetch_all($R4, MYSQLI_ASSOC);
 
 
                     $query4 = "
-                        SELECT SI.RecommendedRetailPrice * WOL.quantity
+                        SELECT (RecommendedRetailPrice*(1+(TaxRate/100))) * WOL.quantity
                         FROM stockitems SI
                         JOIN webshop_orderlines WOL ON SI.StockItemID = WOL.StockItemID
                         JOIN webshop_orders WO ON WOL.orderID = WO.orderID
