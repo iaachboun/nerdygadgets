@@ -41,7 +41,8 @@ if (isset($_POST['submit'])) {
     $R0 = mysqli_stmt_get_result($Statement0);
     $R0 = mysqli_fetch_all($R0, MYSQLI_ASSOC);
 
-    if(password_verify($_POST['password'], $R0[0]['password'])) {
+    if(password_verify($_POST['password'], $R0[0]['pass
+    ord'])) {
         $query = "SELECT * FROM webshop_customers WHERE email = ?";
 
         $Statement = mysqli_prepare($Connection, $query);

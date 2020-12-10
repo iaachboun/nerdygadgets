@@ -198,6 +198,36 @@ if ($R) {
             }
             ?>
         </div>
+
+<?php
+
+        $Query = "
+                SELECT SI.IsChillerStock
+                FROM stockitems SI
+                WHERE StockItemID = ?";
+
+        $Statement = mysqli_prepare($Connection, $Query);
+        mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
+        mysqli_stmt_execute($Statement);
+        $R_IsChilled = mysqli_stmt_get_result($Statement);
+        $R_IsChilled = mysqli_fetch_all($R_IsChilled, MYSQLI_ASSOC);
+
+        if ($R_IsChilled[0]["IsChillerStock"] == 1) {
+            print <<<TEMP
+
+
+        <div id="Temperature">
+
+            <img id="temp" src="Public/Img/temp.png" alt="" width="128" height="128">
+            <h3>Dit product is momenteel </h3>
+            <h2 style="color:blue;">X °C</h2>
+
+            </div>
+TEMP;
+        }
+
+        ?>
+
         <?php
     } else {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php

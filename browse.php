@@ -90,6 +90,7 @@ if ($CategoryID == "") {
         $queryBuildResult = "WHERE " . $queryBuildResult;
     }
 
+    
     $Query = "
                 SELECT SI.StockItemID, SI.StockItemName, SI.MarketingComments, ROUND(TaxRate * RecommendedRetailPrice / 100 + RecommendedRetailPrice,2) as SellPrice,
                 (CASE WHEN (SIH.QuantityOnHand) >= ? THEN 'Ruime voorraad beschikbaar.' ELSE CONCAT('Voorraad: ',QuantityOnHand) END) AS QuantityOnHand, 
