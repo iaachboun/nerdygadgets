@@ -501,6 +501,15 @@ ul#ul-class-price li {
     background-repeat: no-repeat;
     background-size: 200px auto;
 }
+#left {
+    float:left;
+    width:100px;
+    height: 20px;
+    background: #ff0000;
+input.klein {
+    width: 10px;
+    height: 10px;
+}
 .plaatjes {
     background-repeat: no-repeat;
     background-size: 200px auto;
