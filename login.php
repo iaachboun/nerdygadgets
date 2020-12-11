@@ -41,8 +41,7 @@ if (isset($_POST['submit'])) {
     $R0 = mysqli_stmt_get_result($Statement0);
     $R0 = mysqli_fetch_all($R0, MYSQLI_ASSOC);
 
-    if(password_verify($_POST['password'], $R0[0]['pass
-    ord'])) {
+    if(password_verify($_POST['password'], $R0[0]['password'])) {
         $query = "SELECT * FROM webshop_customers WHERE email = ?";
 
         $Statement = mysqli_prepare($Connection, $query);
@@ -82,7 +81,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['login'] = TRUE;
         $html = '<div class="container">
                     <div class="row">
-                        <div class="col-6" style="margin: 0 auto">
+                        <div class"=col-6" style="margin: 0 auto">
                             <p class="inlogStatus">Je bent ingelogd <a href="index.php"><button class="btn btn-primary">Ga Terug</button></a></p>
                         </div>
                     </div>
@@ -155,8 +154,4 @@ function showLoginForm()
     }
 </script>
 <br><br><br><br><br>
-<?php
-include __DIR__ . "/footer.php";
-
-?>
 

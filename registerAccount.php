@@ -89,6 +89,3 @@ if (isset($_GET['newAcc'])) {
 ?>
 
 
-<?php
-include __DIR__ . "/footer.php";
-?>

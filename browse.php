@@ -294,9 +294,5 @@ if (isset($amount)) {
 </div>
 
 <!--Als je op een product klikt, gaat de footer raar doen en kun je niet meer klikken op winkelwagen.-->
-<?php
-//include __DIR__ . "/footer.php";
-//
-//?>
 
 
