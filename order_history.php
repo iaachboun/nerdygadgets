@@ -168,6 +168,7 @@ $R4 = mysqli_fetch_all($R4, MYSQLI_ASSOC);
             <?php
             foreach ($R4 AS $naam => $aantal) {
                 foreach ($aantal as $naam1 => $prijs) {
+                    print '€';
                     print $prijs;
                     print '<br>';
 

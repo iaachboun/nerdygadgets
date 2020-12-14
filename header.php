@@ -57,7 +57,7 @@ include "connect.php";
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" style="color:#ffffff" >Alle categorieeen</a>
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" style="color:#ffffff" >Alle categorieën</a>
 
                 <?php
                 $Query = "
@@ -104,7 +104,7 @@ include "connect.php";
                         <?php
                         if (isset($_SESSION['login'])) {
                             if ($_SESSION['login'] == FALSE) {
-                                echo "<a href='login.php' style='color: white;'><i class='fas fa-user' style='color:#676EFF;'></i> Inloggen</a>";
+                                echo "<a href='login.php' style='color: white;'><i class='fas fa-user' style='color:#676EFF;'></i>Inloggen</a>";
                             } else {
                                 echo "<a href='login.php?logout=TRUE' style='color: white;'><i class='fas fa-sign-out-alt' style='color:#676EFF;'></i>Uitloggen</a>";
                             }
@@ -115,11 +115,10 @@ include "connect.php";
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" style="color:#ffffff" href="#"> <i class="fas fa-angle-down" style="color:#676EFF;"></i>Klantomgeving</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Bestelhistorie</a>
+                            <a class="dropdown-item" href="order_history.php">Bestelhistorie</a>
                             <a class="dropdown-item" href="#">Klantgegevens</a>
                         </div>
                     </li>
-
                     <li>
                         <a href="browse.php" class="HrefDecoration"><i class="fas fa-search"
                                                                        style="color:#676EFF;"> </i>
