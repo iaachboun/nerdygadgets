@@ -124,7 +124,7 @@ if ($CategoryID == "") {
     if ($queryBuildResult != "") {
         $queryBuildResult .= " AND ";
     }
-
+    
     $Query = "
                 SELECT SI.StockItemID, SI.StockItemName, SI.MarketingComments, 
                 ROUND(SI.TaxRate * SI.RecommendedRetailPrice / 100 + SI.RecommendedRetailPrice,2) as SellPrice, 
@@ -144,8 +144,12 @@ if ($CategoryID == "") {
     mysqli_stmt_bind_param($Statement, "iiii", $ShowStockLevel, $CategoryID, $ProductsOnPage, $Offset);
     mysqli_stmt_execute($Statement);
     $ReturnableResult = mysqli_stmt_get_result($Statement);
+    $starttime = microtime(true);
     $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
+    $endtime = microtime(true);
+    $duration = $endtime - $starttime; //calculates total time taken
 
+    var_dump($duration);
     $Query = "
                 SELECT count(*)
                 FROM stockitems SI 
