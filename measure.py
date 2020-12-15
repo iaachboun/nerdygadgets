@@ -87,19 +87,25 @@ try:
         # get the sensor_id for temperature sensor
        
         # measure temperature
-        Temperature = round(sh.get_temperature())
+        Temp = round(sh.get_temperature())
       
         timeNow = datetime.now()
-        minute = (timeNow.strftime("%-M"))
-        minuteInt = int(minute)        
+        dateTime = timeNow.strftime("%Y-%m-%d %H:%M:%S");
+        print(dateTime)
     
         # verbo
         if verbose:
-            print("Temperature: %s " % Temperature )
+            print("Temperature: %s " % Temp )
 
         # store measurement in database
         try:
-            cursor.execute('UPDATE coldroomtemperatures SET Temperature = Temperature, RecordedWhen = "2020-12-14 23:59:24", ValidFrom = "2020-12-14", ValidTo = "2020-12-16"WHERE ColdRoomSensorNumber = 5;')
+            sql = "UPDATE coldroomtemperatures SET Temperature = {} ,RecordedWhen = '{}', ValidFrom = '2020-12-14 19:50:32', ValidTo = '2021-12-16 19:50:31' WHERE ColdRoomSensorNumber = 5;".format(Temp, dateTime)
+            print(sql)
+            cursor.execute("Insert into coldroomtemperatures_archive select * from coldroomtemperatures where coldroomsensornumber = 5")
+            cursor.execute(sql)
+            print("Temp updated")
+            
+            print("Archive Updated")
         except mariadb.Error as err:
             print("Error: {}".format(err))
 
