@@ -99,7 +99,8 @@ try:
 
         # store measurement in database
         try:
-            cursor.execute('UPDATE coldroomtemperatures SET Temperature = Temperature, RecordedWhen = "2020-12-14 23:59:24", ValidFrom = "2020-12-14", ValidTo = "2020-12-16"WHERE ColdRoomSensorNumber = 5;')
+            sql = 'UPDATE coldroomtemperatures SET Temperature = 32.0 , RecordedWhen = "2020-12-14 23:59:24", ValidFrom = "2020-12-14", ValidTo = "2020-12-16"WHERE ColdRoomSensorNumber = 5;'
+            cursor.execute(sql)
         except mariadb.Error as err:
             print("Error: {}".format(err))
 

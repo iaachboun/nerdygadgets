@@ -15,7 +15,7 @@ $em = mysqli_stmt_get_result($Statement);
 
 
 $UpdateArchive = "INSERT INTO coldroomtemperatures_archive (ColdRoomTemperatureID, ColdRoomSensorNumber, RecordedWhen, Temperature, ValidFrom, ValidTo)
-VALUES (0, 5, '2020-12-14 23:59:24', 7, '2020-12-14', '2020-12-15')";
+VALUES (0, 5, '2020-12-14 23:59:24', %i, '2020-12-14', '2020-12-15') % temp";
 
 $Statement = mysqli_prepare($Connection, $UpdateArchive);
 mysqli_stmt_execute($Statement);
