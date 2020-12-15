@@ -219,6 +219,18 @@ ul#ul-class-navigation li {
     font-family: pt-sans, sans-serif;
     font-size: 20px;
 }
+#Temperature {
+    background-color: rgba(35, 40, 47, 0.8);
+    width: 49%;
+    float: left;
+    padding: 10px;
+    margin-left: 1%;
+    margin-top:10px;
+    border: 1px solid;
+    font-family: pt-sans, sans-serif;
+    font-size: 20px;
+}
+
 .Labels {
     margin-bottom: 0;
     padding: 10px;
@@ -488,6 +500,15 @@ ul#ul-class-price li {
 .plaatjes {
     background-repeat: no-repeat;
     background-size: 200px auto;
+}
+#left {
+    float:left;
+    width:100px;
+    height: 20px;
+    background: #ff0000;
+input.klein {
+    width: 10px;
+    height: 10px;
 }
 .plaatjes {
     background-repeat: no-repeat;

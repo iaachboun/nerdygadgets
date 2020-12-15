@@ -131,7 +131,7 @@ $R4 = mysqli_fetch_all($R4, MYSQLI_ASSOC);
                         WHERE WC.email = ?";
 
                     $Statement = mysqli_prepare($Connection, $query2);
-                    mysqli_stmt_bind_param($Statement, "s", $_SESSION['email_login']);
+                    mysqli_stmt_bind_param($Statement, "s", $_SESSION['email_log3in']);
                     mysqli_stmt_execute($Statement);
                     $R2 = mysqli_stmt_get_result($Statement);
                     $R2 = mysqli_fetch_all($R2, MYSQLI_ASSOC);
@@ -191,6 +191,8 @@ $R4 = mysqli_fetch_all($R4, MYSQLI_ASSOC);
         </td>
     </tr>
 </html>
+
+
 
 <?php
 // overbodig?? Ben er nog mee bezig

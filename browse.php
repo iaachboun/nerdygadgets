@@ -90,6 +90,7 @@ if ($CategoryID == "") {
         $queryBuildResult = "WHERE " . $queryBuildResult;
     }
 
+    
     $Query = "
                 SELECT SI.StockItemID, SI.StockItemName, SI.MarketingComments, ROUND(TaxRate * RecommendedRetailPrice / 100 + RecommendedRetailPrice,2) as SellPrice,
                 (CASE WHEN (SIH.QuantityOnHand) >= ? THEN 'Ruime voorraad beschikbaar.' ELSE CONCAT('Voorraad: ',QuantityOnHand) END) AS QuantityOnHand, 
@@ -297,9 +298,5 @@ if (isset($amount)) {
 </div>
 
 <!--Als je op een product klikt, gaat de footer raar doen en kun je niet meer klikken op winkelwagen.-->
-<?php
-//include __DIR__ . "/footer.php";
-//
-//?>
 
 

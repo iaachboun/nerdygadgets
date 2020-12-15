@@ -216,9 +216,7 @@ foreach ($_SESSION["cart"] as $productnummer => $aantal) {
 
 <!--FOOTER-->
 <!--<br><br><br><br><br><br>-->
-<?php
-//include __DIR__ . "/footer.php";
-//?>
+
 
 
 

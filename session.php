@@ -40,6 +40,3 @@ function SeeHistory($history) {
     }
 }
 
-//function SeeHistory($history) {
-//    $_SESSION[""]
-//}
