@@ -29,7 +29,7 @@ if (isset($_GET['logout'])) {
         echo $html;
     }
 }
-
+// Submit van login formulier
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
 
