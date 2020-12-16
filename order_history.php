@@ -71,6 +71,9 @@ $R4 = mysqli_fetch_all($R4, MYSQLI_ASSOC);
 ?>
 
 
+<?php
+
+?>
 
 <html>
 <head>
@@ -169,7 +172,7 @@ $R4 = mysqli_fetch_all($R4, MYSQLI_ASSOC);
             foreach ($R4 AS $naam => $aantal) {
                 foreach ($aantal as $naam1 => $prijs) {
                     print '€';
-                    print $prijs;
+                    print round(($prijs),2);
                     print '<br>';
 
 
@@ -192,6 +195,3 @@ $R4 = mysqli_fetch_all($R4, MYSQLI_ASSOC);
         </td>
     </tr>
 </html>
-
-
-
