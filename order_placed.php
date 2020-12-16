@@ -27,8 +27,6 @@ if (isset($_GET["order_placed"])) {
             mysqli_stmt_execute($Statement);
             $customerID = mysqli_insert_id($Connection);
         }
-
-
     }
 
     $query2 = "INSERT INTO webshop_orders(customerID)

@@ -21,7 +21,8 @@ include "connect.php";
     <title>NerdyGadgets</title>
     <script src="https://kit.fontawesome.com/77789b20d3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="Public/CSS/Style.css" type="text/css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="Public/CSS/styleNew.css" type="text/css">
     <link rel="stylesheet" href="Public/CSS/nha3fuq.css">
     <link rel="apple-touch-icon" sizes="57x57" href="Public/img/LOGONG.png">
@@ -56,9 +57,12 @@ include "connect.php";
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" style="color:#ffffff">Alle
+                        categorieeen</a>
 
-                <?php
-                $Query = "
+                    <?php
+                    $Query = "
                                     SELECT StockGroupID, StockGroupName, ImagePath
                                     FROM stockgroups
                                     WHERE StockGroupID IN (
@@ -66,21 +70,33 @@ include "connect.php";
                                                             FROM stockitemstockgroups
                                                             ) AND ImagePath IS NOT NULL
                                     ORDER BY StockGroupID ASC";
-                $Statement = mysqli_prepare($Connection, $Query);
-                mysqli_stmt_execute($Statement);
-                $HeaderStockGroups = mysqli_stmt_get_result($Statement);
+                    $Statement = mysqli_prepare($Connection, $Query);
+                    mysqli_stmt_execute($Statement);
+                    $HeaderStockGroups = mysqli_stmt_get_result($Statement);
 
-                foreach ($HeaderStockGroups as $HeaderStockGroup) {
+                    foreach ($HeaderStockGroups as $HeaderStockGroup) {
+                        ?>
+
+                        <div class="dropdown-menu">
+                            <a href="browse.php?category_id=<?php print $HeaderStockGroup['StockGroupID'] = "1"; ?>"
+                               class="dropdown-item"><?php print $HeaderStockGroup['StockGroupName'] = "Novelty Items"; ?></a>
+                            <a href="browse.php?category_id=<?php print $HeaderStockGroup['StockGroupID'] = "2"; ?>"
+                               class="dropdown-item"><?php print $HeaderStockGroup['StockGroupName'] = "Clothing"; ?></a>
+                            <a href="browse.php?category_id=<?php print $HeaderStockGroup['StockGroupID'] = "3"; ?>"
+                               class="dropdown-item"><?php print $HeaderStockGroup['StockGroupName'] = "Mugs"; ?></a>
+                            <a href="browse.php?category_id=<?php print $HeaderStockGroup['StockGroupID'] = "4"; ?>"
+                               class="dropdown-item"><?php print $HeaderStockGroup['StockGroupName'] = "T-shirts"; ?></a>
+                            <a href="browse.php?category_id=<?php print $HeaderStockGroup['StockGroupID'] = "9"; ?>"
+                               class="dropdown-item"><?php print $HeaderStockGroup['StockGroupName'] = "Toys"; ?></a>
+                            <a href="browse.php?category_id=<?php print $HeaderStockGroup['StockGroupID'] = "6"; ?>"
+                               class="dropdown-item"><?php print $HeaderStockGroup['StockGroupName'] = "Computing Novelties"; ?></a>
+                            <a href="browse.php?category_id=<?php print $HeaderStockGroup['StockGroupID'] = "7"; ?>"
+                               class="dropdown-item"><?php print $HeaderStockGroup['StockGroupName'] = "USB Novelties"; ?></a>
+                        </>
+                        <?php
+                    }
                     ?>
-                    <li class="nav-item active">
-                        <a href="browse.php?category_id=<?php print $HeaderStockGroup['StockGroupID']; ?>"
-                           class="nav-link"><?php print $HeaderStockGroup['StockGroupName']; ?></a>
-                    </li>
-                    <?php
-                }
-                ?>
-                <li class="nav-item active">
-                    <a href="categories.php" class="nav-link"> Alle categorieën</a>
+
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -95,10 +111,22 @@ include "connect.php";
                                 echo "<a href='login.php?logout=TRUE' style='color: white;'><i class='fas fa-sign-out-alt' style='color:#676EFF;'></i>Uitloggen</a>";
                             }
                         } else {
-                            echo "<a href='login.php' style='color: white;'><i class='fas fa-user' style='color:#676eff;'></i> Inloggen</a>";
+                            echo "<a href='login.php' style='color: #ffffff;'><i class='fas fa-user' style='color:#676eff;'></i> Login</a>";
                         } ?>
                     </li>
-
+                    <?php
+                    if (isset($_SESSION['login'])) {
+                        if ($_SESSION['login'] == FALSE) {
+                        } else {
+                            echo '<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" style="color:#ffffff" href="#"> <i class="fas fa-angle-down" style="color:#676EFF;"></i>Klantomgeving</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Bestelhistorie</a>
+                            <a class="dropdown-item" href="#">Klantgegevens</a>
+                        </div>
+                    </li>';
+                        }
+                    } ?>
                     <li>
                         <a href="browse.php" class="HrefDecoration"><i class="fas fa-search"
                                                                        style="color:#676EFF;"> </i>
@@ -108,7 +136,7 @@ include "connect.php";
                     <li>
                         <a href="cart.php" class="HrefDecoration"><i class="fas fa-shopping-cart"
                                                                      style="color:#676EFF;"></i>
-                            Winkelmandje</a>
+                            Winkelmand</a>
                     </li>
                 </ul>
             </form>
