@@ -199,12 +199,13 @@ if ($R) {
             ?>
         </div>
 
-<?php
-
-        $Query = "
-                SELECT SI.IsChillerStock
+        <?php
+        $Query = "SELECT SI.IsChillerStock, CRT.Temperature
                 FROM stockitems SI
-                WHERE StockItemID = ?";
+                JOIN stockitemholdings SIH ON SI.StockItemID = SIH.StockItemID
+                JOIN roomtemp_stockitemholdings RT_SIH ON SIH.BinLocation = RT_SIH.BinLocation
+                JOIN coldroomtemperatures CRT ON RT_SIH.ColdRoomSensorNumber = CRT.ColdRoomSensorNumber
+                WHERE SI.StockItemID = ?";
 
         $Statement = mysqli_prepare($Connection, $Query);
         mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
@@ -212,20 +213,18 @@ if ($R) {
         $R_IsChilled = mysqli_stmt_get_result($Statement);
         $R_IsChilled = mysqli_fetch_all($R_IsChilled, MYSQLI_ASSOC);
 
+
         if ($R_IsChilled[0]["IsChillerStock"] == 1) {
+            $Temperature = $R_IsChilled[0]["Temperature"];
+
             print <<<TEMP
-
-
-        <div id="Temperature">
-
-            <img id="temp" src="Public/Img/temp.png" alt="" width="128" height="128">
-            <h3>Dit product is momenteel </h3>
-            <h2 style="color:blue;">X °C</h2>
-
-            </div>
+                <div id="Temperature">
+                    <img id="temp" src="Public/Img/temp.png" alt="" width="128" height="128">
+                    <h3>Dit product is momenteel </h3>
+                    <h2 style="color:lightskyblue;">$Temperature °C</h2>
+                </div>
 TEMP;
         }
-
         ?>
 
         <?php
@@ -266,12 +265,11 @@ if (isset($R[0])) {
         $customerData = mysqli_fetch_all($customerData, MYSQLI_ASSOC);
 
 
-
         if ($result['Aanbeveling'] == TRUE) {
             $html .= '<div class="customer-review" style="border: 2px solid rgba(9,255,0,0.62)">';
             $html .= "<p class='review-naam'> " . $customerData[0]['firstname'] . ' ' . $customerData[0]['lastname'];
             $html .= ' <i class="fas fa-thumbs-up thumbIcon" style="color: rgba(9,255,0,0.62)"></i></p>';
-        } else{
+        } else {
             $html .= '<div class="customer-review" style="border: 2px solid red">';
             $html .= "<p class='review-naam'> " . $customerData[0]['firstname'] . ' ' . $customerData[0]['lastname'];
             $html .= ' <i class="fas fa-thumbs-down thumbIcon" style="color: red"></i></p>';
