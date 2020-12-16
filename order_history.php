@@ -98,7 +98,7 @@ $R4 = mysqli_fetch_all($R4, MYSQLI_ASSOC);
 
 
                     $query1 = "
-                                SELECT DISTINCT WO.orderID
+                                SELECT DISTINCT WO.orderID 
                                 FROM stockitems SI
                                 JOIN webshop_orderlines WOL ON SI.StockItemID = WOL.StockItemID
                                 JOIN webshop_orders WO ON WOL.orderID = WO.orderID
