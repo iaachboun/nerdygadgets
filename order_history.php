@@ -3,243 +3,74 @@ include __DIR__ . "/header.php";
 include __DIR__ . "/connect.php";
 ?>
 
-    <html>
-    <h1> Uw bestelhistorie</h1>
-    </html>
-
-<?php
-//query voor ordernummer
- $query1 = "
-                        SELECT DISTINCT WO.orderID
-                        FROM stockitems SI
-                        JOIN webshop_orderlines WOL ON SI.StockItemID = WOL.StockItemID
-                        JOIN webshop_orders WO ON WOL.orderID = WO.orderID
-                        JOIN webshop_customers WC ON WO.customerID = WC.customerID
-                        WHERE WC.email = ?";
-
-                    $Statement = mysqli_prepare($Connection, $query1);
-                    mysqli_stmt_bind_param($Statement, "i", $_SESSION['email_login']);
-                    mysqli_stmt_execute($Statement);
-                    $R1 = mysqli_stmt_get_result($Statement);
-                    $R1 = mysqli_fetch_all($R1, MYSQLI_ASSOC);
-
-//query voor productnaam
-$query2 = "
-                        SELECT SI.StockItemName
-                        FROM stockitems SI
-                        JOIN webshop_orderlines WOL ON SI.StockItemID = WOL.StockItemID
-                        JOIN webshop_orders WO ON WOL.orderID = WO.orderID
-                        JOIN webshop_customers WC ON WO.customerID = WC.customerID
-                        WHERE WC.email = ?";
-
-$Statement = mysqli_prepare($Connection, $query2);
-mysqli_stmt_bind_param($Statement, "s", $_SESSION['email_login']);
-mysqli_stmt_execute($Statement);
-$R2 = mysqli_stmt_get_result($Statement);
-$R2 = mysqli_fetch_all($R2, MYSQLI_ASSOC);
-
-//query voor aantal
-$query3 = "
-                        SELECT WOL.quantity
-                        FROM stockitems SI
-                        JOIN webshop_orderlines WOL ON SI.StockItemID = WOL.StockItemID
-                        JOIN webshop_orders WO ON WOL.orderID = WO.orderID
-                        JOIN webshop_customers WC ON WO.customerID = WC.customerID
-                        WHERE WC.email = ?";
-
-$Statement = mysqli_prepare($Connection, $query3);
-mysqli_stmt_bind_param($Statement, "i", $_SESSION['email_login']);
-mysqli_stmt_execute($Statement);
-$R3 = mysqli_stmt_get_result($Statement);
-$R3 = mysqli_fetch_all($R3, MYSQLI_ASSOC);
-
-//query voor prijs
-$query4 = "
-                        SELECT (RecommendedRetailPrice*(1+(TaxRate/100))) * WOL.quantity
-                        FROM stockitems SI
-                        JOIN webshop_orderlines WOL ON SI.StockItemID = WOL.StockItemID
-                        JOIN webshop_orders WO ON WOL.orderID = WO.orderID
-                        JOIN webshop_customers WC ON WO.customerID = WC.customerID
-                        WHERE WC.email = ?";
-
-$Statement = mysqli_prepare($Connection, $query4);
-mysqli_stmt_bind_param($Statement, "s", $_SESSION['email_login']);
-mysqli_stmt_execute($Statement);
-$R4 = mysqli_stmt_get_result($Statement);
-$R4 = mysqli_fetch_all($R4, MYSQLI_ASSOC);
-
-?>
-
-
-
 <html>
+
 <head>
-<style>
-    table, th, td {
-        border: 1px solid white;
-    }
-</style>
+    <style>
+        table, th, td {
+            border: 1px solid white;
+        }
+    </style>
 </head>
 <body>
-<table style="text-align: center">
-    <tr>
-        <th>Ordernummer</th>
-        <th>Productnaam</th>
-        <th>Aantal</th>
-        <th>Prijs</th>
-    </tr>
-    <tr>
-        <td>
-        <?php
-            foreach ($R1 AS $naam => $aantal) {
-                foreach ($aantal as $naam1 => $prijs) {
-                    print $prijs;
-                        print '<br>';
+<h1> Uw bestelhistorie</h1>
 
 
-                    $query1 = "
-                                SELECT DISTINCT WO.orderID 
+<?php
+
+$queryOrders = "                     SELECT DISTINCT WO.orderID
                                 FROM stockitems SI
                                 JOIN webshop_orderlines WOL ON SI.StockItemID = WOL.StockItemID
                                 JOIN webshop_orders WO ON WOL.orderID = WO.orderID
                                 JOIN webshop_customers WC ON WO.customerID = WC.customerID
                                 WHERE WC.email = ?";
 
-                    $Statement = mysqli_prepare($Connection, $query1);
-                    mysqli_stmt_bind_param($Statement, "i", $_SESSION['email_login']);
-                    mysqli_stmt_execute($Statement);
-                    $R1 = mysqli_stmt_get_result($Statement);
-                    $R1 = mysqli_fetch_all($R1, MYSQLI_ASSOC);
-   }
-}
-            ?>
-        </td>
-        <td>
-            <?php
-            foreach ($R2 AS $naam => $aantal) {
-                foreach ($aantal as $naam1 => $prijs) {
-                    print $prijs;
-                    print '<br>';
+$Statement = mysqli_prepare($Connection, $queryOrders);
+mysqli_stmt_bind_param($Statement, "i", $_SESSION['email_login']);
+mysqli_stmt_execute($Statement);
+$orders = mysqli_stmt_get_result($Statement);
+$orders = mysqli_fetch_all($orders, MYSQLI_ASSOC);
 
 
-                    $query1 = "
-                        SELECT SI.StockItemName
+foreach($orders as $order){
+    $orderID = $order['orderID'];
+    $queryOrder = "
+                        SELECT SI.StockItemName,WOL.quantity, (RecommendedRetailPrice*(1+(TaxRate/100))) * WOL.quantity as price
                         FROM stockitems SI
                         JOIN webshop_orderlines WOL ON SI.StockItemID = WOL.StockItemID
                         JOIN webshop_orders WO ON WOL.orderID = WO.orderID
                         JOIN webshop_customers WC ON WO.customerID = WC.customerID
-                        WHERE WC.email = ?";
+                        WHERE WOL.orderID = ?";
 
-                    $Statement = mysqli_prepare($Connection, $query2);
-                    mysqli_stmt_bind_param($Statement, "s", $_SESSION['email_log3in']);
-                    mysqli_stmt_execute($Statement);
-                    $R2 = mysqli_stmt_get_result($Statement);
-                    $R2 = mysqli_fetch_all($R2, MYSQLI_ASSOC);
-                }
-            }
-            ?>
-        </td>
-        <td>
-            <?php
-            foreach ($R3 AS $naam => $aantal) {
-                foreach ($aantal as $naam1 => $prijs) {
-                    print $prijs;
-                    print '<br>';
+    $Statement = mysqli_prepare($Connection, $queryOrder);
+    mysqli_stmt_bind_param($Statement, "i", $orderID);
+    mysqli_stmt_execute($Statement);
+    $order = mysqli_stmt_get_result($Statement);
+    $order = mysqli_fetch_all($order, MYSQLI_ASSOC);
 
+    print("Order $orderID <br>");
+    print("<table style='text-align: center'>");
+    print("<tr> <th>Productnaam</th> <th>Aantal</th>  <th>Prijs</th>  </tr>");
 
-                    $query3 = "
-                        SELECT WOL.quantity
-                        FROM stockitems SI
-                        JOIN webshop_orderlines WOL ON SI.StockItemID = WOL.StockItemID
-                        JOIN webshop_orders WO ON WOL.orderID = WO.orderID
-                        JOIN webshop_customers WC ON WO.customerID = WC.customerID
-                        WHERE WC.email = ?";
+    foreach($order as $orderline){
 
-                    $Statement = mysqli_prepare($Connection, $query3);
-                    mysqli_stmt_bind_param($Statement, "i", $_SESSION['email_login']);
-                    mysqli_stmt_execute($Statement);
-                    $R3 = mysqli_stmt_get_result($Statement);
-                    $R3 = mysqli_fetch_all($R3, MYSQLI_ASSOC);
-                }
-            }
-            ?>
-        </td>
-        <td>
-            <?php
-            foreach ($R4 AS $naam => $aantal) {
-                foreach ($aantal as $naam1 => $prijs) {
-                    print $prijs;
-                    print '<br>';
+        $siName =  $orderline['StockItemName'];
+        $quantity =  $orderline['quantity'];
+        $price =  round($orderline['price'],2);
+        print("<tr>");
+        print("<td> $siName </td>");
+        print("<td> $quantity </td>");
+        print("<td> € $price </td>");
+
+        print("</tr>");
+
+    }
+    print("</table> <br>");
+
+    ;}
 
 
-                    $query4 = "
-                        SELECT (RecommendedRetailPrice*(1+(TaxRate/100))) * WOL.quantity
-                        FROM stockitems SI
-                        JOIN webshop_orderlines WOL ON SI.StockItemID = WOL.StockItemID
-                        JOIN webshop_orders WO ON WOL.orderID = WO.orderID
-                        JOIN webshop_customers WC ON WO.customerID = WC.customerID
-                        WHERE WC.email = ?";
+?>
 
-                    $Statement = mysqli_prepare($Connection, $query4);
-                    mysqli_stmt_bind_param($Statement, "s", $_SESSION['email_login']);
-                    mysqli_stmt_execute($Statement);
-                    $R4 = mysqli_stmt_get_result($Statement);
-                    $R4 = mysqli_fetch_all($R4, MYSQLI_ASSOC);
-                }
-            }
-            ?>
-        </td>
-    </tr>
+</body>
 </html>
-
-
-
-<?php
-// overbodig?? Ben er nog mee bezig
-/*foreach ($R1 AS $naam => $aantal) {
-   foreach ($aantal as $naam1 => $prijs) {
-     print $prijs;
-       print '<br>';
-
-
-            $query1 = "
-                        SELECT SI.StockItemName, WOL.quantity, SI.RecommendedRetailPrice * WOL.quantity
-                        FROM stockitems SI
-                        JOIN webshop_orderlines WOL ON SI.StockItemID = WOL.StockItemID
-                        JOIN webshop_orders WO ON WOL.orderID = WO.orderID
-                        JOIN webshop_customers WC ON WO.customerID = WC.customerID
-                        WHERE WC.email = ?";
-
-            $Statement = mysqli_prepare($Connection, $query1);
-            mysqli_stmt_bind_param($Statement, "s", $_SESSION['email_login']);
-            mysqli_stmt_execute($Statement);
-            $R1 = mysqli_stmt_get_result($Statement);
-            $R1 = mysqli_fetch_all($R1, MYSQLI_ASSOC);
-
-        }
-    }
-
-*/?>
-<?php
-/*foreach ($R2 as $orderid => $order) {
-    foreach($orderid as $orderid1 => $order1) {
-        print $order1;
-        print '<br>';
-
-
-
-    $query2 = "SELECT orderID
-               FROM webshop_orders WO
-               JOIN webshop_customers WC ON WO.customerID = WC.customerID
-               WHERE WC.email = ?";
-
-        $Statement = mysqli_prepare($Connection, $query2);
-        mysqli_stmt_bind_param($Statement, "i", $_SESSION['email_login']);
-        mysqli_stmt_execute($Statement);
-        $R2 = mysqli_stmt_get_result($Statement);
-        $R2 = mysqli_fetch_all($R2, MYSQLI_ASSOC);
-
-    }
-}
-
-*/?>

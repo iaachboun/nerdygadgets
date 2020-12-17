@@ -213,8 +213,11 @@ if ($R) {
         $R_IsChilled = mysqli_stmt_get_result($Statement);
         $R_IsChilled = mysqli_fetch_all($R_IsChilled, MYSQLI_ASSOC);
 
+        //Code om te checken of een product gekoeld is.
+        if($R_IsChilled == NULL){
 
-        if ($R_IsChilled[0]["IsChillerStock"] == 1) {
+        }
+        elseif ($R_IsChilled[0]["IsChillerStock"] == 1) {
             $Temperature = $R_IsChilled[0]["Temperature"];
 
             print <<<TEMP
