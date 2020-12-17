@@ -27,6 +27,7 @@ if (isset($_GET['logout'])) {
                 </div>
             </div>';
         echo $html;
+        unset($_SESSION["email_login"]);
     }
 }
 // Submit van login formulier

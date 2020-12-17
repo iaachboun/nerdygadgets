@@ -26,7 +26,7 @@ $queryOrders = "                     SELECT DISTINCT WO.orderID
                                 WHERE WC.email = ?";
 
 $Statement = mysqli_prepare($Connection, $queryOrders);
-mysqli_stmt_bind_param($Statement, "i", $_SESSION['email_login']);
+mysqli_stmt_bind_param($Statement, "s", $_SESSION['email_login']);
 mysqli_stmt_execute($Statement);
 $orders = mysqli_stmt_get_result($Statement);
 $orders = mysqli_fetch_all($orders, MYSQLI_ASSOC);
