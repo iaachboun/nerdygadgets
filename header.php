@@ -143,5 +143,5 @@ include "connect.php";
         <div class="col-12">
             <div id="SubContent"></div></div></div>
 
-    //Hier is iets niet pluis
+    <!--Hier is iets niet pluis-->
 
