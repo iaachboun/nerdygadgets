@@ -1,6 +1,7 @@
 <?php
 include __DIR__ . "/header.php";
 
+
 include_once "session.php";
 $SearchString = "";
 $ReturnableResult = null;

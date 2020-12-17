@@ -141,7 +141,7 @@ include "connect.php";
     </nav>
     <div class="row" id="Content">
         <div class="col-12">
-            <div id="SubContent"></div></div></div>
+            <div id="SubContent">
 
     <!--Hier is iets niet pluis-->
 
