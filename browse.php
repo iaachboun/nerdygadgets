@@ -1,6 +1,7 @@
 <?php
 include __DIR__ . "/header.php";
 
+
 include_once "session.php";
 $SearchString = "";
 $ReturnableResult = null;
@@ -150,7 +151,6 @@ if ($CategoryID == "") {
     $endtime = microtime(true);
     $duration = $endtime - $starttime; //calculates total time taken
 
-    var_dump($duration);
     $Query = "
                 SELECT count(*)
                 FROM stockitems SI 
