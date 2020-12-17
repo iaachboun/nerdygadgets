@@ -151,7 +151,6 @@ if ($CategoryID == "") {
     $endtime = microtime(true);
     $duration = $endtime - $starttime; //calculates total time taken
 
-    var_dump($duration);
     $Query = "
                 SELECT count(*)
                 FROM stockitems SI 
