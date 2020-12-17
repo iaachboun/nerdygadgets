@@ -3,7 +3,7 @@ session_start();
 include "connect.php";
 ?>
 <!DOCTYPE html>
-<html lang="en" style="background-color: rgb(35, 35, 47);" xmlns="http://www.w3.org/1999/html">
+<html lang="en" style="background-color: rgb(35, 35, 47);">
 <head>
     <script src="Public/JS/fontawesome.js" crossorigin="anonymous"></script>
     <script src="Public/JS/jquery.min.js"></script>
@@ -141,4 +141,7 @@ include "connect.php";
     </nav>
     <div class="row" id="Content">
         <div class="col-12">
-            <div id="SubContent"> </div></div></div></div>
+            <div id="SubContent"></div></div></div>
+
+    //Hier is iets niet pluis
+
