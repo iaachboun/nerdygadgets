@@ -112,18 +112,20 @@ include "connect.php";
                             echo "<a href='login.php' style='color: #ffffff;'><i class='fas fa-user' style='color:#676eff;'></i> Login</a>";
                         } ?>
                     </li>
-                    <li class="nav-item dropdown">
-                        <?php
-                        if (isset($_SESSION['login'])) {
-                            if ($_SESSION['login'] == TRUE) {
-                                print "<a class='nav-link dropdown-toggle' data-toggle='dropdown' style='color:#ffffff' href='#'> <i class='fas fa-angle-down' style='color:#676EFF;'></i>Klantomgeving</a>
-                        <div class='dropdown-menu'>
-                            <a class='dropdown-item' href='order_history.php'>Bestelhistorie</a>
-                            <a class='dropdown-item' href='#'>Klantgegevens</a>
-                        </div>";
-                            }
-                        }?>
-                    </li>
+                    <?php
+                    if (isset($_SESSION['login'])) {
+                        if ($_SESSION['login'] == FALSE) {
+                        } else {
+                            echo '<li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" style="color:#ffffff" href="#"> <i class="fas fa-angle-down" style="color:#676EFF;"></i>Klantomgeving</a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="bestelpagina.php">Bestelhistorie</a>
+                                            <a class="dropdown-item" href="klantgegevens.php">Klantgegevens</a>
+                                            <a class="dropdown-item" href="InlogGegevens.php">Inlog gegevens aanpassen</a>
+                                        </div>
+                                  </li>';
+                        }
+                    } ?>
                     <li>
                         <a href="browse.php" class="HrefDecoration"><i class="fas fa-search"
                                                                        style="color:#676EFF;"> </i>
@@ -142,6 +144,5 @@ include "connect.php";
     <div class="row" id="Content">
         <div class="col-12">
             <div id="SubContent">
-
     <!--Hier is iets niet pluis-->
 

@@ -76,9 +76,33 @@
     min-height: 200px;
     z-index: 1;
     border-bottom: 1px solid rgb(36, 41, 143);
-
 }
 
 .header-nav a {
     font-size: 1.2em;
+}
+
+.klantGegevensInput {
+    padding: 0 10px;
+    color: white;
+    width: 90%;
+    float: left;
+    border-radius: 5px;
+    outline: none;
+
+}
+
+.klantGegevensInputWrap {
+    margin: auto auto;
+    height: 50px;
+    border: 1px solid white;
+}
+
+.labelInput {
+    width: 700px;
+}
+
+.iconWW {
+    padding: 15px;
+    float: right
 }
