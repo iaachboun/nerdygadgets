@@ -213,7 +213,10 @@ if ($R) {
         $R_IsChilled = mysqli_stmt_get_result($Statement);
         $R_IsChilled = mysqli_fetch_all($R_IsChilled, MYSQLI_ASSOC);
 
-        if ($R_IsChilled[0]["IsChillerStock"] == 1) {
+        if ($R_IsChilled == NULL) {
+
+        }
+            elseif ($R_IsChilled[0]["IsChillerStock"] == 1) {
             $Temperature = $R_IsChilled[0]["Temperature"];
 
             print <<<TEMP
