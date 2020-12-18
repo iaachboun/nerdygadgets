@@ -4,6 +4,7 @@ include __DIR__ . "/header.php";
 include __DIR__ . "/connect.php";
 
 //bestelling is geplaatst
+$queryFailed = false;
 
 if (isset($_GET["order_placed"])) {
     if (isset($_SESSION["customerID"])) {
@@ -17,6 +18,9 @@ if (isset($_GET["order_placed"])) {
         $em = mysqli_stmt_get_result($Statement);
         $em = mysqli_fetch_all($em, MYSQLI_ASSOC);
 
+        mysqli_begin_transaction ($Connection);
+
+
         if (isset($em[0]['email'])) {
             echo 'email wordt al gebruikt!';
         } else {
@@ -24,8 +28,9 @@ if (isset($_GET["order_placed"])) {
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             $Statement = mysqli_prepare($Connection, $query);
             mysqli_stmt_bind_param($Statement, "ssssississ", $_SESSION["voornaam"], $_SESSION["tussenvoegsel"], $_SESSION["achternaam"], $_SESSION["straatnaam"], $_SESSION["huisnummer"], $_SESSION["toevoeging"], $_SESSION["woonplaats"], $_SESSION["telefoonnummer"], $_SESSION["postcode"], $_SESSION["email"]);
-            mysqli_stmt_execute($Statement);
+            $queryResult = mysqli_stmt_execute($Statement);
             $customerID = mysqli_insert_id($Connection);
+
         }
     }
 
@@ -34,7 +39,11 @@ if (isset($_GET["order_placed"])) {
 
     $Statement = mysqli_prepare($Connection, $query2);
     mysqli_stmt_bind_param($Statement, "i", $customerID);
-    mysqli_stmt_execute($Statement);
+    $queryResult =  (mysqli_stmt_execute($Statement));
+    if($queryResult == false){
+        $queryFailed = true;
+    }
+
     $orderID = mysqli_insert_id($Connection);
 
 
@@ -44,21 +53,30 @@ if (isset($_GET["order_placed"])) {
 
         $Statement = mysqli_prepare($Connection, $query3);
         mysqli_stmt_bind_param($Statement, "iii", $orderID, $productnummer, $aantal);
-        mysqli_stmt_execute($Statement);
-
+        $queryResult = mysqli_stmt_execute($Statement);
         $query4 = "UPDATE stockitemholdings SET quantityonhand = quantityonhand - ? WHERE stockitemID = (?);";
-
+        
+    if($queryResult == false){
+            $queryFailed = true;
+        }
+    }
         $Statement = mysqli_prepare($Connection, $query4);
         mysqli_stmt_bind_param($Statement, "ii", $aantal, $productnummer);
-        mysqli_stmt_execute($Statement);
+        $queryResult = mysqli_stmt_execute($Statement);
+        if($queryResult == false){
+            $queryFailed = true;
+        }
     }
 
-
-    print "Bedankt voor uw bestelling! Uw bestelnummer is: $orderID";
-    unset($_SESSION["cart"]);
+    if($queryFailed){
+        mysqli_rollback($Connection);
+        print("Mislukt, probeer opnieuw.");
+    }else{
+        mysqli_commit($Connection);
+        print "Bedankt voor uw bestelling! Uw bestelnummer is: $orderID";
+        unset($_SESSION["cart"]);
+    }
 
     print '<h1><a href="index.php">Klik hier om terug te gaan naar home!</a></h1>';
-} else {
-    print 'Mislukt, probeer opnieuw.';
-}
+
 

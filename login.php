@@ -82,7 +82,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['login'] = TRUE;
         $html = '<div class="container">
                     <div class="row">
-                        <div class"=col-6" style="margin: 0 auto">
+                        <div class="col-6" style="margin: 0 auto">
                             <p class="inlogStatus">Je bent ingelogd <a href="index.php"><button class="btn btn-primary">Ga Terug</button></a></p>
                         </div>
                     </div>
@@ -155,4 +155,8 @@ function showLoginForm()
     }
 </script>
 <br><br><br><br><br>
+<?php
+include __DIR__ . "/footer.php";
+
+?>
 
