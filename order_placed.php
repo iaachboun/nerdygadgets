@@ -6,6 +6,7 @@ include __DIR__ . "/connect.php";
 //bestelling is geplaatst
 $queryFailed = false;
 
+//checkt of klant ingelogd is om bestel forumulier automatisch in te vullen
 if (isset($_GET["order_placed"])) {
     if (isset($_SESSION["customerID"])) {
         $customerID = $_SESSION["customerID"];

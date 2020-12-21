@@ -1,7 +1,7 @@
 <?php require_once __DIR__ . "/header.php";
 require_once __DIR__ . "/connect.php";
 
-
+//checkt email of die uniek is en slaat dan de nieuwe account op
 if (isset($_POST["voornaam"])) {
     $emailCheckQuery = "SELECT email FROM webshop_customers WHERE email = ?";
 
@@ -38,8 +38,7 @@ if (isset($_POST["voornaam"])) {
 
 }
 
-//Test variabelen
-
+//formulier voor nieuwe account registratie
 if (isset($_GET['newAcc'])) {
     if ($_GET['newAcc'] == TRUE) {
         $html = '<div class="container">

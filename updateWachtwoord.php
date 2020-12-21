@@ -2,8 +2,8 @@
 include __DIR__ . "/header.php";
 include __DIR__ . "/connect.php";
 
-
 if (isset($_POST['submit'])) {
+    //check bestaat email al
     $query0 = "SELECT password FROM webshop_customers WHERE email = ?";
 
     $Statement0 = mysqli_prepare($Connection, $query0);
@@ -12,13 +12,14 @@ if (isset($_POST['submit'])) {
     $R0 = mysqli_stmt_get_result($Statement0);
     $R0 = mysqli_fetch_all($R0, MYSQLI_ASSOC);
 
+    //check de 2 nieuwe wachtwoorden of ze  hetzelfde zijn
     if(password_verify($_POST['oldPassword'], $R0[0]['password'])) {
         if ($_POST['newPassword'] == $_POST['newPasswordConfirm']) {
             $hash = '';
             $password = $_POST["newPassword"];
             $hash = password_hash($password, PASSWORD_DEFAULT);
 
-
+            //slaat nieuwe wachtwoord gehashed op in de database
             $sql = "UPDATE webshop_customers SET password = ? WHERE email = ?";
 
             $Statement = mysqli_prepare($Connection, $sql);

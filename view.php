@@ -200,6 +200,7 @@ if ($R) {
         </div>
 
         <?php
+        //Haalt temperatuur op uit de database
         $Query = "SELECT SI.IsChillerStock, CRT.Temperature
                 FROM stockitems SI
                 JOIN stockitemholdings SIH ON SI.StockItemID = SIH.StockItemID
