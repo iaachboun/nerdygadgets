@@ -183,40 +183,6 @@ foreach ($_SESSION["cart"] as $productnummer => $aantal) {
 
 
 
-<!--Mobiele weergave, work in progress door Pascal
-        -->
-<!--        <?php
-/*        foreach ($_SESSION["cart"] as $productnummer => $aantal) {
-            print '<div class="w3-row">';
-            print '<div class="w3-col s1">';
-            print  '<img class="w3-circle" src="Public/StockItemIMG/';
-            print ($plaatje);
-            print '" style="width:100%">';
-            print  '</div>';
-            print '<div class="w3-col s9 w3-container">';
-            print '<h3 class="w3-text-red">';
-            print $productnaam;
-
-            print '</h3>';
-            print '<p>';
-
-            print "<form method='post'>
-                      <input type= 'number' id='quantity' name='aantal' value='" . $aantal . "' min='1'>
-                      <input type= 'number' id='quantity' name='product' value='" . $productnummer . "' hidden>
-                    <button type='submit' value='aanpassen' name='productupdaten'> <i class='fa fa-refresh'aria-hidden='true'></i> Aanpassen </button>
-                      </form>";
-
-            print '</p>';
-            print '</div>';
-            print '</div>';
-        }
-        */?>
-        </div>
--->
-
-<!--FOOTER-->
-<!--<br><br><br><br><br><br>-->
-
 
 
 
